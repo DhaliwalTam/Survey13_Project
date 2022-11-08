@@ -263,6 +263,61 @@ h2 {
 
 /*-Survey List-----------------------------------------------*/
 
+#survey-list-box {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    background-color: lavender;
+}
+
+#survey-list-box {
+    font-size: 13px;
+}
+
+#addASurveyBtnListPage {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    border: solid black 2px;
+}
+
+#addASurveyBtnListPage:hover {
+    background-color: #95CD41;
+}
+
+#tableHeaderSurveyList {
+    font-size: 11px;
+}
+
+#editBtn,
+#deleteBtn {
+    border: solid black 2px;
+}
+
+#editBtn:hover,
+#deleteBtn:hover,
+#addASurveyBtnListPage:hover,
+#viewSurveyStatsBtn:hover,
+#startASurveyBtn:hover {
+    box-shadow: 4px 2px 2px grey;
+}
+
+#editBtn:hover {
+    background-color: #16697A;
+}
+
+#deleteBtn:hover {
+    background-color: #BB0029;
+}
+
+#viewSurveyStatsBtn {
+    font-size: 13px;
+}
+
+#startASurveyBtn {
+    font-size: 13px;
+}
+
 
 /*-Survey Stats-----------------------------------------------*/
 
