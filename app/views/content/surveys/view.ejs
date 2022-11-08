@@ -10,7 +10,8 @@
         <label>Your name:</label>
         <input class="form-control" type="text" name="surveyorName" required>
         <label>Your email:</label>
-        <input class="form-control" type="email" name="surveyorEmail" required>
+        <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
+        <span id="correctEmail">*** Please ensure your email address is correct!</span>
         <% for(let count=0; count < survey.questions.length; count++) { %>
         <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly
             name="ques" value="<%= survey.questions[count] %>">
