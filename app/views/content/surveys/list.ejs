@@ -1,0 +1,140 @@
+<!-- for the user to view their own surveys if they are logged in. If not logged in, then an anonymous user can view the list of surveys to do. 
+    ALL CODE THAT HAS BEEN COMMENTED WILL BE UN-COMMENTED ONCE SECURITY AUTHENTICATION HAS BEEN ADDED -->
+<div class="container">
+    <!-- <h1>
+      <%#  if(displayName) { %>
+        Welcome <%# displayName %>! Here is a list of your surveys!
+        <br><br>
+        <a href="/surveys/create" class="btn btn-primary" role="button">
+            <i class="fas fa-plus-circle"></i> Add a Survey!</a>
+        <%# } else { %>
+        Here are some available surveys!
+
+        <%# } %>
+    </h1> -->
+    <a href="/surveys/create" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Survey!</a>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                   <tr>
+                       <th scope="col" class="text-center col-1">Survey #</th>
+                       <th scope="col" class="text-center col-1">Created By</th>
+                       <th scope="col" class="text-center col-1">Survey Format</th>
+                       <th scope="col" class="text-center col-1">Title</th>
+                       <th scope="col" class="text-center col-1">Active on (yyyy-mm-dd)</th>
+                       <th scope="col" class="text-center col-1">Expiring on (yyyy-mm-dd)</th>
+                       <th scope="col" class="text-center col-1">Number of Questions</th>
+                       <th scope="col" class="text-center col-1">Time to complete (approx.)</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   
+                   
+                   
+                   
+                   
+                    <!-- <tr>
+                        <th scope="col" class="text-center col-1">Survey #</th>
+                        <%# if(!displayName) { %>
+                        <th scope="col" class="text-center col-1">Created By</th>
+                        <th scope="col" class="text-center col-1">Survey Format</th>
+                        <th scope="col" class="text-center col-1">Title</th>
+                        <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1">Active on (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1">Expiring on (yyyy-mm-dd)</th>
+                        <th></th>
+                        <%# } else { %>
+
+                        <th scope="col" class="text-center col-1">Survey Format</th>
+                        <th scope="col" class="text-center col-1">Title</th>
+                        <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1">Active on (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1">Expiring on (yyyy-mm-dd)</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <%# } %>
+
+                    </tr> -->
+                </thead>
+                <tbody id="surveyList">
+                    <% for(let count=0; count < surveys.length; count++) { %>
+
+                    <tr>
+                        <th scope="row" class="text-center">
+                            <%= count + 1 %>
+                        </th>
+                        <%# if(!displayName) { %>
+                        <td scope="row" class="text-center">
+                            <%= surveys[count].createdBy %>
+                        </td>
+                        <%# } %>
+                        <td scope="row" class="text-center">
+                            <%= surveys[count].template %>
+                        </td>
+                        <td scope="row" class="text-center">
+                            <%= surveys[count].title %>
+                        </td>
+                        <td scope="row" class="text-center activeDate">
+                            <%= surveys[count].active %>
+                        </td>
+                        <td scope="row" class="text-center expiryDate">
+                            <%= surveys[count].expiry %>
+                        </td>
+                        <td scope="row" class="text-center">
+                            <%= surveys[count].questions.length %>
+                        </td>
+                        <td scope="row" class="text-center">
+                            <%= Math.ceil(1.5 * surveys[count].questions.length) %> min
+                        </td>
+
+                        <%# if(displayName) { %>
+                        <td class="text-center col-1">
+                            <a href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Edit</a>
+                        </td>
+
+                        <td class="text-center col-1">
+                            <a href="/survey-delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete</a>
+                        </td>
+
+                        <td class="text-center col-2">
+                            <a href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-info">
+                                <i class="fa-solid fa-database"></i> View Survey Stats</a>
+                        </td>
+
+                        <%# } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
+                        <!-- <td class="text-center col-1">
+                        <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
+                        
+                        </td> -->
+                        <%# } else { %>
+                        <td class="text-center col-1">
+                            <a href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm">
+                                <i class="fas fa-pencil-alt"></i> Start Survey!</a>
+                        </td>
+                        <%#  }%>
+
+                        <% } %>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+    <script src="/content/scripts/list.js"></script>
+
+
+    <!-- <%# if(!displayName) { %>
+<script src="/content/scripts/list.js"></script>
+<%# } else { %>
+<script src=""></script>
+<%# } %> -->

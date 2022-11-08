@@ -1,0 +1,45 @@
+<div id="survey-create-box">
+    <h1>Create your new survey by using the form below!</h1>
+    <!-- <button id="questionCreate">Add Question</button> -->
+    <form id="createSurvey" method="POST">
+        <!-- <input type="hidden" name="displayName" value = "<%#displayName%>"> PLEASE UNCOMMENT ONCE SECURITY AUTHENICATION HAS BEEN ADDED -->
+        <div class="form-group">
+            <label for="nameTextField">Survey Title:</label>
+            <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title">
+        </div>
+
+        <div class="form-group">
+            <label for="nameTextField">Date of Activation:</label>
+            <input type="date" class="form-control" id="active" name="activeDate">
+        </div>
+
+        <div class="form-group">
+            <label for="nameTextField">Date of Expiry:</label>
+            <input type="date" class="form-control" id="expire" name="expiryDate">
+        </div>
+
+        <div id="questionCreate">
+            <label>Enter your new question here:</label>
+            <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1">
+            <div id="q"></div>
+            <br>
+
+            <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1">
+            <button type="button" id="addOptionButton" class="addOptions">Add Option</button>
+            <br><br>
+            <button type="button" id="saveQuestionandOptions">Save Question and Options</button>
+            <input type="hidden" id="questionList" name="qList">
+            <br>
+            <input type="hidden" id="optionList" name="oList">
+        </div>
+    </form>
+    <br>
+    <button id="submitButton" class="btn btn-default" type="button">
+    <i class="fas fa-edit"></i> Publish Survey!</button>
+
+    <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
+        <i class="fas fa-undo"></i> Cancel</a>
+
+</div>
+
+<script src="/content/scripts/create.js"></script>
