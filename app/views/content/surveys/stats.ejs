@@ -19,14 +19,14 @@
                     <span class="optionHeader"><%= count + 1 %>:</span> <%= survey.questions[count]%>
                 </td>
 
-                <td scope="row">
+                <td scope="row" class="text-center">
                     <% for(let j=0; j < survey.options[count].length; j++) { %>
                     <span class="optionHeader"><%= survey.options[count][j]%>:</span>
                     <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
                     <% } %>
                 </td>
 
-                <td scope="row" class="answers">
+                <td scope="row" class="text-center answers">
                     <% for(let j=0; j < survey.options[count].length; j++) { %>
                     <% if(responses.length === 0) { %>
                     <span class="optionHeader"><%= survey.options[count][j]%>:</span>
@@ -44,9 +44,13 @@
                 <td></td>
                 <td scope="row" class="text-center" id="numberRespondents"><%= responses.length %></td>
             </tr>
-            </tr>
+            
         </tbody>
     </table>
+    <button class="btn btn-primary" id="emailData"><i class="fa-solid fa-envelope"></i> Email Results</button>
+    <a id="cancelBtn" href="/surveys/list" class="btn btn-warning">
+        <i class="fas fa-undo"></i> Back to survey list</a>
+        
 </div>
-<button id="emailData">Email Results</button>
-<script src="/content/scripts/stats.js"></script>
+
+

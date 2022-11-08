@@ -120,6 +120,21 @@ export function ProcessSurveyEditPage(req,res,next){
 }
 
 
+export function ProcessSurveyDelete(req, res, next) {
+    let id = req.params.id;
+
+    surveyModel.remove({
+        _id: id
+    }, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+
+        res.redirect('/surveys/list');
+    })
+}
+
 export function DisplaySurveyPage(req, res, next) {
     let id = req.params.id;
 

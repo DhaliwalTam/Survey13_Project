@@ -133,7 +133,7 @@ function formConfirmation() {
         window.location.href = "../surveys/list";
 
     } else if (questionNumber < 2) {
-        alert("You must have more than 2 questions!");
+        alert("You must have at least 2 questions!");
     }
 
     else if(title == "" || active == "" || expire == ""){
