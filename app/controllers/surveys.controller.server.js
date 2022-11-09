@@ -201,12 +201,16 @@ export function ProcessSurveyPage(req, res, next) {
     })
     
     var transporter = nodemailer.createTransport({
-        host: 'smtp.mailtrap.io',
-        port: 2525,
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
-            user: 'f5fe8d688764dc',
-            pass: '8dc376639778db'
+            user: 'survey13agileteam@gmail.com',
+            pass: 'kurfjpzoroowxfda'
         },
+        tls: {
+            rejectUnauthorized: false
+        }
     });
 
     var mailOptions = {
@@ -225,7 +229,6 @@ export function ProcessSurveyPage(req, res, next) {
     }
 
     mailOptions.text += '\nWe hope you enjoyed your experience on Survey13. Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team';
-
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
