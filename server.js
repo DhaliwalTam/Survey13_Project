@@ -31,9 +31,9 @@ function onError(error) {
         throw error;
     }
 
-    let bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
+    let bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -50,9 +50,8 @@ function onError(error) {
     }
 }
 
-function onListening() 
-{
-  let addr = server.address();
-  let bind = 'pipe ' + addr;
-  debug('Listening on ' + bind);
+function onListening() {
+    let addr = server.address();
+    let bind = 'pipe ' + addr;
+    debug('Listening on ' + bind);
 }

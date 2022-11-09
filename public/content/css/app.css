@@ -183,7 +183,7 @@ h2 {
 
 #home-survey-box h2 {
     color: #BB0029;
-    background-color: transparent;
+    background-color: darkgrey;
     font-weight: bolder;
 }
 
@@ -245,12 +245,14 @@ h2 {
     border: solid 2px black;
 }
 
-#addOptionButton {
+#addOptionButton,
+#addNewOptionButton {
     margin-top: 4px;
 }
 
 #saveQuestionandOptions,
-#addOptionButton {
+#addOptionButton,
+#addNewOptionButton {
     border-radius: 5px;
     padding: 3px;
 }
@@ -279,6 +281,71 @@ h2 {
 
 /*-Survey Edit-----------------------------------------------*/
 
+#survey-edit-box {
+    margin: 0 auto;
+    width: 600px;
+    margin-top: 15px;
+    margin-bottom: 75px;
+    background: ghostwhite;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#survey-edit-box:hover {
+    box-shadow: 10px 5px 5px grey;
+}
+
+#survey-edit-box h1 {
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+#thisQuestion {
+    color: red;
+}
+
+#survey-edit-box input {
+    width: 400px;
+    margin-top: 5px;
+    margin-right: 50px;
+    border: solid black 1px;
+    border-radius: 5px;
+}
+
+#survey-edit-box input:hover {
+    border: solid 2px black;
+}
+
+#survey-edit-box form {
+    margin-left: -45px;
+    margin-bottom: 50px;
+    width: 600px;
+}
+
+#addNewOptionButton {
+    margin-top: 4px;
+}
+
+#addNewOptionButton:hover {
+    box-shadow: 10px 5px 5px grey;
+    background-color: #95CD41;
+}
+
+#submitButton,
+#cancelBtn {
+    border: solid black 2px;
+}
+
+#submitButton:hover {
+    background-color: #16697A;
+    box-shadow: 3px 2px 2px black;
+}
+
+#cancelBtn:hover {
+    background-color: #BB0029;
+    box-shadow: 3px 2px 2px black;
+}
+
 
 /*-Survey List-----------------------------------------------*/
 
@@ -286,7 +353,7 @@ h2 {
     float: left;
     margin-top: 10px;
     margin-bottom: 70px;
-    background-color: lavender;
+    background-color: ghostwhite;
     font-size: 13px;
     border-radius: 15px;
     box-shadow: 4px 2px 2px grey;
@@ -317,7 +384,7 @@ h2 {
 #addASurveyBtnListPage:hover,
 #viewSurveyStatsBtn:hover,
 #startASurveyBtn:hover {
-    box-shadow: 4px 2px 2px grey;
+    box-shadow: 4px 2px 2px black;
 }
 
 #editBtn:hover {
