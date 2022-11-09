@@ -230,7 +230,6 @@ export function ProcessSurveyPage(req, res, next) {
 
     mailOptions.text += '\nWe hope you enjoyed your experience on Survey13. Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team';
 
-
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -238,6 +237,7 @@ export function ProcessSurveyPage(req, res, next) {
             console.log('Email sent: ' + info.response);
         }
     });
+    
 
     res.redirect('/surveys/list');
 }
