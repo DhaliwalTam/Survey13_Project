@@ -37,7 +37,7 @@
                 </div>
 
                 <div>
-                    <label for="authorTextField">Questions</label>
+                    <label for="authorTextField"></label>
                     <% for(let count=0; count < survey.questions.length; count++) { %>
                     <br><label>Question <%= count + 1 %></label><input type="text" class="form-control question" placeholder="Edit question"
                         name="ques" value="<%= survey.questions[count] %>">
