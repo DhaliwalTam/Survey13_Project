@@ -237,6 +237,7 @@ export function ProcessSurveyPage(req, res, next) {
             console.log('Email sent: ' + info.response);
         }
     });
+    
 
     res.redirect('/surveys/list');
 }
