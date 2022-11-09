@@ -12,49 +12,6 @@
 
         <%# } %>
     </h1> -->
-
-    <script>
-        //Make the sorting the table in ascending and descending Order - [w3schools]
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("tableHeaderSurveyList");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
-    </script>
-
-
-
     <div id="survey-list-box">
         <a href="/surveys/create" id="addASurveyBtnListPage" class="btn btn-default" role="button">
             <i class="fas fa-plus-circle"></i> Add a Survey!</a>
@@ -154,9 +111,9 @@
 
                                             <%# } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
                                                 <!-- <td class="text-center col-1">
-                        <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
+                                            <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
                         
-                        </td> -->
+                                                </td> -->
                                                 <%# } else { %>
                                                     <td class="text-center col-1">
                                                         <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm">
