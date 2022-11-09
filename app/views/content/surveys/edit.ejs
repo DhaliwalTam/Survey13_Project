@@ -21,42 +21,27 @@
                         <input type="hidden" class="form-control" id="nameTextField" placeholder="Enter the Movie Title" name="createdOn" value="<%= survey.createdOn%>">
                     </div>
 
-<<<<<<< HEAD
-                <div>
-                    <label for="authorTextField"></label>
-=======
-                    <div class="form-group">
-                        <input type="hidden" class="form-control" id="nameTextField" placeholder="Enter the Movie Title" name="expiringOn" value="<%= survey.expiry %>">
-                    </div>
-
                     <div>
-                        <label id="thisQuestion" for="authorTextField">Questions</label>
+                        <label for="authorTextField"></label>
                         <% for(let count=0; count < survey.questions.length; count++) { %>
-                            <br><label>Question <%= count + 1 %></label><input type="text" class="form-control question" placeholder="Edit question" name="ques" value="<%= survey.questions[count] %>">
+                            <label>Options for question <%= count + 1 %></label>
+                            <button id="addNewOptionButton" type="button" id="<%= count + 1 %>" class="addChoice" class="addOptions">Add New Option</button>
+                            <div id="optionsDiv<%= count+1 %>">
+                                <% for(let j=0; j < survey.options[count].length; j++) { %>
+                                    <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
+                                    <% } %>
 
+                            </div>
+                            <br>
                             <% } %>
-                    </div>
-                    <br>
->>>>>>> 255541c6bd418d9d9b77591251d863f4aea93b6d
-                    <% for(let count=0; count < survey.questions.length; count++) { %>
-                        <label>Options for question <%= count + 1 %></label>
-                        <button id="addNewOptionButton" type="button" id="<%= count + 1 %>" class="addChoice" class="addOptions">Add New Option</button>
-                        <div id="optionsDiv<%= count+1 %>">
-                            <% for(let j=0; j < survey.options[count].length; j++) { %>
-                                <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
-                                <% } %>
 
-                        </div>
-                        <br>
-                        <% } %>
-
-                            <button id="submitButton" class="btn btn-default" type="submit">
+                                <button id="submitButton" class="btn btn-default" type="submit">
                     <i class="fas fa-edit"></i> Submit</button>
 
-                            <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
-                                <i class="fas fa-undo"></i> Cancel</a>
+                                <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
+                                    <i class="fas fa-undo"></i> Cancel</a>
                 </form>
+                </div>
             </div>
         </div>
     </div>
-</div>

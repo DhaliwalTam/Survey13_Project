@@ -222,9 +222,12 @@ h2 {
 
 /*-Survey Create--------------------------------------*/
 
+
+/*9NOV22 - Need to fix div and table in responsive design-table is sticking out*/
+
 #survey-create-box {
     margin: 0 auto;
-    width: 550px;
+    width: 50%;
     margin-top: 15px;
     margin-bottom: 75px;
     background: ghostwhite;
@@ -261,6 +264,7 @@ h2 {
 #addOptionButton:hover {
     background-color: #95CD41;
     box-shadow: 3px 2px 2px black;
+    color: ghostwhite;
 }
 
 #submitButton,
@@ -270,11 +274,13 @@ h2 {
 
 #submitButton:hover {
     background-color: #16697A;
+    color: ghostwhite;
     box-shadow: 3px 2px 2px black;
 }
 
 #cancelBtn:hover {
     background-color: #BB0029;
+    color: ghostwhite;
     box-shadow: 3px 2px 2px black;
 }
 
@@ -350,21 +356,20 @@ h2 {
 /*-Survey List-----------------------------------------------*/
 
 #survey-list-box {
-    float: left;
-    margin-top: 10px;
-    margin-bottom: 70px;
-<<<<<<< HEAD
-    background-color: lavender;
-    
-}
-
-#survey-list-box {
-=======
+    width: 100%;
+    display: block;
+    margin-top: 15px;
     background-color: ghostwhite;
->>>>>>> 255541c6bd418d9d9b77591251d863f4aea93b6d
     font-size: 13px;
     border-radius: 15px;
     box-shadow: 4px 2px 2px grey;
+    overflow: visible;
+    clear: both;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
 }
 
 #addASurveyBtnListPage {
@@ -393,6 +398,7 @@ h2 {
 #viewSurveyStatsBtn:hover,
 #startASurveyBtn:hover {
     box-shadow: 4px 2px 2px black;
+    color: ghostwhite;
 }
 
 #editBtn:hover {
@@ -413,20 +419,23 @@ h2 {
 
 
 /*-Survey Stats-----------------------------------------------*/
+
 #statsTable {
     background-color: #eaedff;
     font-family: sans-serif;
     text-align: center;
 }
 
-h1{
-text-align: center;
-font-weight: bold;
-font-family: sans-serif;
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
+
 /*-Survey View List-----------------------------------------------*/
-#mainSurvey{
+
+#mainSurvey {
     font-family: sans-serif;
     max-width: 60vw;
     margin: 50px auto;
@@ -434,10 +443,12 @@ font-family: sans-serif;
     padding-top: 5px;
     border: 2px solid rgb(185, 185, 185);
 }
-input[type="radio"]{
+
+input[type="radio"] {
     width: 25px;
     height: 20px;
 }
+
 
 /*-Survey View-----------------------------------------------*/
 
