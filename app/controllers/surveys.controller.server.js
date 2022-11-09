@@ -205,8 +205,11 @@ export function ProcessSurveyPage(req, res, next) {
         port: 465,
         secure: true,
         auth: {
-            user: 'survey13agileteam@gmail.com',
-            pass: 'kurfjpzoroowxfda'
+            
+            user: 'survey13stats@gmail.com',
+            pass: 'fndekejdersasehc'
+            // user: 'survey13agileteam@gmail.com',
+            // pass: 'kurfjpzoroowxfda'
         },
         tls: {
             rejectUnauthorized: false
@@ -214,7 +217,7 @@ export function ProcessSurveyPage(req, res, next) {
     });
 
     var mailOptions = {
-        from: 'survey13agileteam@gmail.com',
+        from: 'survey13stats@gmail.com',
         to:  `${req.body.surveyorEmail}`,
         subject: `Thank you for completing the survey!`,
         text: `Hello ${req.body.surveyorName},\n\nOn behalf of the entire team at Survey13, we wanted to thank you for completing the survey, "${req.body.surveyTitle}". Below is a brief summary of your survey:\n\nQuestions: \n`
