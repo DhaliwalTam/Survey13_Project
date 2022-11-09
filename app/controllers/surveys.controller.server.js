@@ -201,16 +201,12 @@ export function ProcessSurveyPage(req, res, next) {
     })
     
     var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
+        host: 'smtp.mailtrap.io',
+        port: 2525,
         auth: {
-            user: 'survey13agileteam@gmail.com',
-            pass: 'kurfjpzoroowxfda'
+            user: 'f5fe8d688764dc',
+            pass: '8dc376639778db'
         },
-        tls: {
-            rejectUnauthorized: false
-        }
     });
 
     var mailOptions = {
