@@ -1,17 +1,18 @@
 <%# if(displayName) { %>
+    <div class="container" id="homeBackground">
+        <div id="home-survey-box">
 
-    <div id="home-survey-box">
+            <h1>Welcome to Survey13!</h1>
+            <h2>Get started by clicking any of the links below!</h2>
 
-        <h1>Welcome to Survey13!</h1>
-        <h2>Get started by clicking any of the links below!</h2>
-
-        <h6>
-            <div class="home-survey-button">
-                <a href="/surveys/create">Create a survey!</a></div>
-            <%# } else{ %>
-                <!-- <a href="/login">Create a survey!</a> -->
+            <h6>
                 <div class="home-survey-button">
-                    <a href="/surveys/list">View available surveys!</a></div>
+                    <a href="/surveys/create">Create a survey!</a></div>
+                <%# } else{ %>
+                    <!-- <a href="/login">Create a survey!</a> -->
+                    <div class="home-survey-button">
+                        <a href="/surveys/list">View available surveys!</a></div>
+        </div>
+        <%# } %>
+            </h6>
     </div>
-    <%# } %>
-        </h6>

@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: Verdana, Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif, Verdana, Geneva, Tahoma, sans-serif;
     background-image: linear-gradient(to right, orange 0%, skyblue 100%);
 }
 
@@ -151,6 +151,11 @@ h2 {
 /*--Survey-Home------------------------------------*/
 
 
+/*#homeBackground {
+    
+}*/
+
+
 /*div in the landing page*/
 
 #home-survey-box {
@@ -159,21 +164,27 @@ h2 {
     border: solid black 3px;
     border-radius: 15px;
     width: 600px;
-    background-color: ghostwhite;
+    background-image: url("/content/images/lightweb.png");
     margin-top: 30px;
     margin-bottom: 70px;
-    height: 350px;
+    height: 510px;
     clear: both;
+    box-shadow: 10px 5px 5px grey;
+}
+
+#home-survey-box:hover {
+    box-shadow: 10px 5px 5px black;
 }
 
 #home-survey-box h1 {
     color: darkblue;
-    font-size: 45px;
+    font-size: 90px;
 }
 
 #home-survey-box h2 {
-    color: black;
-    background-color: ghostwhite;
+    color: #BB0029;
+    background-color: transparent;
+    font-weight: bolder;
 }
 
 
@@ -213,8 +224,16 @@ h2 {
 
 #survey-create-box {
     margin: 0 auto;
-    width: 500px;
+    width: 550px;
+    margin-top: 15px;
     margin-bottom: 75px;
+    background: ghostwhite;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+#survey-create-box:hover {
+    box-shadow: 10px 5px 5px grey;
 }
 
 #survey-create-box h1 {
@@ -239,7 +258,7 @@ h2 {
 #saveQuestionandOptions:hover,
 #addOptionButton:hover {
     background-color: #95CD41;
-    box-shadow: 4px 2px 2px black;
+    box-shadow: 3px 2px 2px black;
 }
 
 #submitButton,
@@ -249,12 +268,12 @@ h2 {
 
 #submitButton:hover {
     background-color: #16697A;
-    box-shadow: 4px 2px 2px black;
+    box-shadow: 3px 2px 2px black;
 }
 
 #cancelBtn:hover {
     background-color: #BB0029;
-    box-shadow: 4px 2px 2px black;
+    box-shadow: 3px 2px 2px black;
 }
 
 
@@ -268,10 +287,9 @@ h2 {
     margin-top: 10px;
     margin-bottom: 70px;
     background-color: lavender;
-}
-
-#survey-list-box {
     font-size: 13px;
+    border-radius: 15px;
+    box-shadow: 4px 2px 2px grey;
 }
 
 #addASurveyBtnListPage {
@@ -286,7 +304,7 @@ h2 {
 }
 
 #tableHeaderSurveyList {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 #editBtn,
@@ -323,6 +341,7 @@ h2 {
 
 
 /*-Survey View-----------------------------------------------*/
-#correctEmail{
+
+#correctEmail {
     font-size: small;
 }
