@@ -207,10 +207,9 @@ export function ProcessSurveyPage(req, res, next) {
         secure: true,
         auth: {
             
-            // user: 'survey13stats@gmail.com',
-            // pass: 'fndekejdersasehc'
-            user: 'survey13agileteam@gmail.com',
-            pass: 'kurfjpzoroowxfda'
+            user: 'survey13stats@gmail.com',
+            pass: 'fndekejdersasehc'
+            
         },
         tls: {
             rejectUnauthorized: false
