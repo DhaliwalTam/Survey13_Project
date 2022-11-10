@@ -25,7 +25,7 @@
                         <label for="authorTextField"></label>
                         <% for(let count=0; count < survey.questions.length; count++) { %>
                             <label>Options for question <%= count + 1 %></label>
-                            <button id="addNewOptionButton" type="button" id="<%= count + 1 %>" class="addChoice" class="addOptions">Add New Option</button>
+                            <button id="addNewOptionButton" type="button" id="<%= count + 1 %>" class="addChoice" class="addOptions"><i class="fas fa-plus-circle"></i> Add New Option</button>
                             <div id="optionsDiv<%= count+1 %>">
                                 <% for(let j=0; j < survey.options[count].length; j++) { %>
                                     <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
