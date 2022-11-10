@@ -12,17 +12,19 @@
         <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
         <span id="correctEmail">*** Please ensure your email address is correct!</span>
         <% for(let count=0; count < survey.questions.length; count++) { %>
-            <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
-            <% for(let j=0; j < survey.options[count].length; j++) { %>
-                <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
-                <%= survey.options[count][j] %><br>
-                    <% } %>
-                        <% } %>
+        <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques"
+            value="<%= survey.questions[count] %>">
+        <% for(let j=0; j < survey.options[count].length; j++) { %>
+        <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
+        <%= survey.options[count][j] %><br>
+        <% } %>
+        <% } %>
     </div>
     <br>
     <button class="btn btn-success" type="submit" id="submitSurvey"><i class="fas fa-check"></i> Submit</button>
 
-    <button type="button" id="cancelButton" class="btn btn-danger">Cancel</button>
+    <button type="button" id="cancelButton" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i>
+        Cancel</button>
 
     <button class="btn btn-warning" type="reset"><i class="fas fa-undo"></i> Reset survey</button>
 </form>
