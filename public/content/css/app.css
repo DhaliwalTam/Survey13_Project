@@ -254,13 +254,13 @@ h2 {
 }
 
 #addOptionButton,
-.addNewOptionButtonOptionButton {
+.addNewOptionButton {
     margin-top: 4px;
 }
 
 #saveQuestionandOptions,
 #addOptionButton,
-.addNewOptionButtonOptionButton {
+.addNewOptionButton {
     border-radius: 5px;
     padding: 3px;
 }
@@ -333,11 +333,11 @@ h2 {
     width: 600px;
 }
 
-.addNewOptionButtonOptionButton {
+.addNewOptionButton {
     margin-top: 4px;
 }
 
-.addNewOptionButtonOptionButton:hover {
+.addNewOptionButton:hover {
     box-shadow: 10px 5px 5px grey;
     background-color: #95CD41;
     color: white;
