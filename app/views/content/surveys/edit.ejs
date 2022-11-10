@@ -24,19 +24,16 @@
                             value="<%= survey.createdOn%>">
                     </div>
 
-                    <div>
-                        <label for="authorTextField">Questions</label><br>
+                    <div class="form-group">
                         <% for(let count=0; count < survey.questions.length; count++) { %>
                         <br><label>Question <%= count + 1 %></label><input type="text" class="form-control"
                             placeholder="Edit question" name="ques" value="<%= survey.questions[count] %>">
-
                         <% } %>
                     </div>
                     <br>
-                    <div>
-                        <label for="authorTextField"></label>
+                    <div class="form-group">
                         <% for(let count=0; count < survey.questions.length; count++) { %>
-                        <label>Options for question <%= count + 1 %></label>
+                        <label>Options for Question <%= count + 1 %></label>
                         <button type="button" id="<%= count + 1 %>" class="addChoice addNewOptionButton"><i
                                 class="fas fa-plus-circle"></i> Add New Option</button>
                         <div id="optionsDiv<%= count+1 %>">
