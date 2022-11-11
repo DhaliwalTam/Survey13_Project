@@ -182,7 +182,7 @@ h2 {
 }
 
 #home-survey-box h2 {
-    color: #BB0029;
+    color: #B25353;
     background-color: gainsboro;
     font-weight: bolder;
     border-radius: 5px;
@@ -196,7 +196,7 @@ h2 {
 /*The link to the survey pages - view and list*/
 
 .home-survey-button {
-    background-color: skyblue;
+    background-color: #0ccbf3;
     float: left;
     border: solid black 2px;
     border-radius: 10px;
@@ -212,7 +212,7 @@ h2 {
 
 .home-survey-button a {
     text-decoration: none;
-    color: #06038D;
+    color: black;
 }
 
 .home-survey-button:hover {
@@ -263,6 +263,7 @@ h2 {
 #addNewOptionButton {
     border-radius: 5px;
     padding: 3px;
+    background-color: gainsboro;
 }
 
 #saveQuestionandOptions:hover,
@@ -274,6 +275,7 @@ h2 {
 
 #submitButton,
 #cancelBtn {
+    background-color: gainsboro;
     border: solid black 2px;
 }
 
@@ -439,6 +441,31 @@ h1 {
     font-family: sans-serif;
 }
 
+#emailData {
+    margin-left: 15px;
+}
+
+#emailData,
+#backToSurveyListBtn {
+    background-color: ghostwhite;
+    border: solid 1px black;
+}
+
+#emailData:hover,
+#backToSurveyListBtn:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: white;
+    border: solid 1px black;
+}
+
+#emailData:hover {
+    background-color: #0CCBF3;
+}
+
+#backToSurveyListBtn:hover {
+    background-color: goldenrod;
+}
+
 
 /*-Survey View List-----------------------------------------------*/
 
@@ -448,17 +475,53 @@ h1 {
     margin: 50px auto;
     background-color: gainsboro;
     padding-top: 5px;
-    border: 2px solid rgb(185, 185, 185);
+    padding: 30px;
+    border: 2px solid rgb(220, 220, 220);
 }
 
-input[type="radio"] {
+#mainSurvey input[type="radio"] {
+    margin-top: 5px;
+    margin-left: 5px;
     width: 25px;
     height: 20px;
 }
 
+#submitSurvey {
+    margin-left: 15px;
+}
 
-/*-Survey View-----------------------------------------------*/
+#submitSurvey:hover {
+    background-color: #16697A;
+    color: white;
+}
+
+#cancelButton:hover {
+    background-color: #BB0029;
+}
+
+#resetButton:hover {
+    background-color: goldenrod;
+}
+
+#submitSurvey,
+#cancelButton,
+#resetButton {
+    border: solid black 1px;
+    margin-bottom: 15px;
+    background-color: gray;
+    color: ghostwhite;
+}
+
+#submitSurvey:hover,
+#cancelButton:hover,
+#resetButton:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: white;
+}
 
 #correctEmail {
     font-size: small;
 }
+
+
+/*------------------------------------------------*/

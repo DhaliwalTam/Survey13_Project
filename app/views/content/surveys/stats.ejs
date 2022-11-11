@@ -14,43 +14,44 @@
 
         <tbody id="statsTable">
             <% for(let count=0; count < survey.questions.length; count++) { %>
-            <tr>
-                <td scope="row" class="questions">
-                    <span class="optionHeader"><%= count + 1 %>:</span> <%= survey.questions[count]%>
-                </td>
+                <tr>
+                    <td scope="row" class="questions">
+                        <span class="optionHeader"><%= count + 1 %>:</span>
+                        <%= survey.questions[count]%>
+                    </td>
 
-                <td scope="row" class="text-center">
-                    <% for(let j=0; j < survey.options[count].length; j++) { %>
-                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                    <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
-                    <% } %>
-                </td>
+                    <td scope="row" class="text-center">
+                        <% for(let j=0; j < survey.options[count].length; j++) { %>
+                            <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                            <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
+                                <% } %>
+                    </td>
 
-                <td scope="row" class="text-center answers">
-                    <% for(let j=0; j < survey.options[count].length; j++) { %>
-                    <% if(responses.length === 0) { %>
-                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                    <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
-                    <% } else { %>
-                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                    <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
-                    <% }%>
+                    <td scope="row" class="text-center answers">
+                        <% for(let j=0; j < survey.options[count].length; j++) { %>
+                            <% if(responses.length === 0) { %>
+                                <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
+                                    <% } else { %>
+                                        <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                        <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
+                                            <% }%>
+                                                <% } %>
+                    </td>
                     <% } %>
-                </td>
-                <% } %>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td scope="row" class="text-center" id="numberRespondents"><%= responses.length %></td>
-            </tr>
-            
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td scope="row" class="text-center" id="numberRespondents">
+                                <%= responses.length %>
+                            </td>
+                        </tr>
+
         </tbody>
     </table>
-    <button class="btn btn-primary" id="emailData"><i class="fa-solid fa-envelope"></i> Email Results</button>
-    <a id="cancelBtn" href="/surveys/list" class="btn btn-warning">
+    <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Results</button>
+    <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
         <i class="fas fa-undo"></i> Back to survey list</a>
-        
+
 </div>
-
-
