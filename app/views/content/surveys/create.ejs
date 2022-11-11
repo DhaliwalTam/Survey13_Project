@@ -1,3 +1,4 @@
+<!-- create.ejs-- create survey -->
 <div id="survey-create-box">
     <h1>Create your new survey by using the form below!</h1>
     <!-- <button id="questionCreate">Add Question</button> -->
@@ -25,7 +26,8 @@
             <br>
 
             <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1">
-            <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add Option</button>
+            <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
+                Option</button>
             <br><br>
             <button type="button" id="saveQuestionandOptions" title="Save before creating another question.
             ">Save Question and Options</button>
@@ -35,9 +37,11 @@
         </div>
     </form>
     <br>
-    <button id="submitButton" class="btn btn-default" type="button">
-    <i class="fas fa-edit"></i> Publish Survey!</button>
 
+    <!-- submit survey -->
+    <button id="submitButton" class="btn btn-default" type="button">
+        <i class="fas fa-edit"></i> Publish Survey!</button>
+<!-- cancel survey -->
     <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
         <i class="fas fa-undo"></i> Cancel</a>
 

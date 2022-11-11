@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 
 var today = new Date();
 
-
+//displyas surveyLists
 export function DisplaySurveyList(req, res, next) {
     surveyModel.find(function (err, surveyCollection) {
         if (err) {
@@ -21,7 +21,7 @@ export function DisplaySurveyList(req, res, next) {
     })
 }
 
-
+//loads create survey page
 export function DisplayCreateSurveyPage(req, res, next) {
     res.render('index', {
         title: 'Create Survey',
@@ -31,6 +31,10 @@ export function DisplayCreateSurveyPage(req, res, next) {
 }
 
 
+
+//next releases CodeFix: createdBy should accept the value of the username  who  is logged in.
+// We should avoid hard coding the createdBy field.
+//  proesses survey create page
 export function ProcessSurveyCreatePage(req, res, next) {
     let newSurvey = surveyModel({
         createdBy: "Siddharth Verma",
@@ -72,7 +76,7 @@ export function DisplaySurveyEditPage(req, res, next) {
 
 
 }
-
+// processes survey edit page/survey update page
 export function ProcessSurveyEditPage(req,res,next){
     let id = req.params.id;
 
@@ -120,7 +124,7 @@ export function ProcessSurveyEditPage(req,res,next){
     })
 }
 
-
+// processes deletion of selected survey
 export function ProcessSurveyDelete(req, res, next) {
     let id = req.params.id;
 
@@ -136,6 +140,7 @@ export function ProcessSurveyDelete(req, res, next) {
     })
 }
 
+// displays the survey page
 export function DisplaySurveyPage(req, res, next) {
     let id = req.params.id;
 
@@ -154,7 +159,7 @@ export function DisplaySurveyPage(req, res, next) {
     });
 }
 
-
+// processes survey page
 export function ProcessSurveyPage(req, res, next) {
     let newSubmission = responsesModel({
         surveyID: req.body.surveyID,
