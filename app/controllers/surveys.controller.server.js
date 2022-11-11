@@ -21,7 +21,7 @@ export function DisplaySurveyList(req, res, next) {
     })
 }
 
-//loads create survey page
+//loads create a survey page
 export function DisplayCreateSurveyPage(req, res, next) {
     res.render('index', {
         title: 'Create Survey',
