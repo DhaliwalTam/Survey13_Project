@@ -258,7 +258,6 @@ h2 {
     margin-top: 4px;
 }
 
-
 #saveQuestionandOptions,
 #addOptionButton,
 .addNewOptionButton {
@@ -297,7 +296,7 @@ h2 {
 
 #survey-edit-box {
     margin: 0 auto;
-    width: 600px;
+    width: 620px;
     margin-top: 15px;
     margin-bottom: 40px;
     background: ghostwhite;
@@ -318,10 +317,14 @@ h2 {
     color: #BB0029;
 }
 
+#survey-edit-box label {
+    margin-left: -50px;
+}
+
 #survey-edit-box input {
-    width: 400px;
+    width: 500px;
     margin-top: 5px;
-    margin-right: 50px;
+    margin-left: -50px;
     border: solid black 1px;
     border-radius: 5px;
 }
@@ -344,6 +347,10 @@ h2 {
     box-shadow: 10px 5px 5px grey;
     background-color: #95CD41;
     color: white;
+}
+
+#submitButton {
+    margin-left: -30px;
 }
 
 #submitButton,
