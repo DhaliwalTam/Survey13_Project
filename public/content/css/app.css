@@ -573,7 +573,17 @@ table {
 
 /*-Survey Stats-----------------------------------------------*/
 
+#survey-stat-box {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 3px black;
+}
+
 #statsTable {
+    border: solid 2px grey;
     background-color: #eaedff;
     font-family: sans-serif;
     text-align: center;
