@@ -1,11 +1,11 @@
 <!-- for the user to view their own surveys if they are logged in. If not logged in, then an anonymous user can view the list of surveys to do. 
     ALL CODE THAT HAS BEEN COMMENTED WILL BE UN-COMMENTED ONCE SECURITY AUTHENTICATION HAS BEEN ADDED -->
 <div class="container">
+    <div id="survey-list-box">
     <h1>
       <%  if(displayName) { %>
         Welcome <%= displayName %>! Here is a list of your surveys!
         <br><br>
-        <div id="survey-list-box">
         <a href="/surveys/create" id="addASurveyBtnListPage" class="btn btn-default" role="button">
             <i class="fas fa-plus-circle"></i> Add a Survey!</a>
         <% } else { %>
@@ -41,12 +41,16 @@
 
                         <tr>
                         <th scope="col" class="text-center col-1" onclick="sortTable(0)">Survey #</th>
-                        <% if(!displayName) { %>
+                        <% if(displayName) { %>
                         <th scope="col" class="text-center col-1" onclick="sortTable(1)">Created By</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(2)">Survey Format</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1" onclick="sortTable(6)">Number of Questions</th>
+                        <th scope="col" class="text-center col-1" onclick="sortTable(7)">Time to complete (approx.)</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <% } else { %>
 
@@ -54,6 +58,8 @@
                         <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                         <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on (yyyy-mm-dd)</th>
+                        <th scope="col" class="text-center col-1" onclick="sortTable(6)">Number of Questions</th>
+                        <th scope="col" class="text-center col-1" onclick="sortTable(7)">Time to complete (approx.)</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -68,7 +74,7 @@
                                 <th scope="row" class="text-center">
                                     <%= count + 1 %>
                                 </th>
-                                <% if(!displayName) { %>
+                                <% if(displayName) { %>
                                     <td scope="row" class="text-center">
                                         <%= surveys[count].createdBy %>
                                     </td>
@@ -108,7 +114,7 @@
                                                     <i class="fa-solid fa-database"></i> View Survey Stats</a>
                                             </td>
 
-                                            <% } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
+                                            <% } else if(displayName && (new Date(surveys[count].active) > new Date())) { %>
                                                 <td class="text-center col-1">
                                             <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
                         
