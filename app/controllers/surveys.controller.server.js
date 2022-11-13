@@ -1,6 +1,7 @@
 import responsesModel from '../models/responses.js'
 import surveyModel from '../models/survey.js';
 import nodemailer from "nodemailer";
+import { UserDisplayName } from '../utils/index.js';
 
 var today = new Date();
 
@@ -16,7 +17,7 @@ export function DisplaySurveyList(req, res, next) {
             title: 'My Surveys',
             page: 'surveys/list',
             surveys: surveyCollection,
-            //displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req)
         });
     })
 }
@@ -26,7 +27,7 @@ export function DisplayCreateSurveyPage(req, res, next) {
     res.render('index', {
         title: 'Create Survey',
         page: 'surveys/create',
-        //displayName: UserDisplayName(req)
+        displayName: UserDisplayName(req)
     });
 }
 
@@ -37,7 +38,7 @@ export function DisplayCreateSurveyPage(req, res, next) {
 //  proesses survey create page
 export function ProcessSurveyCreatePage(req, res, next) {
     let newSurvey = surveyModel({
-        createdBy: "Siddharth Verma",
+        createdBy: req.body.createdBy,
         template: "Multiple Choice",
         title: req.body.title,
         createdOn: today,
@@ -70,7 +71,7 @@ export function DisplaySurveyEditPage(req, res, next) {
             title: 'Edit Survey',
             page: 'surveys/edit',
             survey: survey,
-            //displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req)
         });
     });
 
@@ -154,7 +155,7 @@ export function DisplaySurveyPage(req, res, next) {
             title: 'Complete Survey',
             page: 'surveys/view',
             survey: survey,
-            //displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req)
         });
     });
 }
@@ -298,7 +299,7 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     question1Array: question1Array,
                     responseArray: responseArray,
                     element: element,
-                    //displayName: UserDisplayName(req)
+                    displayName: UserDisplayName(req)
                 });
             })
         }
