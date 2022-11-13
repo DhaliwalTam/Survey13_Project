@@ -12,7 +12,8 @@ import { UserDisplayName } from '../utils/index.js';
 // Display functions
 export function DisplayLoginPage(req, res, next) {
     if(!req.user){ 
-        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), registerSuccessful: req.flash('registerSuccessful'), displayName: UserDisplayName(req)})
+        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), registerSuccessful: req.flash('registerSuccessful'), 
+        displayName: UserDisplayName(req)})
     }
 
     return res.redirect('/surveys/list');

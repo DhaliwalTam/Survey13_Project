@@ -1,5 +1,6 @@
 import { UserDisplayName } from "../utils/index.js";
 import { GetUserID } from "../utils/index.js";
+import { GetUsername } from "../utils/index.js";
 import userModel from '../models/user.js';
 import nodemailer from 'nodemailer';
 
@@ -23,14 +24,14 @@ export function DisplayHomePage(req, res, next) {
                         res.end(err);
                     }
 
-                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user:user, id:GetUserID(req)});
+                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user:user, id:GetUserID(req), username: GetUsername(req)});
                 })
                 
             }
         })
     }    
     else{
-        res.render('index', {title: 'Home', page: 'home', displayName: UserDisplayName(req), id:GetUserID(req)});
+        res.render('index', {title: 'Home', page: 'home', displayName: UserDisplayName(req), id:GetUserID(req), username: GetUsername(req)});
     }
 }
 
@@ -48,7 +49,8 @@ export function DisplayUpdatePage(req,res,next){
             page: 'update',
             user: user,
             displayName: UserDisplayName(req),
-            id: GetUserID(req)
+            id: GetUserID(req),
+            username: GetUsername(req)
         });
     });
 }
@@ -92,7 +94,8 @@ export function DisplayPasswordPage(req,res,next){
             page: 'password',
             user: user,
             displayName: UserDisplayName(req),
-            id: GetUserID(req)
+            id: GetUserID(req),
+            username: GetUsername(req)
         });
     });
 }
@@ -138,7 +141,7 @@ export function ProcessPasswordPage(req, res, next){
 }
 
 export function DisplayForgotPassPage(req,res,next){
-    res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: {}, messages:req.flash('userNotFound'), id:GetUserID(req)});
+    res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: {}, messages:req.flash('userNotFound'), id:GetUserID(req), username: Getusername(req)});
 }
 
 export function ProcessForgotPassPage(req,res,next){
@@ -193,11 +196,12 @@ export function ProcessForgotPassPage(req,res,next){
 }
 
 export function DisplayCodePage(req,res,next){
-    res.render('index', {title: 'Get your code', page: 'code', displayName: UserDisplayName(req), messages:req.flash('codeSent'), id:GetUserID(req)});
+    res.render('index', {title: 'Get your code', page: 'code', displayName: UserDisplayName(req), messages:req.flash('codeSent'), id:GetUserID(req), username: GetUsername(req)});
 }
 
 export function DisplayEnterCodePage(req,res,next){
-    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), displayName: UserDisplayName(req), code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
+    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), username: GetUsername(req), 
+    displayName: UserDisplayName(req), code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
 }
 
 
