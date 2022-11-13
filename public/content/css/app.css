@@ -156,29 +156,160 @@ h2 {
 }*/
 
 
-/*div in the landing page*/
+/*slideshow part of the home page*/
 
-#home-survey-box {
-    margin: 0 auto;
+#boxIt {
+    display: block;
+    float: left;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 49%;
+    background-color: ghostwhite;
+    padding: 10px;
+    border: solid 3px black;
+}
+
+.mySlides {
+    display: none
+}
+
+#boxIt img {
+    vertical-align: middle;
+    border-radius: 15px;
+}
+
+
+/* Slideshow container */
+
+.slideshow-container {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+}
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    transition: 0.8s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    text-decoration: none;
+    color: #06038D;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* The dots/bullets/indicators */
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #06038D;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -5px;
+    transition: background-color 0.8s ease-in;
+}
+
+#boxIt .active,
+.dot:hover {
+    background-color: darkgoldenrod;
+}
+
+
+/* Fading animation */
+
+#boxIt .fade {
+    animation-name: fade;
+    animation-duration: 5.0s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .2
+    }
+    to {
+        opacity: 1
+    }
+}
+
+#home-survey-contained {
+    display: block;
+    float: right;
+    position: relative;
     padding: 30px;
     border: solid black 3px;
     border-radius: 15px;
-    width: 600px;
-    background-image: url("/content/images/lightweb.png");
+    width: 100%;
     margin-top: 30px;
     margin-bottom: 50px;
-    height: 510px;
-    clear: both;
     box-shadow: 10px 5px 5px grey;
+    background-image: url("/content/images/lightweb.png");
+}
+
+
+/*button part of the landing page*/
+
+#home-survey-box {
+    display: block;
+    float: right;
+    position: relative;
+    padding: 30px;
+    width: 50%;
+    height: 530px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+
+/*#home-survey-box {
+    background-image: url("/content/images/lightweb.png");
+    box-shadow: 10px 5px 5px grey;
+    border-radius: 15px;
+    border: solid black 3px;
 }
 
 #home-survey-box:hover {
     box-shadow: 10px 5px 5px black;
-}
+}*/
 
 #home-survey-box h1 {
     color: #06038D;
-    font-size: 90px;
+    font-size: 75px;
 }
 
 #home-survey-box h2 {
@@ -228,7 +359,7 @@ h2 {
 /*-Survey Create--------------------------------------*/
 
 
-/*9NOV22 - Need to fix div and table in responsive design-table is sticking out*/
+/*div container for the form*/
 
 #survey-create-box {
     margin: 0 auto;
@@ -293,6 +424,9 @@ h2 {
 
 
 /*-Survey Edit-----------------------------------------------*/
+
+
+/*div container for the form*/
 
 #survey-edit-box {
     margin: 0 auto;
@@ -371,6 +505,9 @@ h2 {
 
 /*-Survey List-----------------------------------------------*/
 
+
+/*div container for the form*/
+
 #survey-list-box {
     width: 100%;
     display: block;
@@ -386,7 +523,6 @@ h2 {
 
 table {
     table-layout: fixed;
-    width: 100%;
 }
 
 #addASurveyBtnListPage {
@@ -485,6 +621,8 @@ h1 {
     padding-top: 5px;
     padding: 30px;
     border: 2px solid rgb(220, 220, 220);
+    border: solid 2px black;
+    border-radius: 10px;
 }
 
 #mainSurvey input[type="radio"] {

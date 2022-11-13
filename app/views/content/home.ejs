@@ -1,18 +1,133 @@
 <%# if(displayName) { %>
     <div class="container" id="homeBackground">
-        <div id="home-survey-box">
 
-            <h1>Welcome to Survey13!</h1>
-            <h2 id="getStarted">Get started by clicking any of the links below!</h2>
+        <div id="home-survey-contained">
+            <div id="boxIt">
+                <div class="slideshow-container">
 
-            <h6>
-                <div class="home-survey-button">
-                    <a href="/surveys/create">Create a survey!</a></div>
-                <%# } else{ %>
-                    <!-- <a href="/login">Create a survey!</a> -->
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-01.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-02.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-03.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-04.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-05.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-06.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-07.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/content/Survey13-images/img-08.jpg" style="width:100%">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                        <span class="dot" onclick="currentSlide(7)"></span>
+                        <span class="dot" onclick="currentSlide(8)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="home-survey-box">
+
+                <h1>Welcome to Survey13!</h1>
+                <h2 id="getStarted">Get started by clicking any of the links below!</h2>
+
+                <h6>
                     <div class="home-survey-button">
-                        <a href="/surveys/list">View available surveys!</a></div>
+                        <a href="/surveys/create">Create a survey!</a></div>
+                    <%# } else{ %>
+                        <!-- <a href="/login">Create a survey!</a> -->
+                        <div class="home-survey-button">
+                            <a href="/surveys/list">View available surveys!</a></div>
+
+            </div>
+            <%# } %>
+                </h6>
         </div>
-        <%# } %>
-            </h6>
-    </div>
+
+        <!--Note for Siddharth - I added a link of home.js to content/script/ and create a link to index.ejs but it is comment out! No idea what home.-->
+        <!--It errors so I just add this for now.-->
+        <script>
+            //manual slideshow
+            let slideIndex = 1;
+            /*showSlides(slideIndex);*/
+
+            // Next/previous controls
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = slides.length
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+
+            }
+
+
+            //automatic slideshow
+            slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1
+                }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 4000); // Change image every 2 seconds
+
+            }
+        </script>
