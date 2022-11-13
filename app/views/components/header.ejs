@@ -9,10 +9,6 @@
       <!-- navigation to different tabs -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                    <a id="header-home-effect" class="nav-link <%= (page == 'home') ? 'active' : ''; %>" aria-current="page" href="/"><i
-                class="fa-solid fa-house-signal fa-lg"></i> Home</a> -->
-                </li>
                 <% if(displayName) { %>
                   <li class="nav-item">
                     <a class="nav-link" href="/about"><i
@@ -31,7 +27,10 @@
                   </li>
 
                   <% } else if(!displayName) { %>
-                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="/surveys/list"><i
+                          class="fa-solid fa-table-list fa-lg"></i> View available surveys</a> 
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/login"><i
                           class="fa-solid fa-table-list fa-lg"></i> Log in</a>
