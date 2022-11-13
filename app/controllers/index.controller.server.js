@@ -193,11 +193,11 @@ export function ProcessForgotPassPage(req,res,next){
 }
 
 export function DisplayCodePage(req,res,next){
-    res.render('index', {title: 'Get your code', page: 'code', displayName: {}, messages:req.flash('codeSent'), id:GetUserID(req)});
+    res.render('index', {title: 'Get your code', page: 'code', displayName: UserDisplayName(req), messages:req.flash('codeSent'), id:GetUserID(req)});
 }
 
 export function DisplayEnterCodePage(req,res,next){
-    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), displayName: {}, code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
+    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), displayName: UserDisplayName(req), code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
 }
 
 
