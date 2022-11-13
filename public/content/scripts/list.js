@@ -10,10 +10,7 @@ window.addEventListener("load",()=>{
             })
         }    
     }
-
-
 })
-
 
  //Make the sorting the table in ascending and descending Order - [w3schools]
  function sortTable(n) {

@@ -3,6 +3,7 @@ import surveyModel from '../models/survey.js';
 import nodemailer from "nodemailer";
 import userModel from '../models/user.js';
 import { UserDisplayName } from '../utils/index.js';
+import { GetUserID } from "../utils/index.js";
 
 var today = new Date();
 
@@ -31,7 +32,8 @@ export function DisplaySurveyList(req, res, next) {
                         title: 'My Surveys',
                         page: 'surveys/list',
                         surveys: surveyCollection,
-                        displayName: UserDisplayName(req)
+                        displayName: UserDisplayName(req),
+                        id:GetUserID(req)
                     });
                 })
             }
@@ -49,7 +51,8 @@ export function DisplaySurveyList(req, res, next) {
                 title: 'My Surveys',
                 page: 'surveys/list',
                 surveys: surveyCollection,
-                displayName: UserDisplayName(req)
+                displayName: UserDisplayName(req),
+                id:GetUserID(req)
             });
         })
     }
@@ -60,53 +63,46 @@ export function DisplayCreateSurveyPage(req, res, next) {
     res.render('index', {
         title: 'Create Survey',
         page: 'surveys/create',
-        displayName: UserDisplayName(req)
+        displayName: UserDisplayName(req),
+        id:GetUserID(req)
     });
 }
 
 //  processes survey create page
 export function ProcessSurveyCreatePage(req, res, next) {
     let publisher = UserDisplayName(req);
-    
-   userModel.find({displayName: publisher}, function(err,user){
-        if(err){
+
+    userModel.find({ displayName: publisher }, function (err, user) {
+        if (err) {
             console.error(err);
             res.end(err);
         }
 
-        else{
-            let newSurvey = surveyModel({
-                createdBy: req.body.displayName,
+        else {
+                let newSurvey = surveyModel({
+                createdBy: req.body.createdBy,
                 publisherID: user[0]._id,
                 template: "Multiple Choice",
                 title: req.body.title,
                 createdOn: today,
-                active: req.body.activeDate,
-                expiry: req.body.expiryDate,
+                active: req.body.active,
+                expiry: req.body.expire,
                 attempts: 0,
-                questions: [],
-                options: []
+                questions: req.body.questionArray,
+                options: req.body.optionsArray
             });
 
-            for(let i = 0;i < 5; i++) {
-                if(req.body[`ques${i+1}`] !== ""){
-                    newSurvey.questions.push(req.body[`ques${i+1}`]);
-                }
-        
-                if(req.body[`list${i+1}`] !== ""){
-                    newSurvey.options.push(req.body[`list${i+1}`].match(/\b(\w+)\b/g));
-                }
-            }
 
             surveyModel.create(newSurvey, (err) => {
                 if (err) {
                     console.error(err);
                     res.end(err);
                 };
-        
-                res.redirect('/surveys/list');
+
             })
-       }
+            res.redirect('/surveys/list');
+
+        }
     })
 }
 
@@ -123,7 +119,8 @@ export function DisplaySurveyEditPage(req, res, next) {
             title: 'Edit Survey',
             page: 'surveys/edit',
             survey: survey,
-            displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req),
+            id:GetUserID(req)
         });
     });
 }
@@ -205,7 +202,8 @@ export function DisplaySurveyPage(req, res, next) {
             title: 'Complete Survey',
             page: 'surveys/view',
             survey: survey,
-            displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req),
+            id:GetUserID(req)
         });
     });
 }
@@ -365,7 +363,8 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     question1Array: question1Array,
                     responseArray: responseArray,
                     element: element,
-                    displayName: UserDisplayName(req)
+                    displayName: UserDisplayName(req),
+                    id:GetUserID(req)
                 });
             })
         }

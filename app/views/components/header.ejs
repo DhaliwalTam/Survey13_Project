@@ -19,10 +19,10 @@
                     <a class="nav-link" href="/surveys/list"><i
                         class="fa-solid fa-table-list fa-lg"></i> My Surveys</a>
                   </li>
-    
+                  
                   
                   <li class="nav-item">
-                    <a class="nav-link" href="/update"><i
+                    <a class="nav-link" href="/update/<%=id%>"><i
                         class="fa-solid fa-table-list fa-lg"></i> Update Profile</a>
                   </li>
                   
@@ -31,7 +31,8 @@
                         class="fa-solid fa-table-list fa-lg"></i> Log out</a>
                   </li>
                   
-                  <% } else if(!displayName) { %>                    
+                  <% } else if(!displayName) { %>
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="/login"><i
                           class="fa-solid fa-table-list fa-lg"></i> Log in</a>

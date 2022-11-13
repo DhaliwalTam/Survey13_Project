@@ -23,56 +23,15 @@ export function DisplayHomePage(req, res, next) {
                         res.end(err);
                     }
 
-                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user:user});
+                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user:user, id:GetUserID(req)});
                 })
                 
             }
         })
     }    
     else{
-        res.render('index', {title: 'Home', page: 'home', displayName: UserDisplayName(req)});
+        res.render('index', {title: 'Home', page: 'home', displayName: UserDisplayName(req), id:GetUserID(req)});
     }
-}
-
-export function DisplayUpdateAlt(req,res,next){
-    let id = GetUserID(req);
-
-   userModel.findById(id, (err, user) => {
-        if (err) {
-            console.error(err);
-            res.end(err);
-        }
-
-        res.render('index', {
-            title: 'Update your profile',
-            page: 'update',
-            user: user,
-            displayName: UserDisplayName(req)
-        });
-    });
-}
-
-export function ProcessUpdateAlt(req,res,next){
-    let id = GetUserID(req);
-   
-    let updatedUser = userModel({
-        _id: req.body.id,
-        username: req.body.userName,
-        password: req.body.password,
-        address: req.body.email,
-        DOB: req.body.dob
-    })
-
-    userModel.updateOne({_id: id }, updatedUser, (err) => {
-        if(err){
-            console.error(err);
-            res.end(err);
-        }
-
-        else {
-            res.redirect('/login');
-        }
-    } )
 }
 
 export function DisplayUpdatePage(req,res,next){
@@ -88,7 +47,8 @@ export function DisplayUpdatePage(req,res,next){
             title: 'Update your profile',
             page: 'update',
             user: user,
-            displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req),
+            id: GetUserID(req)
         });
     });
 }
@@ -112,7 +72,8 @@ export function ProcessUpdatePage(req,res,next){
         }
 
         else {
-            res.redirect('/login');
+            console.log('details changed')
+            res.redirect('/surveys/list') ;         
         }
     } )
 }
@@ -130,7 +91,8 @@ export function DisplayPasswordPage(req,res,next){
             title: 'Change your password',
             page: 'password',
             user: user,
-            displayName: UserDisplayName(req)
+            displayName: UserDisplayName(req),
+            id: GetUserID(req)
         });
     });
 }
@@ -176,7 +138,7 @@ export function ProcessPasswordPage(req, res, next){
 }
 
 export function DisplayForgotPassPage(req,res,next){
-    res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: {}, messages:req.flash('userNotFound')});
+    res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: {}, messages:req.flash('userNotFound'), id:GetUserID(req)});
 }
 
 export function ProcessForgotPassPage(req,res,next){
@@ -231,11 +193,11 @@ export function ProcessForgotPassPage(req,res,next){
 }
 
 export function DisplayCodePage(req,res,next){
-    res.render('index', {title: 'Get your code', page: 'code', displayName: {}, messages:req.flash('codeSent')});
+    res.render('index', {title: 'Get your code', page: 'code', displayName: {}, messages:req.flash('codeSent'), id:GetUserID(req)});
 }
 
 export function DisplayEnterCodePage(req,res,next){
-    res.render('index', {title: 'Enter your code', page: 'enterCode', displayName: {}, code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
+    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), displayName: {}, code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
 }
 
 

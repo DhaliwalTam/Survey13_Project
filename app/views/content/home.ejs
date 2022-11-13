@@ -7,8 +7,11 @@
             <h6>
                 <div class="home-survey-button">
                     <a href="/surveys/create">Create a survey!</a>
+                </div>
+                <div class="home-survey-button">
                     <a href="update/<%= user[0]._id %>">Update Profile</a>
                 </div>
+                
                 <% } else if(!displayName) { %>
                     <div class="home-survey-button">
                         <a href="/login">Create a survey!</a>
