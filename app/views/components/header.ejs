@@ -15,14 +15,28 @@
                 </li>
 
                 <% if(displayName) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/surveys/list"><i
+                        class="fa-solid fa-table-list fa-lg"></i> My Surveys</a>
+                  </li>
+    
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/update"><i
+                        class="fa-solid fa-table-list fa-lg"></i> Update Profile</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i
+                        class="fa-solid fa-table-list fa-lg"></i> Log out</a>
+                  </li>
+                  
+                  <% } else if(!displayName) { %>                    
                     <li class="nav-item">
-                      <a class="nav-link <%= (page == 'logout') ? 'active' : ''; %>" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
-                    </li> 
-                    <% } else { %>
-                    <li class="nav-item">
-                      <a class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</a>
-                    </li> 
-                    <% } %>
+                      <a class="nav-link" href="/login"><i
+                          class="fa-solid fa-table-list fa-lg"></i> Log in</a>
+                    </li>
+                  <% } %>
         
             </ul>
         </div>

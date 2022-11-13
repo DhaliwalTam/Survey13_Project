@@ -1,0 +1,17 @@
+<div>
+    <% if(messages.length> 0) { %>
+        <div id="messageArea" class="alert alert-danger">
+            <%= messages %>
+        </div>
+        <% } else if(codeSent.length > 0){ %>
+            <div id="messageArea" class="alert alert-success">
+                <%= codeSent %>
+            </div>
+       <% }%>
+    <form id="validateCode" method="POST" action="">
+        <input type="hidden" readonly value="<%= code %>" name="val">
+        <label>Enter your code below:</label>
+        <input type="text" name="code" id="" placeholder="Enter your code">
+        <button type="submit" id="">Validate my code</button>
+    </form>
+</div>

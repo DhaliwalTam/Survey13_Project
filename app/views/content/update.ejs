@@ -1,0 +1,37 @@
+<div class="mainDiv">
+    <h1>Now editing details for  <%= user.displayName %> </h1>
+    <br>
+    <div id="formUpdate">
+        <form id="updateForm" method="POST">
+            <input type="hidden" name="id" value="<%= user._id %>" >
+            <label>User Name:</label>
+            <input type="text" id="username" name="userName" required value="<%= user.username %>" placeholder="Username">
+            <br><br>
+            <label>Display Name:</label>
+            <input type="text" id="username" name="displayName" readonly value="<%= user.displayName %>" placeholder="Display Name">
+            <br><br>
+            <label>Email:</label>
+            <input type="email"  id="emailAddress" name="email" required value="<%= user.address %>" placeholder="Email">
+            <br><br>
+            <label>Date of Birth:</label>
+            <input type="date" id="dateOfBirth" value="<%= user.DOB %>" name="dob">
+            <br><br>
+            <a href="/password/<%= user._id %>">Change password</a>
+            <br><br>
+            <button id="saveDetails" class="btn btn-outline-info" type="submit">Submit</button>
+            <a href="/home" class="btn btn-outline-warning">Cancel update</a>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+    integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</body>

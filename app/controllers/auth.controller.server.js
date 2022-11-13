@@ -11,17 +11,19 @@ import { UserDisplayName } from '../utils/index.js';
 
 // Display functions
 export function DisplayLoginPage(req, res, next) {
-    if(!req.user) {
-        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
+    if(!req.user){ 
+        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req)})
     }
 
-    return res.redirect('/contact-list');
+    return res.redirect('/surveys/list');
 }
 
 export function DisplayRegisterPage(req, res, next) {
-    if(!req.user) {
-        return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)});
+    if(!req.user){ 
+        return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)})
     }
+
+    return res.redirect('/surveys/list');
 }
 
 
@@ -44,7 +46,7 @@ export function ProcessLoginPage(req, res, next) {
                 res.end(err);
             }
 
-            return res.redirect('/')
+            return res.redirect('/surveys/list');
         });
 
     })(req, res, next);
@@ -54,7 +56,8 @@ export function ProcessRegisterPage(req, res, next) {
     let newUser = new User({
         username: req.body.username, 
         emailAddress: req.body.emailAddress,
-        displayName: req.body.firstName + " " + req.body.lastName
+        displayName: req.body.firstName + " " + req.body.lastName,
+        DOB: req.body.dob
         });
 
         User.register(newUser, req.body.password, function(err) {
@@ -71,7 +74,8 @@ export function ProcessRegisterPage(req, res, next) {
             }
 
             return passport.authenticate('local')(req, res, function() {
-                return res.redirect('/');
+                req.flash('registerSuccessful', 'Succesfully registered! Please log in below.');
+                return res.render('index', {title: 'Login', page: 'login', messages: req.flash('registerSuccessful'), displayName: {}})
             });
         })
 }
