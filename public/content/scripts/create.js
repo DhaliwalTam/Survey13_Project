@@ -113,6 +113,7 @@ function formConfirmation() {
     var title = document.getElementById("surveyTitle").value;
     var active = document.getElementById("active").value;
     var expire = document.getElementById("expire").value;
+    var createdBy = document.getElementById("createdBy").value;
 
     if (questionNumber > 2 && title !== "" && active !== "" && expire !== "") {
         fetch('/surveys/create', {
@@ -125,7 +126,8 @@ function formConfirmation() {
                 optionsArray: optionsArray,
                 title: title,
                 active: active,
-                expire: expire
+                expire: expire,
+                createdBy: createdBy
             })
         });
 

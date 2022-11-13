@@ -6,6 +6,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- navigation to different tabs -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -13,6 +14,31 @@
                 class="fa-solid fa-house-signal fa-lg"></i> Home</a>
                 </li>
 
+                <% if(displayName) { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/surveys/list"><i
+                        class="fa-solid fa-table-list fa-lg"></i> My Surveys</a>
+                  </li>
+                  
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/update/<%=id%>"><i
+                        class="fa-solid fa-table-list fa-lg"></i> Update Profile</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i
+                        class="fa-solid fa-table-list fa-lg"></i> Log out</a>
+                  </li>
+                  
+                  <% } else if(!displayName) { %>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login"><i
+                          class="fa-solid fa-table-list fa-lg"></i> Log in</a>
+                    </li>
+                  <% } %>
+        
             </ul>
         </div>
     </div>
