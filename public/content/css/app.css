@@ -680,4 +680,35 @@ h1 {
 }
 
 
-/*------------------------------------------------*/
+/*--login and register pages-------------------------------------*/
+
+
+/*register page*/
+
+#contentArea input {
+    margin-bottom: 4px;
+}
+
+.questionAboutAccount {
+    margin-top: 5px;
+    margin: 0 auto;
+}
+
+.Btn {
+    margin-top: 5px;
+    background-color: grey;
+    color: black;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.Btn:hover {
+    box-shadow: 3px 2px 2px black;
+}
+
+#loginButton:hover {
+    background-color: #16697A;
+}
+
+
+/*--------------------------------------------*/
