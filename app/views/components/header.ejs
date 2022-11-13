@@ -7,35 +7,29 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- navigation to different tabs -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a id="header-home-effect" class="nav-link <%= (page == 'home') ? 'active' : ''; %>" aria-current="page" href="/"><i
-                class="fa-solid fa-house-signal fa-lg"></i> Home</a>
+                class="fa-solid fa-house-signal fa-lg"></i> Home</a> -->
                 </li>
-
                 <% if(displayName) { %>
                   <li class="nav-item">
-                    <a class="nav-link" href="/surveys/list"><i
-                        class="fa-solid fa-table-list fa-lg"></i> My Surveys</a>
+                    <a class="nav-link" href="/about"><i
+                        class="fa-solid fa-table-list fa-lg"></i> About Survey13</a>
                   </li>
                   
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="/update/<%=id%>"><i
-                        class="fa-solid fa-table-list fa-lg"></i> Update Profile</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%=username%>
+                    </a>
+                    <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/surveys/list">My Surveys</a>
+                      <a class="dropdown-item" href="/update/<%=id%>">Update Profile</a>
+                      <a class="dropdown-item" href="/logout">Log out</a>
+                    </div>
                   </li>
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="/logout"><i
-                        class="fa-solid fa-table-list fa-lg"></i> Log out</a>
-                  </li>
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href=""><i
-                        class="fa-solid fa-table-list fa-lg"></i> <%=username%></a>
-                  </li>
-                  
+
                   <% } else if(!displayName) { %>
                     
                     <li class="nav-item">
@@ -43,7 +37,6 @@
                           class="fa-solid fa-table-list fa-lg"></i> Log in</a>
                     </li>
                   <% } %>
-        
             </ul>
         </div>
     </div>

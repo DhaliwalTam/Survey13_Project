@@ -19,9 +19,9 @@ header {
 }
 
 
-/* survey13 logo */
+/* survey13 logo and A-Team photo */
 
-#header-logo {
+#header-logo, #mainLogo {
     width: 25%;
     margin-top: -15px;
     margin-left: -15px;
@@ -30,6 +30,10 @@ header {
 #header-left-link,
 .nav-link {
     font-size: 25px;
+}
+
+#ateam{
+    margin-left: 20%;
 }
 
 
@@ -712,3 +716,53 @@ h1 {
 
 
 /*--------------------------------------------*/
+/* Header DropDown Animation code taken from https://startbootstrap.com/snippets/animated-navbar-dropdown */
+
+
+@media (min-width: 768px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+  
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+  
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+  }
+  
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }

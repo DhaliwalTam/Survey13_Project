@@ -253,3 +253,8 @@ export function ProcessCodePage(req,res,next){
     }
 
 }
+
+export function DisplayAboutPage(req,res,next){
+    res.render('index', {title: 'About Survey13', page: 'about', 
+    displayName: UserDisplayName(req), id:GetUserID(req), username: GetUsername(req)});
+}
