@@ -5,7 +5,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif, Verdana, Geneva, Tahoma, sans-serif;
-    background-image: linear-gradient(to right, orange 0%, skyblue 100%);
+    background-image: linear-gradient(to right, #95cd41 0%, skyblue 100%);
 }
 
 
@@ -51,7 +51,7 @@ tr:nth-child(even) {
 }
 
 #p2 {
-    background-color: lightgrey;
+    background-color: gainsboro;
     width: 280px;
     padding: 10px;
     margin: 10px;
@@ -70,7 +70,7 @@ img {
 
 .topnav a {
     float: left;
-    color: #f2f2f2;
+    color: grey;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -78,12 +78,12 @@ img {
 }
 
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: grey;
     color: black;
 }
 
 .topnav a.active {
-    background-color: 4d4dff;
+    background-color: #06038D;
     color: white;
 }
 
@@ -156,35 +156,171 @@ h2 {
 }*/
 
 
-/*div in the landing page*/
+/*slideshow part of the home page*/
 
-#home-survey-box {
-    margin: 0 auto;
+#boxIt {
+    display: block;
+    float: left;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 49%;
+    background-color: ghostwhite;
+    padding: 10px;
+    border: solid 3px black;
+}
+
+.mySlides {
+    display: none
+}
+
+#boxIt img {
+    vertical-align: middle;
+    border-radius: 15px;
+}
+
+
+/* Slideshow container */
+
+.slideshow-container {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+}
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    transition: 0.8s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    text-decoration: none;
+    color: #06038D;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* The dots/bullets/indicators */
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #06038D;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -5px;
+    transition: background-color 0.8s ease-in;
+}
+
+#boxIt .active,
+.dot:hover {
+    background-color: darkgoldenrod;
+}
+
+
+/* Fading animation */
+
+#boxIt .fade {
+    animation-name: fade;
+    animation-duration: 5.0s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .2
+    }
+    to {
+        opacity: 1
+    }
+}
+
+#home-survey-contained {
+    display: block;
+    float: right;
+    position: relative;
     padding: 30px;
     border: solid black 3px;
     border-radius: 15px;
-    width: 600px;
-    background-image: url("/content/images/lightweb.png");
+    width: 100%;
     margin-top: 30px;
-    margin-bottom: 70px;
-    height: 510px;
-    clear: both;
+    margin-bottom: 50px;
     box-shadow: 10px 5px 5px grey;
+    background-image: url("/content/images/lightweb.png");
+}
+
+
+/*button part of the landing page*/
+
+#home-survey-box {
+    display: block;
+    float: right;
+    position: relative;
+    padding: 30px;
+    width: 50%;
+    height: 530px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+
+/*#home-survey-box {
+    background-image: url("/content/images/lightweb.png");
+    box-shadow: 10px 5px 5px grey;
+    border-radius: 15px;
+    border: solid black 3px;
 }
 
 #home-survey-box:hover {
     box-shadow: 10px 5px 5px black;
-}
+}*/
 
 #home-survey-box h1 {
-    color: darkblue;
-    font-size: 90px;
+    color: #06038D;
+    font-size: 75px;
 }
 
 #home-survey-box h2 {
-    color: #BB0029;
-    background-color: darkgrey;
+    color: #B25353;
+    background-color: gainsboro;
     font-weight: bolder;
+    border-radius: 5px;
+}
+
+#getStarted {
+    text-align: center;
 }
 
 #getStarted{
@@ -195,7 +331,7 @@ h2 {
 /*The link to the survey pages - view and list*/
 
 .home-survey-button {
-    background-color: lightblue;
+    background-color: #0ccbf3;
     float: left;
     border: solid black 2px;
     border-radius: 10px;
@@ -211,29 +347,33 @@ h2 {
 
 .home-survey-button a {
     text-decoration: none;
-    color: darkblue;
+    color: black;
 }
 
 .home-survey-button:hover {
-    background-image: linear-gradient(to right, #FF7777 0%, darkgoldenrod 100%);
+    background-image: linear-gradient(to right, #B25353 0%, goldenrod 100%);
     box-shadow: 6px 3px 3px black;
 }
 
 .home-survey-button a:hover {
-    color: black;
+    color: gainsboro;
 }
 
 
 /*-Survey Create--------------------------------------*/
 
 
+<<<<<<< HEAD
 /*9NOV22 - Need to fix div and table in responsive design-table is sticking out*/
+=======
+/*div container for the form*/
+>>>>>>> 331b0789f32ea75933d9f50b30171a0b90538f07
 
 #survey-create-box {
     margin: 0 auto;
-    width: 550px;
+    width: 50%;
     margin-top: 15px;
-    margin-bottom: 75px;
+    margin-bottom: 40px;
     background: ghostwhite;
     border-radius: 10px;
     padding: 50px;
@@ -253,15 +393,16 @@ h2 {
 }
 
 #addOptionButton,
-#addNewOptionButton {
+.addNewOptionButton {
     margin-top: 4px;
 }
 
 #saveQuestionandOptions,
 #addOptionButton,
-#addNewOptionButton {
+.addNewOptionButton {
     border-radius: 5px;
     padding: 3px;
+    background-color: gainsboro;
 }
 
 #saveQuestionandOptions:hover,
@@ -273,6 +414,7 @@ h2 {
 
 #submitButton,
 #cancelBtn {
+    background-color: gainsboro;
     border: solid black 2px;
 }
 
@@ -291,11 +433,14 @@ h2 {
 
 /*-Survey Edit-----------------------------------------------*/
 
+
+/*div container for the form*/
+
 #survey-edit-box {
     margin: 0 auto;
-    width: 600px;
+    width: 620px;
     margin-top: 15px;
-    margin-bottom: 75px;
+    margin-bottom: 40px;
     background: ghostwhite;
     border-radius: 10px;
     padding: 10px;
@@ -311,13 +456,17 @@ h2 {
 }
 
 #thisQuestion {
-    color: red;
+    color: #BB0029;
+}
+
+#survey-edit-box label {
+    margin-left: -50px;
 }
 
 #survey-edit-box input {
-    width: 400px;
+    width: 500px;
     margin-top: 5px;
-    margin-right: 50px;
+    margin-left: -50px;
     border: solid black 1px;
     border-radius: 5px;
 }
@@ -332,13 +481,18 @@ h2 {
     width: 600px;
 }
 
-#addNewOptionButton {
+.addNewOptionButton {
     margin-top: 4px;
 }
 
-#addNewOptionButton:hover {
+.addNewOptionButton:hover {
     box-shadow: 10px 5px 5px grey;
     background-color: #95CD41;
+    color: white;
+}
+
+#submitButton {
+    margin-left: -30px;
 }
 
 #submitButton,
@@ -359,10 +513,20 @@ h2 {
 
 /*-Survey List-----------------------------------------------*/
 
+<<<<<<< HEAD
+=======
+
+/*div container for the form*/
+
+>>>>>>> 331b0789f32ea75933d9f50b30171a0b90538f07
 #survey-list-box {
     width: 100%;
     display: block;
     margin-top: 15px;
+<<<<<<< HEAD
+=======
+    margin-bottom: 40px;
+>>>>>>> 331b0789f32ea75933d9f50b30171a0b90538f07
     background-color: ghostwhite;
     font-size: 13px;
     border-radius: 15px;
@@ -373,7 +537,10 @@ h2 {
 
 table {
     table-layout: fixed;
+<<<<<<< HEAD
     width: 100%;
+=======
+>>>>>>> 331b0789f32ea75933d9f50b30171a0b90538f07
 }
 
 #addASurveyBtnListPage {
@@ -423,34 +590,143 @@ table {
 
 
 /*-Survey Stats-----------------------------------------------*/
+
+#survey-stat-box {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 3px black;
+}
+
 #statsTable {
+    border: solid 2px grey;
     background-color: #eaedff;
     font-family: sans-serif;
     text-align: center;
 }
 
-h1{
-text-align: center;
-font-weight: bold;
-font-family: sans-serif;
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
+#emailData {
+    margin-left: 15px;
+}
+
+#emailData,
+#backToSurveyListBtn {
+    background-color: ghostwhite;
+    border: solid 1px black;
+}
+
+#emailData:hover,
+#backToSurveyListBtn:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: white;
+    border: solid 1px black;
+}
+
+#emailData:hover {
+    background-color: #0CCBF3;
+}
+
+#backToSurveyListBtn:hover {
+    background-color: goldenrod;
+}
+
+
 /*-Survey View List-----------------------------------------------*/
-#mainSurvey{
+
+#mainSurvey {
     font-family: sans-serif;
     max-width: 60vw;
     margin: 50px auto;
     background-color: gainsboro;
     padding-top: 5px;
-    border: 2px solid rgb(185, 185, 185);
+    padding: 30px;
+    border: 2px solid rgb(220, 220, 220);
+    border: solid 2px black;
+    border-radius: 10px;
 }
-input[type="radio"]{
+
+#mainSurvey input[type="radio"] {
+    margin-top: 5px;
+    margin-left: 5px;
     width: 25px;
     height: 20px;
 }
 
-/*-Survey View-----------------------------------------------*/
+#submitSurvey {
+    margin-left: 15px;
+}
+
+#submitSurvey:hover {
+    background-color: #16697A;
+    color: white;
+}
+
+#cancelButton:hover {
+    background-color: #BB0029;
+}
+
+#resetButton:hover {
+    background-color: goldenrod;
+}
+
+#submitSurvey,
+#cancelButton,
+#resetButton {
+    border: solid black 1px;
+    margin-bottom: 15px;
+    background-color: gray;
+    color: ghostwhite;
+}
+
+#submitSurvey:hover,
+#cancelButton:hover,
+#resetButton:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: white;
+}
 
 #correctEmail {
     font-size: small;
 }
+
+
+/*--login and register pages-------------------------------------*/
+
+
+/*register page*/
+
+#contentArea input {
+    margin-bottom: 4px;
+}
+
+.questionAboutAccount {
+    margin-top: 5px;
+    margin: 0 auto;
+}
+
+.Btn {
+    margin-top: 5px;
+    background-color: grey;
+    color: black;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.Btn:hover {
+    box-shadow: 3px 2px 2px black;
+}
+
+#loginButton:hover {
+    background-color: #16697A;
+}
+
+
+/*--------------------------------------------*/

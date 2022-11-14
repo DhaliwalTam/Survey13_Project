@@ -28,7 +28,7 @@ import User from './models/user.js';
 //Import Routes
 import indexRouter from './routes/index.route.server.js'
 import surveysRouter from './routes/surveys.route.server.js'
-//import authRouter from './routes/auth.route.server.js';
+import authRouter from './routes/auth.route.server.js';
 
 //configuration module + set up mongoose-complete db configuration
 import { Secret, MongoURI } from '../config/config.js'
@@ -88,7 +88,7 @@ passport.deserializeUser(User.deserializeUser());
 //use routes
 app.use('/', indexRouter);
 app.use('/', surveysRouter);
-//app.use('/', authRouter);
+app.use('/', authRouter);
 
 //app.listen(3000);
 export default app;
