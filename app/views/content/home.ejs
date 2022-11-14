@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="home-survey-box">
                 <h1>Welcome to Survey13!</h1>
                 <h2 id="getStarted">Get started by clicking any of the links below!</h2>
@@ -42,22 +42,23 @@
                 </h6>
             </div>
         </div>
-            <% } else{ %>
-                <div class="container" id="homeBackground">
-                    <div id="home-survey-contained">
-                        <div id="home-survey-box">
-                            <h1>Hello <%=displayName%>! Welcome to Survey13!</h1>
-                            <h2 id="getStarted">Get started by clicking any of the links below!</h2>
-                            <h6>
-                                <div class="home-survey-button">
-                                    <a href="/surveys/create">Create a survey!</a>
-                                </div>
-                                <div class="home-survey-button">
-                                    <a href="/update/<%=id%>">Update Profile</a>
-                                </div>
-                            </h6>
-                        </div>
+        <% } else{ %>
+            <div class="container" id="homeBackground">
+                <div id="home-survey-contained">
+                    <div id="home-survey-box">
+                        <h1>Hello
+                            <%=displayName%>! Welcome to Survey13!</h1>
+                        <h2 id="getStarted">Get started by clicking any of the links below!</h2>
+                        <h6>
+                            <div class="home-survey-button">
+                                <a href="/surveys/create">Create a survey!</a>
+                            </div>
+                            <div class="home-survey-button">
+                                <a href="/update/<%=id%>">Update Profile</a>
+                            </div>
+                        </h6>
                     </div>
                 </div>
-                    <% } %>
+            </div>
+            <% } %>
     </div>
