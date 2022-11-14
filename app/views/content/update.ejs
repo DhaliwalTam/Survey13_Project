@@ -1,15 +1,18 @@
 <div class="mainDiv">
-    <h1>Now editing details for  <%= user.displayName %> </h1>
+
     <br>
     <div id="formUpdate">
+        <h1>Now editing details for
+            <%= user.displayName %>
+        </h1>
         <form id="updateForm" method="POST">
-            <input type="hidden" name="id" value="<%= user._id %>" >
+            <input type="hidden" name="id" value="<%= user._id %>">
             <label>User Name:</label>
             <input type="text" class="form-control" id="username" name="userName" required value="<%= user.username %>" placeholder="Username">
             <input type="hidden" name="displayName" readonly value="<%= user.displayName %>" placeholder="Display Name">
             <br><br>
             <label>Email:</label>
-            <input type="email" class="form-control"  id="emailAddress" name="email" required value="<%= user.address %>" placeholder="Email">
+            <input type="email" class="form-control" id="emailAddress" name="email" required value="<%= user.address %>" placeholder="Email">
             <br><br>
             <label>Date of Birth:</label>
             <input type="date" class="form-control" id="dateOfBirth" value="<%= user.DOB %>" name="dob">

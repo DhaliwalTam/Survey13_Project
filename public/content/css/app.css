@@ -39,10 +39,6 @@ header {
     margin-top: -20px;
 }
 
-#header-home-effect:hover {
-    color: goldenrod;
-}
-
 
 /*--------------------------------*/
 
@@ -162,7 +158,7 @@ h2 {
     display: block;
     float: left;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 50px;
     width: 49%;
     background-color: ghostwhite;
@@ -275,7 +271,7 @@ h2 {
     border: solid black 3px;
     border-radius: 15px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 50px;
     box-shadow: 10px 5px 5px grey;
     background-image: url("/content/images/lightweb.png");
@@ -291,7 +287,7 @@ h2 {
     padding: 30px;
     width: 50%;
     height: 530px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 
@@ -509,12 +505,14 @@ h2 {
 /*div container for the form*/
 
 #survey-list-box {
-    width: 100%;
+    width: 110%;
+    margin-left: -40px;
+    padding: 10px;
     display: block;
     margin-top: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     background-color: ghostwhite;
-    font-size: 13px;
+    font-size: 12px;
     border-radius: 15px;
     box-shadow: 4px 2px 2px grey;
     overflow: visible;
@@ -646,7 +644,8 @@ h1 {
     margin-left: 15px;
 }
 
-#submitSurvey:hover {
+#submitSurvey:hover,
+#sendCode:hover {
     background-color: #16697A;
     color: white;
 }
@@ -711,4 +710,89 @@ h1 {
 }
 
 
-/*--------------------------------------------*/
+/*-Send code page-----------------------------------------*/
+
+#sendCodeForm {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 60%;
+    border: solid 3px black;
+    padding: 20px;
+    border-radius: 10px;
+    background: gainsboro;
+}
+
+#email1 {
+    border-style: none;
+    border-radius: 5px;
+}
+
+#sendCodeForm input,
+label,
+button {
+    font-size: 25px;
+}
+
+
+/*-Update profile page-----------------------------------------*/
+
+#formUpdate {
+    width: 80%;
+    background: ghostwhite;
+    margin: 0 auto;
+    padding: 30px;
+    border: solid 3px black;
+    border-radius: 10px;
+}
+
+#formUpdate h1 {
+    color: darkblue;
+}
+
+#updateForm {
+    background: gainsboro;
+    margin-top: 23px;
+    margin: 0 auto;
+    width: 60%;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#updateForm input {
+    width: 90%;
+}
+
+#formUpdate label,
+input,
+button,
+a {
+    margin-left: 30px;
+}
+
+
+/*-password old and new page-----------------------------------------*/
+
+#updatePassword {
+    background-color: gainsboro;
+    width: 60%;
+    margin: 0 auto;
+    border: solid 3px black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+#updatePassword input,
+button {
+    font-size: 25px;
+}
+
+#validateCodeBox {
+    margin-top: 60px;
+    border: solid 3px black;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/*------------------------------------------*/
