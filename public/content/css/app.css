@@ -673,7 +673,6 @@ h1 {
 }
 
 #submitSurvey:hover,
-#cancelButton:hover,
 #resetButton:hover {
     box-shadow: 4px 2px 2px grey;
     color: white;
@@ -710,8 +709,19 @@ h1 {
     box-shadow: 3px 2px 2px black;
 }
 
+#loginButton{
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    display: inline-block;
+}
+
+
 #loginButton:hover {
     background-color: #16697A;
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
 }
 
 
@@ -762,7 +772,54 @@ h1 {
     }
   }
   
-  .slideIn {
+.slideIn {
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
-  }
+}
+
+
+.custom {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 15px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+.custom:hover, .custom:focus {
+    color: #fff;
+    outline: 0;
+}
+  
+#cancelLogin{
+    border-color: red;
+    color: #fff;
+    box-shadow: 0 0 40px 40px red inset, 0 0 0 0 red;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    display: inline-block;
+}
+  
+#cancelLogin:hover{
+    background-color: lightcoral;
+    box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
+}
