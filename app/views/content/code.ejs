@@ -4,6 +4,14 @@
             <%= messages %>
         </div>
         <% } %>
+
+        <% if(userNotFound.length> 0) { %>
+            <div id="messageArea" class="alert alert-danger">
+                <%= userNotFound %>
+            </div>
+            <% } %>
+
+        
     <form id="" method="POST" action="">
         <label>Enter your email:</label>
         <input type="email" name="email" id="email1" placeholder="Enter your email">

@@ -13,6 +13,12 @@ export function GetUserID(req){
     }
 }
 
+export function GetUsername(req){
+    if(req.user){
+        return req.user.username
+    }
+}
+
 export function AuthGuard(req, res, next){
     if(!req.isAuthenticated()){
         return res.redirect('/login')
