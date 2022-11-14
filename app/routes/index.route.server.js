@@ -4,23 +4,23 @@ import { DisplayHomePage, DisplayUpdatePage,
     ProcessUpdatePage, ProcessPasswordPage, 
     DisplayPasswordPage,DisplayForgotPassPage, ProcessForgotPassPage, 
     DisplayCodePage, SendCodeEmail, 
-    ProcessCodePage, DisplayEnterCodePage} from "../controllers/index.controller.server.js";
+    ProcessCodePage, DisplayEnterCodePage, DisplayAboutPage} from "../controllers/index.controller.server.js";
 
 const router = Router();
 
 router.get('/', DisplayHomePage);
 router.get('/home', DisplayHomePage);
-router.get('/update/:id',DisplayUpdatePage);
-
+router.get('/update/:id',AuthGuard,DisplayUpdatePage);
 router.post('/update/:id',ProcessUpdatePage);
 router.get('/password/:id',AuthGuard,DisplayPasswordPage);
 router.post('/password/:id',AuthGuard,ProcessPasswordPage);
 router.get('/forgotPass',DisplayForgotPassPage);
 router.post('/forgotPass',ProcessForgotPassPage);
-router.get('/generateCode', DisplayCodePage);
+router.get('/generateCode',DisplayCodePage);
 router.get('/enterCode',DisplayEnterCodePage);
 router.post('/generateCode', SendCodeEmail);
 router.post('/enterCode', ProcessCodePage);
+router.get('/about',DisplayAboutPage);
 
 
 export default router;

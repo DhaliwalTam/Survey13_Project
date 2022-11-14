@@ -19,9 +19,10 @@ header {
 }
 
 
-/* survey13 logo */
+/* survey13 logo and A-Team photo */
 
-#header-logo {
+#header-logo,
+#mainLogo {
     width: 25%;
     margin-top: -15px;
     margin-left: -15px;
@@ -30,6 +31,10 @@ header {
 #header-left-link,
 .nav-link {
     font-size: 25px;
+}
+
+#ateam {
+    margin-left: 20%;
 }
 
 
@@ -668,7 +673,6 @@ h1 {
 }
 
 #submitSurvey:hover,
-#cancelButton:hover,
 #resetButton:hover {
     box-shadow: 4px 2px 2px grey;
     color: white;
@@ -705,94 +709,114 @@ h1 {
     box-shadow: 3px 2px 2px black;
 }
 
+#loginButton {
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    display: inline-block;
+}
+
 #loginButton:hover {
     background-color: #16697A;
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
 }
 
 
-/*-Send code page-----------------------------------------*/
+/*--------------------------------------------*/
 
-#sendCodeForm {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 60%;
-    border: solid 3px black;
-    padding: 20px;
-    border-radius: 10px;
-    background: gainsboro;
+
+/* Header DropDown Animation code taken from https://startbootstrap.com/snippets/animated-navbar-dropdown */
+
+@media (min-width: 768px) {
+    .animate {
+        animation-duration: 0.3s;
+        -webkit-animation-duration: 0.3s;
+        animation-fill-mode: both;
+        -webkit-animation-fill-mode: both;
+    }
 }
 
-#email1 {
-    border-style: none;
-    border-radius: 5px;
+@keyframes slideIn {
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+    0% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
 }
 
-#sendCodeForm input,
-label,
-button {
-    font-size: 25px;
+@-webkit-keyframes slideIn {
+    0% {
+        -webkit-transform: transform;
+        -webkit-opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        -webkit-opacity: 1;
+    }
+    0% {
+        -webkit-transform: translateY(1rem);
+        -webkit-opacity: 0;
+    }
 }
 
-
-/*-Update profile page-----------------------------------------*/
-
-#formUpdate {
-    width: 80%;
-    background: ghostwhite;
-    margin: 0 auto;
-    padding: 30px;
-    border: solid 3px black;
-    border-radius: 10px;
+.slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
 }
 
-#formUpdate h1 {
-    color: darkblue;
+.custom {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 15px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#updateForm {
-    background: gainsboro;
-    margin-top: 23px;
-    margin: 0 auto;
-    width: 60%;
-    padding: 30px;
-    border-radius: 10px;
+.custom:hover,
+.custom:focus {
+    color: #fff;
+    outline: 0;
 }
 
-#updateForm input {
-    width: 90%;
+#cancelLogin {
+    border-color: red;
+    color: #fff;
+    box-shadow: 0 0 40px 40px red inset, 0 0 0 0 red;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    display: inline-block;
 }
 
-#formUpdate label,
-input,
-button,
-a {
-    margin-left: 30px;
+#cancelLogin:hover {
+    background-color: lightcoral;
+    box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
 }
-
-
-/*-password old and new page-----------------------------------------*/
-
-#updatePassword {
-    background-color: gainsboro;
-    width: 60%;
-    margin: 0 auto;
-    border: solid 3px black;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 50px;
-}
-
-#updatePassword input,
-button {
-    font-size: 25px;
-}
-
-#validateCodeBox {
-    margin-top: 60px;
-    border: solid 3px black;
-    width: 80%;
-    margin: 0 auto;
-}
-
-
-/*------------------------------------------*/

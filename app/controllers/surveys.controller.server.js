@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import userModel from '../models/user.js';
 import { UserDisplayName } from '../utils/index.js';
 import { GetUserID } from "../utils/index.js";
+import { GetUsername } from "../utils/index.js";
 
 var today = new Date();
 
@@ -33,7 +34,8 @@ export function DisplaySurveyList(req, res, next) {
                         page: 'surveys/list',
                         surveys: surveyCollection,
                         displayName: UserDisplayName(req),
-                        id:GetUserID(req)
+                        id:GetUserID(req), 
+                        username: GetUsername(req)
                     });
                 })
             }
@@ -52,7 +54,8 @@ export function DisplaySurveyList(req, res, next) {
                 page: 'surveys/list',
                 surveys: surveyCollection,
                 displayName: UserDisplayName(req),
-                id:GetUserID(req)
+                id:GetUserID(req),
+                username: GetUsername(req)
             });
         })
     }
@@ -64,7 +67,8 @@ export function DisplayCreateSurveyPage(req, res, next) {
         title: 'Create Survey',
         page: 'surveys/create',
         displayName: UserDisplayName(req),
-        id:GetUserID(req)
+        id:GetUserID(req),
+        username: GetUsername(req)
     });
 }
 
@@ -120,7 +124,8 @@ export function DisplaySurveyEditPage(req, res, next) {
             page: 'surveys/edit',
             survey: survey,
             displayName: UserDisplayName(req),
-            id:GetUserID(req)
+            id:GetUserID(req),
+            username: GetUsername(req)
         });
     });
 }
@@ -203,7 +208,8 @@ export function DisplaySurveyPage(req, res, next) {
             page: 'surveys/view',
             survey: survey,
             displayName: UserDisplayName(req),
-            id:GetUserID(req)
+            id:GetUserID(req),
+            username: GetUsername(req)
         });
     });
 }
@@ -364,7 +370,8 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     responseArray: responseArray,
                     element: element,
                     displayName: UserDisplayName(req),
-                    id:GetUserID(req)
+                    id:GetUserID(req), 
+                    username: GetUsername(req)
                 });
             })
         }

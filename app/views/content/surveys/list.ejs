@@ -4,12 +4,12 @@
         <h1>
             <% if(displayName && surveys.length==0) { %>
                 Welcome <%= displayName %>! <br>Error 404: Surveys not found. Maybe it's time to create one?
-                    <br><br>
+                    <br>
                     <a href="/surveys/create" class="btn btn-primary" role="button">
                         <i class="fas fa-plus-circle"></i> Create a Survey!</a>
                     <%} else if (displayName && surveys.length> 0) { %>
                         Welcome <%= displayName %>! Here is a list of your surveys!
-                            <br><br>
+                            <br>
                             <a href="/surveys/create" id="addASurveyBtnListPage" class="btn btn-primary" role="button">
                                 <i class="fas fa-plus-circle"></i> Add a Survey!</a>
                             <% } else { %>
