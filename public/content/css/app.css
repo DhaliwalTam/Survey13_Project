@@ -21,8 +21,7 @@ header {
 
 /* survey13 logo and A-Team photo */
 
-#header-logo,
-#mainLogo {
+#header-logo, #mainLogo {
     width: 25%;
     margin-top: -15px;
     margin-left: -15px;
@@ -33,7 +32,7 @@ header {
     font-size: 25px;
 }
 
-#ateam {
+#ateam{
     margin-left: 20%;
 }
 
@@ -42,6 +41,10 @@ header {
 
 .nav-link {
     margin-top: -20px;
+}
+
+#header-home-effect:hover {
+    color: goldenrod;
 }
 
 
@@ -163,7 +166,7 @@ h2 {
     display: block;
     float: left;
     border-radius: 10px;
-    margin-top: 15px;
+    margin-top: 30px;
     margin-bottom: 50px;
     width: 49%;
     background-color: ghostwhite;
@@ -276,7 +279,7 @@ h2 {
     border: solid black 3px;
     border-radius: 15px;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 30px;
     margin-bottom: 50px;
     box-shadow: 10px 5px 5px grey;
     background-image: url("/content/images/lightweb.png");
@@ -292,7 +295,7 @@ h2 {
     padding: 30px;
     width: 50%;
     height: 530px;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 50px;
 }
 
@@ -510,14 +513,12 @@ h2 {
 /*div container for the form*/
 
 #survey-list-box {
-    width: 110%;
-    margin-left: -40px;
-    padding: 10px;
+    width: 100%;
     display: block;
     margin-top: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     background-color: ghostwhite;
-    font-size: 12px;
+    font-size: 13px;
     border-radius: 15px;
     box-shadow: 4px 2px 2px grey;
     overflow: visible;
@@ -649,8 +650,7 @@ h1 {
     margin-left: 15px;
 }
 
-#submitSurvey:hover,
-#sendCode:hover {
+#submitSurvey:hover {
     background-color: #16697A;
     color: white;
 }
@@ -709,7 +709,7 @@ h1 {
     box-shadow: 3px 2px 2px black;
 }
 
-#loginButton {
+#loginButton{
     border-color: #3498db;
     color: #fff;
     box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
@@ -718,6 +718,7 @@ h1 {
     display: inline-block;
 }
 
+
 #loginButton:hover {
     background-color: #16697A;
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
@@ -725,59 +726,63 @@ h1 {
 
 
 /*--------------------------------------------*/
-
-
 /* Header DropDown Animation code taken from https://startbootstrap.com/snippets/animated-navbar-dropdown */
+
 
 @media (min-width: 768px) {
     .animate {
-        animation-duration: 0.3s;
-        -webkit-animation-duration: 0.3s;
-        animation-fill-mode: both;
-        -webkit-animation-fill-mode: both;
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
     }
-}
-
-@keyframes slideIn {
+  }
+  
+  @keyframes slideIn {
     0% {
-        transform: translateY(1rem);
-        opacity: 0;
+      transform: translateY(1rem);
+      opacity: 0;
     }
+  
     100% {
-        transform: translateY(0rem);
-        opacity: 1;
+      transform: translateY(0rem);
+      opacity: 1;
     }
+  
     0% {
-        transform: translateY(1rem);
-        opacity: 0;
+      transform: translateY(1rem);
+      opacity: 0;
     }
-}
-
-@-webkit-keyframes slideIn {
+  }
+  
+  @-webkit-keyframes slideIn {
     0% {
-        -webkit-transform: transform;
-        -webkit-opacity: 0;
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
     }
+  
     100% {
-        -webkit-transform: translateY(0);
-        -webkit-opacity: 1;
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
     }
+  
     0% {
-        -webkit-transform: translateY(1rem);
-        -webkit-opacity: 0;
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
     }
-}
-
+  }
+  
 .slideIn {
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
 }
 
+
 .custom {
     box-sizing: border-box;
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+       -moz-appearance: none;
+            appearance: none;
     background-color: transparent;
     border: 2px solid #e74c3c;
     border-radius: 0.6em;
@@ -788,8 +793,8 @@ h1 {
     display: -ms-flexbox;
     display: flex;
     -webkit-align-self: center;
-    -ms-flex-item-align: center;
-    align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
@@ -800,14 +805,12 @@ h1 {
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
 }
-
-.custom:hover,
-.custom:focus {
+.custom:hover, .custom:focus {
     color: #fff;
     outline: 0;
 }
-
-#cancelLogin {
+  
+#cancelLogin{
     border-color: red;
     color: #fff;
     box-shadow: 0 0 40px 40px red inset, 0 0 0 0 red;
@@ -815,8 +818,8 @@ h1 {
     transition: all 150ms ease-in-out;
     display: inline-block;
 }
-
-#cancelLogin:hover {
+  
+#cancelLogin:hover{
     background-color: lightcoral;
     box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
 }
