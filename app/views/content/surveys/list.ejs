@@ -23,7 +23,7 @@
                         <tr>
                             <th scope="col" class="text-center col-1" onclick="sortTable(0)">Survey #</th>
                             <% if(!displayName) { %>
-                                <th scope="col" class="text-center col-1">Created By</th>
+                                <th scope="col" class="text-center col-1">Author</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(2)">Survey Format</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
                                 <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
@@ -35,7 +35,7 @@
                                 <th></th>
                                 <% } else { %>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(2)">Survey Format</th>
-                                    <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>\
+                                    <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
                                     <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on (yyyy-mm-dd)</th>
@@ -105,12 +105,12 @@
     
                             <% } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
                             <td class="text-center col-1">
-                            <a href="javascript: void(0)"></i><button class="btn btn-success btn-sm surveyStart"><i class="fas fa-pencil-alt"></i> Start Survey!</button></a>
-                            
+                                <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
+                                    <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                             </td>
                             <% } else { %>
                             <td class="text-center col-1">
-                                <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm">
+                                <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm surveyStart">
                                     <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                             </td>
                             <%  }%>

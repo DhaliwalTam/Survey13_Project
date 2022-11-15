@@ -570,7 +570,7 @@ table {
     font-size: 13px;
 }
 
-#startASurveyBtn {
+#startASurveyBtn, .surveyStart {
     font-size: 13px;
 }
 
@@ -721,7 +721,7 @@ h1 {
 
 #loginButton:hover {
     background-color: #16697A;
-    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+    box-shadow: 0 0 1px 0 #3498db inset, 0 0 1px 1px #3498db;
 }
 
 
@@ -821,5 +821,5 @@ h1 {
   
 #cancelLogin:hover{
     background-color: lightcoral;
-    box-shadow: 0 0 10px 0 red inset, 0 0 10px 4px red;
+    box-shadow: 0 0 1px 0 red inset, 0 0 1px 1px red;
 }
