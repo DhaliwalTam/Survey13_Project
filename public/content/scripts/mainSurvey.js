@@ -16,6 +16,8 @@ document.getElementById("mainSurvey").addEventListener("submit",(e)=>{
 });
 
 document.getElementById("cancelButton").addEventListener("click",()=>{
+    
+    
     var confirmLeave = confirm("Are you sure you want to leave this survey?");
     if(confirmLeave){
         window.location.href = "../list";
@@ -31,8 +33,12 @@ document.getElementById("submitSurvey").addEventListener("click",()=>{
         mainSurvey.submit();
     }
 
+    else if(!mainSurvey.checkValidity()){
+        alert("Oops! We were unable to submit your survey! Maybe check to make sure you have answered all the questions?");
+    }
+
     else{
-        alert("Oops! An error has occurred! Please try again!");
+        alert("Oops! An error has occurred. Please try again!");
     }
 });
 
