@@ -1,4 +1,5 @@
 <!-- Header -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a id="header-left-link" class="navbar-brand" href="/"><img id="header-logo" src="/content/images/survey13-logo.jpg">Survey13</a>
@@ -7,37 +8,38 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- navigation to different tabs -->
+        <!-- navigation to different tabs -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <% if(displayName) { %>
-                  
-                  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%=username%>
-                    </a>
-                    <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="/surveys/list">My Surveys</a>
-                      <a class="dropdown-item" href="/update/<%=id%>">Update Profile</a>
-                      <a class="dropdown-item" href="/logout">Log out</a>
-                    </div>
-                  </li>
 
-                  <% } else if(!displayName) { %>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/surveys/list"><i
-                          class="fa-solid fa-table-list fa-lg"></i> View available surveys</a> 
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%=username%>
+                        </a>
+                        <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/surveys/list">My Surveys</a>
+                            <a class="dropdown-item" href="/about">About Survey13</a>
+                            <a class="dropdown-item" href="/update/<%=id%>">Update Profile</a>
+                            <a class="dropdown-item" href="/logout">Log out</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/about"><i
+
+                    <% } else if(!displayName) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/surveys/list"><i
+                          class="fa-solid fa-table-list fa-lg"></i> View available surveys</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about"><i
                           class="fa-solid fa-table-list fa-lg"></i> About Survey13</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/login"><i
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login"><i
                           class="fa-solid fa-table-list fa-lg"></i> Log in</a>
-                    </li>
-                  <% } %>
+                        </li>
+                        <% } %>
             </ul>
         </div>
     </div>

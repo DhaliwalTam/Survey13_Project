@@ -641,8 +641,23 @@
     /*--login and register pages-------------------------------------*/
     /*register page*/
     
+    #contentArea {
+        margin-top: 30px;
+        width: 100%;
+        background-image: linear-gradient(to right, gainsboro 0%, skyblue 100%);
+        padding: 30px;
+        border: solid 2px black;
+        border-radius: 10px;
+    }
+    
     #contentArea input {
         margin-bottom: 4px;
+        border-radius: 10px;
+    }
+    
+    #contentArea i,
+    a {
+        font-size: 25px;
     }
     
     .questionAboutAccount {
@@ -650,26 +665,26 @@
         margin: 0 auto;
     }
     
-    .Btn {
-        margin-top: 5px;
-        background-color: grey;
-        color: black;
-        padding: 5px;
-        border-radius: 8px;
+    #username,
+    #password {
+        margin-left: 8px;
     }
     
-    .Btn:hover {
-        box-shadow: 3px 2px 2px black;
+    #loginButton,
+    #cancelLogin {
+        border-radius: 8px;
     }
     
     #loginButton:hover {
         background-color: #16697A;
         color: white;
+        box-shadow: 4px 2px 2px black;
     }
     
     #cancelLogin:hover {
         background-color: #BB0029;
         color: white;
+        box-shadow: 4px 2px 2px black;
     }
     /*-Update page-----------------------------------------*/
     
@@ -1024,4 +1039,13 @@
         margin: 20px;
         float: left;
         width: 200px;
+    }
+    /*---Media Queries-------------------------------------------------*/
+    
+    @media only screen and (max-width:480px) {
+        /* For mobile phones: */
+    }
+    
+    @media only screen and (max-width:768x) {
+        /* For tablets: */
     }
