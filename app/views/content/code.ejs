@@ -1,21 +1,21 @@
 <!-- User can enter their email on this page to receive the verification code -->
-<div>
+<div id="codePage" class="mainDiv">
     <% if(messages.length> 0) { %>
         <div id="messageArea" class="alert alert-success">
             <%= messages %>
         </div>
         <% } %>
 
-        <% if(userNotFound.length> 0) { %>
-            <div id="messageArea" class="alert alert-danger">
-                <%= userNotFound %>
-            </div>
-            <% } %>
+            <% if(userNotFound.length> 0) { %>
+                <div id="messageArea" class="alert alert-danger">
+                    <%= userNotFound %>
+                </div>
+                <% } %>
 
-        
-    <form id="" method="POST" action="">
-        <label>Enter your email:</label>
-        <input type="email" name="email" id="email1" placeholder="Enter your email">
-        <button type="submit" id="sendCode">Send my code</button>
-    </form>
+
+                    <form id="" method="POST" action="">
+                        <label>Enter your email:</label>
+                        <input type="email" name="email" id="email1" placeholder="Enter your email">
+                        <button type="submit" id="sendCode">Send my code</button>
+                    </form>
 </div>
