@@ -300,6 +300,7 @@ export function ProcessSurveyPage(req, res, next) {
             console.log(error);
         } else {
             console.log('Email sent: ' + info.response);
+            
         }
     });
     
