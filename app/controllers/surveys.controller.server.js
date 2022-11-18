@@ -293,7 +293,7 @@ export function ProcessSurveyPage(req, res, next) {
         mailOptions.text += `Answer to question ${i+1}: ${newSubmission.responses[i]}\n`;
     }
 
-    mailOptions.text += '\nWe hope you enjoyed your experience on Survey13. Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team';
+    mailOptions.text += '\nWe hope you enjoyed your experience on Survey13.\n As a token of gratitude, an Amazon e-gift card will be emailed to your shortly!\n Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team';
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
