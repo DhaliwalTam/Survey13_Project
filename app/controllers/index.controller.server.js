@@ -6,6 +6,7 @@ import nodemailer from 'nodemailer';
 
 var codeArray = [];
 
+// Display main home page of website
 export function DisplayHomePage(req, res, next) {
     let publisher = UserDisplayName(req);
 
@@ -35,6 +36,7 @@ export function DisplayHomePage(req, res, next) {
     }
 }
 
+// Display the profile update page
 export function DisplayUpdatePage(req,res,next){
     let id = req.params.id;
 
@@ -55,7 +57,7 @@ export function DisplayUpdatePage(req,res,next){
     });
 }
 
-
+// Processes the user's request to update profile
 export function ProcessUpdatePage(req,res,next){
     let id = req.params.id;
    
@@ -80,6 +82,7 @@ export function ProcessUpdatePage(req,res,next){
     } )
 }
 
+// Display password change page
 export function DisplayPasswordPage(req,res,next){
     let id = req.params.id;
 
@@ -100,7 +103,7 @@ export function DisplayPasswordPage(req,res,next){
     });
 }
 
-
+// Processes the user's request to change password
 export function ProcessPasswordPage(req, res, next){
     let id = req.body.id;
     
@@ -140,10 +143,12 @@ export function ProcessPasswordPage(req, res, next){
     });
 }
 
+// Display forgot password page
 export function DisplayForgotPassPage(req,res,next){
     res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: UserDisplayName(req), messages:req.flash('userNotFound'), id:GetUserID(req), username: GetUsername(req)});
 }
 
+// Processes the user's request once they initiate the process of recovering their password
 export function ProcessForgotPassPage(req,res,next){
     userModel.findOne({address: req.body.email}, function (err, user) {
         if (err) {
@@ -195,17 +200,19 @@ export function ProcessForgotPassPage(req,res,next){
 
 }
 
+// Display the page where the user can enter their email address and receive the verification code once they click 'Forgot Password'
 export function DisplayCodePage(req,res,next){
     res.render('index', {title: 'Get your code', page: 'code', displayName: UserDisplayName(req), userNotFound:req.flash('userNotFound'),
     messages:req.flash('codeSent'), id:GetUserID(req), username: GetUsername(req)});
 }
 
+// Displays the page where the user can enter the verification code that they received via email
 export function DisplayEnterCodePage(req,res,next){
     res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), username: GetUsername(req), 
     displayName: UserDisplayName(req), code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
 }
 
-
+// Sends the email containing the verification code to the user's registered email address
 export function SendCodeEmail(req,res,next){
     userModel.findOne({address: req.body.email}, function (err, user) {
         if (err) {
@@ -256,7 +263,7 @@ export function SendCodeEmail(req,res,next){
     });    
 }
 
-
+// Processes and validates the verification code that the user enters
 export function ProcessCodePage(req,res,next){
     if(req.body.code !== req.body.val) {
         req.flash('invalidCode', 'Invalid code. Please try again!');
@@ -269,6 +276,7 @@ export function ProcessCodePage(req,res,next){
 
 }
 
+// Display the about us page
 export function DisplayAboutPage(req,res,next){
     res.render('index', {title: 'About Survey13', page: 'about', 
     displayName: UserDisplayName(req), id:GetUserID(req), username: GetUsername(req)});

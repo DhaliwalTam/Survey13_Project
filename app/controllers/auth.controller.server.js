@@ -9,7 +9,7 @@ import User from '../models/user.js'
 // import DisplayName Utility method
 import { UserDisplayName } from '../utils/index.js';
 
-// Display functions
+// Displays the Log in page
 export function DisplayLoginPage(req, res, next) {
     if(!req.user){ 
         return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), registerSuccessful: req.flash('registerSuccessful'), 
@@ -19,6 +19,7 @@ export function DisplayLoginPage(req, res, next) {
     return res.redirect('/surveys/list');
 }
 
+// Displays the Register page
 export function DisplayRegisterPage(req, res, next) {
     if(!req.user){ 
         return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), registerError: req.flash('registerError'), displayName: UserDisplayName(req)})
@@ -28,7 +29,7 @@ export function DisplayRegisterPage(req, res, next) {
 }
 
 
-// Process functions
+// Processes the user's request to login
 export function ProcessLoginPage(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if(err) {
@@ -53,6 +54,7 @@ export function ProcessLoginPage(req, res, next) {
     })(req, res, next);
 }
 
+// Processes the user's request to register for an account
 export function ProcessRegisterPage(req, res, next) {
     var today = new Date();
     var dateOfBirth = new Date(req.body.dob);
@@ -106,6 +108,7 @@ export function ProcessRegisterPage(req, res, next) {
     }
 }
 
+// Processes the user's request to log out of account
 export function ProcessLogoutPage(req, res, next) {
     req.logOut(function(err) {
         if(err) {

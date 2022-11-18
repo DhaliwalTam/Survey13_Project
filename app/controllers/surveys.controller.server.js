@@ -110,6 +110,7 @@ export function ProcessSurveyCreatePage(req, res, next) {
     })
 }
 
+// Displays the page where the user can edit a survey
 export function DisplaySurveyEditPage(req, res, next) {
     let id = req.params.id;
 
@@ -129,6 +130,7 @@ export function DisplaySurveyEditPage(req, res, next) {
         });
     });
 }
+
 // processes survey edit page/survey update page
 export function ProcessSurveyEditPage(req,res,next){
     let id = req.params.id;
@@ -177,7 +179,7 @@ export function ProcessSurveyEditPage(req,res,next){
     })
 }
 
-// processes deletion of selected survey
+// processes deletion of a selected survey
 export function ProcessSurveyDelete(req, res, next) {
     let id = req.params.id;
 
@@ -193,7 +195,7 @@ export function ProcessSurveyDelete(req, res, next) {
     })
 }
 
-// displays the survey page
+// displays the main survey page where anonymous users can complete a survey
 export function DisplaySurveyPage(req, res, next) {
     let id = req.params.id;
 
@@ -214,7 +216,7 @@ export function DisplaySurveyPage(req, res, next) {
     });
 }
 
-// processes survey page
+// processes the main survey once a user clicks 'Submit'
 export function ProcessSurveyPage(req, res, next) {
     let newSubmission = responsesModel({
         surveyID: req.body.surveyID,
@@ -321,6 +323,7 @@ export function ProcessSurveyPage(req, res, next) {
     res.redirect('/surveys/list');
 }
 
+// Displays the survey statistics page for a given survey
 export function DisplaySurveyStatsPage(req, res, next) {
     let id = req.params.id;
     let respondents = 0;
@@ -378,6 +381,7 @@ export function DisplaySurveyStatsPage(req, res, next) {
     });
 }
 
+// Emails the survey statistics to user's registered email address
 export function ProcessSurveyStatsPage(req, res, next) {
     let publisher = UserDisplayName(req);
 
