@@ -13,18 +13,36 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <% if(displayName) { %>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/surveys/list"><i
+                      class="fa-solid fa-table-list fa-lg"></i> My surveys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"><i
+                      class="fa-solid fa-table-list fa-lg"></i> About Survey13</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update/<%=id%>"><i
+                      class="fa-solid fa-table-list fa-lg"></i> Update Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"><i
+                      class="fa-solid fa-table-list fa-lg"></i> Log out</a>
+                    </li>
 
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <%=username%>
                         </a>
-                        <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
+                       <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/surveys/list">My Surveys</a>
                             <a class="dropdown-item" href="/about">About Survey13</a>
                             <a class="dropdown-item" href="/update/<%=id%>">Update Profile</a>
                             <a class="dropdown-item" href="/logout">Log out</a>
                         </div>
-                    </li>
+                    </li>-->
+
+
 
                     <% } else if(!displayName) { %>
                         <li class="nav-item">

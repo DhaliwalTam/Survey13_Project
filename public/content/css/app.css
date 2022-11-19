@@ -15,6 +15,10 @@
         padding: 18px 30px;
         height: 90px;
     }
+    
+    header ul {
+        font-size: 15px;
+    }
     /* survey13 logo and A-Team photo */
     
     #header-logo,
@@ -271,16 +275,6 @@
         margin-top: 30px;
         margin-bottom: 50px;
     }
-    /*#home-survey-box {
-    background-image: url("/content/images/lightweb.png");
-    box-shadow: 10px 5px 5px grey;
-    border-radius: 15px;
-    border: solid black 3px;
-}
-
-#home-survey-box:hover {
-    box-shadow: 10px 5px 5px black;
-}*/
     
     #home-survey-box h1 {
         color: #06038D;
@@ -307,6 +301,7 @@
         background-color: #0ccbf3;
         float: left;
         border: solid black 2px;
+        background-image: linear-gradient(to right, gainsboro 0%, skyblue 100%);
         border-radius: 10px;
         font-size: 30px;
         text-align: center;
@@ -330,6 +325,24 @@
     
     .home-survey-button a:hover {
         color: gainsboro;
+    }
+    /*Home - Login - */
+    
+    #home-survey-login {
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    #home-survey-login h1 {
+        color: darkblue;
+        font-size: 42px;
+        ;
+    }
+    
+    #home-survey-login h2 {
+        background-color: grey;
+        color: #BB0029;
+        font-weight: bolder;
     }
     /*-Survey Create--------------------------------------*/
     
@@ -688,7 +701,7 @@
     }
     /*-Update page-----------------------------------------*/
     
-    .mainDiv {
+    .container {
         margin-top: 20px;
     }
     
