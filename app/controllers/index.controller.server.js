@@ -267,7 +267,9 @@ export function SendCodeEmail(req,res,next){
 export function ProcessCodePage(req,res,next){
     if(req.body.code !== req.body.val) {
         req.flash('invalidCode', 'Invalid code. Please try again!');
-        return res.render('index', {title: 'Enter your code', page: 'enterCode', displayName: {}, code:codeArray[0], messages:req.flash('invalidCode')});
+        return res.render('index', {title: 'Enter your code', page: 'enterCode', displayName: UserDisplayName(req), 
+        id:GetUserID(req), username: GetUsername(req),
+        code:codeArray[0], messages:req.flash('invalidCode')});
     } 
     
     else{
