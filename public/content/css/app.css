@@ -875,7 +875,7 @@
     }
     /*------------about page-------------------------*/
     
-    #mainLogo {
+     #mainLogo {
         height: 250px;
         width: 250px;
     }
@@ -901,7 +901,7 @@
     #mainLogo {
         width: 200px;
         height: 200px;
-        position: absolute;
+        object-position: absolute;
     }
     
     .about-page-wrapper p {
@@ -912,13 +912,15 @@
     
     .about-page-wrapper {
         position: absolute;
-        left: 400px;
+        justify-content: center;
+        left: 200px;
+
         padding: 30px;
         background: #16697A;
         border: solid rgb(185, 185, 185) 3px;
         border-radius: 15px;
-        width: 60%;
-        margin-top: 50px;
+        width: auto;
+        margin-top: 20px;
         clear: both;
     }
     
@@ -930,7 +932,7 @@
         font-size: 30px;
     }
     
-    #Iris {
+   /* #Iris {
         clear: both;
     }
     
@@ -946,14 +948,14 @@
         margin-top: 150px;
         margin-right: 15px;
         margin-bottom: 100px;
-    }
+    }*/
     
     .about-left {
-        display: flex;
-        flex-direction: column;
+        display:flex;
+        flex-direction:column;
         align-items: center;
         justify-content: center;
-        height: 50vh;
+        
     }
     
     .about-left-content>div {
@@ -1062,6 +1064,7 @@
         float: left;
         width: 200px;
     }
+    
     /*---Media Queries-------------------------------------------------*/
     
     @media only screen and (max-width:480px) {
