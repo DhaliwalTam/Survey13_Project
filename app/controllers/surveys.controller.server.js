@@ -37,7 +37,7 @@ export function DisplaySurveyList(req, res, next) {
                         id:GetUserID(req), 
                         username: GetUsername(req)
                     });
-                })
+                });
             }
         })
     } 
