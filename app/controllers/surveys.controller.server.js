@@ -228,7 +228,8 @@ export function ProcessSurveyPage(req, res, next) {
         expiry: req.body.expiringOn,
         surveyAuthor: req.body.createdBy,
         questions: [],
-        responses: []
+        responses: [],
+        comments: []
     })
 
     
@@ -256,6 +257,8 @@ export function ProcessSurveyPage(req, res, next) {
         }
     }
 
+    newSubmission.comments.push(req.body.comments);
+
     responsesModel.create(newSubmission, (err) => {
         if (err) {
             console.error(err);
@@ -263,46 +266,44 @@ export function ProcessSurveyPage(req, res, next) {
         };
     })
     
-    var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
+    // var transporter = nodemailer.createTransport({
+    //     host: 'smtp.gmail.com',
+    //     port: 465,
+    //     secure: true,
+    //     auth: {
+    //         user: 'survey13stats@gmail.com',
+    //         pass: 'fndekejdersasehc'
+    //     },
+    //     tls: {
+    //         rejectUnauthorized: false
+    //     }
+    // });
+
+    // var mailOptions = {
+    //     from: 'survey13stats@gmail.com',
+    //     to:  `${req.body.surveyorEmail}`,
+    //     subject: `Thank you for completing the survey!`,
+    //     text: `Hello ${req.body.surveyorName},\n\nOn behalf of the entire team at Survey13, we wanted to thank you for completing the survey, "${req.body.surveyTitle}". Below is a brief summary of your survey:\n\nQuestions: \n`
+    // };
+
+    // for(var i = 0;i < newSubmission.questions.length; i++){
+    //     mailOptions.text += `${i+1}. ${newSubmission.questions[i]}\n`;
+    // }
+
+    // for(var i = 0; i < newSubmission.responses.length; i++){
+    //     mailOptions.text += `Answer to question ${i+1}: ${newSubmission.responses[i]}\n`;
+    // }
+
+    // mailOptions.text += `Comments: ${req.body.comments}\nWe hope you enjoyed your experience on Survey13.\n As a token of gratitude, an Amazon e-gift card will be emailed to your shortly!\n Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team`;
+
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
             
-            user: 'survey13stats@gmail.com',
-            pass: 'fndekejdersasehc'
-            
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-
-    var mailOptions = {
-        from: 'survey13stats@gmail.com',
-        to:  `${req.body.surveyorEmail}`,
-        subject: `Thank you for completing the survey!`,
-        text: `Hello ${req.body.surveyorName},\n\nOn behalf of the entire team at Survey13, we wanted to thank you for completing the survey, "${req.body.surveyTitle}". Below is a brief summary of your survey:\n\nQuestions: \n`
-    };
-
-    for(var i = 0;i < newSubmission.questions.length; i++){
-        mailOptions.text += `${i+1}. ${newSubmission.questions[i]}\n`;
-    }
-
-    for(var i = 0; i < newSubmission.responses.length; i++){
-        mailOptions.text += `Answer to question ${i+1}: ${newSubmission.responses[i]}\n`;
-    }
-
-    mailOptions.text += '\nWe hope you enjoyed your experience on Survey13.\n As a token of gratitude, an Amazon e-gift card will be emailed to your shortly!\n Hoping to have you visit us again to complete another survey.\n\nRegards,\nThe Survey13 Team';
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-            
-        }
-    });
+    //     }
+    // });
     
     surveyModel.findOne({_id: newSubmission.surveyID}, function(err,survey){
         if(err){
@@ -320,7 +321,6 @@ export function ProcessSurveyPage(req, res, next) {
             
         }
     })
-
     res.redirect('/surveys/list');
 }
 
@@ -341,12 +341,16 @@ export function DisplaySurveyStatsPage(req, res, next) {
 
 
         else {
+            
+            
             let survID = survey._id;
             responsesModel.find({ surveyID: survID }, function (err, responseCollection) {
                 if (err) {
                     console.error(err);
                     res.end(err);
                 }
+
+                console.log(responseCollection.length);
 
                 for (var i = 0; i < survey.questions.length; i++) {
                     question1Array[`question${i + 1}`] = `${survey.questions[i]}`;

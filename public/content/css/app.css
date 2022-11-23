@@ -627,6 +627,10 @@ h1 {
     font-size: small;
 }
 
+#commentsBox{
+    resize: both;
+}
+
 
 /*--login.ejs and register.ejs pages-------------------------------------*/
 

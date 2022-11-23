@@ -78,28 +78,21 @@ function addQuestion(){
 
 function addDefaultOptions(){
     if(document.getElementById("questionFormat").value === "yesNo" && options.length == 0){
-        var radioYes,radioNo;
-        radioYes = radioNo = document.createElement("input");
-        var labelYes, labelNo
-        labelYes = labelNo = document.createElement("label");
-
-        radioYes.type = radioNo.type = "radio";
-        radioYes.name = radioNo.name = `answers${questionNumber-1}`;
-        radioYes.id = radioNo.id = `question${questionNumber-1}`;
-        radioYes.value = "Yes";
-        labelYes.innerHTML = `Yes`;
-        document.getElementById(`q`).appendChild(radioYes);
-        document.getElementById(`q`).appendChild(labelYes);
-        document.getElementById(`optionInput`).value = "";
-        options.push(labelYes.innerHTML);
-        document.getElementById("optionList").value = options; 
-        document.getElementById(`q`).innerHTML += "<br>";
-        radioNo.value = "No";
-        labelNo.innerHTML = `No`;
-        document.getElementById(`q`).appendChild(radioNo);
-        document.getElementById(`q`).appendChild(labelNo);
-        document.getElementById(`optionInput`).value = "";
-        options.push(labelNo.innerHTML);
+        for(var i = 0; i < 2; i++){
+            document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+        }
+ 
+        document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="Yes">Yes`;
+        document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="No">No`;
+        
+        for(var i = 0; i < 1; i++){
+            document.getElementById(`option${i}`).outerHTML += "<br>";
+        }
+        
+        for(var i = 0; i < 2; i++){
+            options.push(document.getElementById(`radio${i}`).value);
+        }
+    
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
@@ -110,63 +103,61 @@ function addDefaultOptions(){
         if(confirmChange){
             options = [];
             document.getElementById("q").innerHTML = "";
-            var radioYes,radioNo;
-            radioYes = radioNo = document.createElement("input");
-            var labelYes, labelNo
-            labelYes = labelNo = document.createElement("label");
-
-            radioYes.type = radioNo.type = "radio";
-            radioYes.name = radioNo.name = `answers${questionNumber-1}`;
-            radioYes.id = radioNo.id = `question${questionNumber-1}`;
-            radioYes.value = "Yes";
-            labelYes.innerHTML = `Yes`;
-            document.getElementById(`q`).appendChild(radioYes);
-            document.getElementById(`q`).appendChild(labelYes);
-            document.getElementById(`optionInput`).value = "";
-            options.push(labelYes.innerHTML);
-            document.getElementById("optionList").value = options; 
-            document.getElementById(`q`).innerHTML += "<br>";
-            radioNo.value = "No";
-            labelNo.innerHTML = `No`;
-            document.getElementById(`q`).appendChild(radioNo);
-            document.getElementById(`q`).appendChild(labelNo);
-            document.getElementById(`optionInput`).value = "";
-            options.push(labelNo.innerHTML);
-            document.getElementById("optionList").value = options; 
-            document.getElementById(`q`).innerHTML += "<br>";
+             for(var i = 0; i < 2; i++){
+            document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+        }
+ 
+        document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="Yes">Yes`;
+        document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="No">No`;
+        
+        for(var i = 0; i < 1; i++){
+            document.getElementById(`option${i}`).outerHTML += "<br>";
+        }
+        
+        for(var i = 0; i < 2; i++){
+            options.push(document.getElementById(`radio${i}`).value);
+        }
+    
+        document.getElementById("optionList").value = options; 
+        document.getElementById(`q`).innerHTML += "<br>";
         }
 
         else if(!confirmChange){
-            document.getElementById("questionFormat").selectedIndex = "1";
+            if(options[0] == "Agree"){
+                document.getElementById("questionFormat").selectedIndex = "3"; 
+            }
+            
+            else if(options[0] == "True"){
+                document.getElementById("questionFormat").selectedIndex = "1"; 
+            }
+
+            else if(options[0] == "1"){
+                document.getElementById("questionFormat").selectedIndex = "4"; 
+            }
+
+            else{
+                document.getElementById("questionFormat").selectedIndex = "0"; 
+            }
         }
     }
 
 
     else if(document.getElementById("questionFormat").value === "trueFalse" && options.length == 0){
-        var radioTrue,radioFalse;
-        radioTrue = radioFalse = document.createElement("input");
-        var labelTrue, labelFalse
-        labelTrue = labelFalse = document.createElement("label");
+        for(var i = 0; i < 2; i++){
+            document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+        }
+ 
+        document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="True">True`;
+        document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="False">False`;
+        
+        for(var i = 0; i < 1; i++){
+            document.getElementById(`option${i}`).outerHTML += "<br>";
+        }
+        
+        for(var i = 0; i < 2; i++){
+            options.push(document.getElementById(`radio${i}`).value);
+        }
     
-        radioTrue.type = radioFalse.type = "radio";
-        radioTrue.name = radioFalse.name = `answers${questionNumber-1}`;
-        radioTrue.id = radioFalse.id = `question${questionNumber-1}`;
-        
-        radioTrue.value = "True";
-        labelTrue.innerHTML = `True`;
-        document.getElementById(`q`).appendChild(radioTrue);
-        document.getElementById(`q`).appendChild(labelTrue);
-        document.getElementById(`optionInput`).value = "";
-        options.push(labelTrue.innerHTML);
-        document.getElementById("optionList").value = options; 
-        document.getElementById(`q`).innerHTML += "<br>";
-        
-        radioFalse.value = "False";
-        labelFalse.innerHTML = `False`;
-        document.getElementById(`q`).appendChild(radioFalse);
-        document.getElementById(`q`).appendChild(labelFalse);
-        document.getElementById(`optionInput`).value = "";
-        options.push(labelFalse.innerHTML);
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
@@ -176,36 +167,41 @@ function addDefaultOptions(){
             if(confirmChange){
                 options = [];
                 document.getElementById("q").innerHTML = "";
-                var radioTrue,radioFalse;
-                radioTrue = radioFalse = document.createElement("input");
-                var labelTrue, labelFalse
-                labelTrue = labelFalse = document.createElement("label");
+                for(var i = 0; i < 2; i++){
+                    document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+                }
+         
+                document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="True">True`;
+                document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="False">False`;
+                
+                for(var i = 0; i < 1; i++){
+                    document.getElementById(`option${i}`).outerHTML += "<br>";
+                }
+                
+                for(var i = 0; i < 2; i++){
+                    options.push(document.getElementById(`radio${i}`).value);
+                }
             
-                radioTrue.type = radioFalse.type = "radio";
-                radioTrue.name = radioFalse.name = `answers${questionNumber-1}`;
-                radioTrue.id = radioFalse.id = `question${questionNumber-1}`;
-                
-                radioTrue.value = "True";
-                labelTrue.innerHTML = `True`;
-                document.getElementById(`q`).appendChild(radioTrue);
-                document.getElementById(`q`).appendChild(labelTrue);
-                document.getElementById(`optionInput`).value = "";
-                options.push(labelTrue.innerHTML);
-                document.getElementById("optionList").value = options; 
-                document.getElementById(`q`).innerHTML += "<br>";
-                
-                radioFalse.value = "False";
-                labelFalse.innerHTML = `False`;
-                document.getElementById(`q`).appendChild(radioFalse);
-                document.getElementById(`q`).appendChild(labelFalse);
-                document.getElementById(`optionInput`).value = "";
-                options.push(labelFalse.innerHTML);
                 document.getElementById("optionList").value = options; 
                 document.getElementById(`q`).innerHTML += "<br>";
             }
 
             else if(!confirmChange){
-                document.getElementById("questionFormat").selectedIndex = "2";
+                if(options[0] == "Agree"){
+                    document.getElementById("questionFormat").selectedIndex = "3"; 
+                }
+                
+                else if(options[0] == "Yes"){
+                    document.getElementById("questionFormat").selectedIndex = "2"; 
+                }
+    
+                else if(options[0] == "1"){
+                    document.getElementById("questionFormat").selectedIndex = "4"; 
+                }
+    
+                else{
+                    document.getElementById("questionFormat").selectedIndex = "0"; 
+                }
             }
         
         }
@@ -220,6 +216,142 @@ function addDefaultOptions(){
 
         else if(!confirmChange){
             document.getElementById("questionFormat").selectedIndex = "-1";
+        }
+    }
+
+    else if(document.getElementById("questionFormat").value === "agreeDisagree" && options.length == 0){
+        for(var i = 0; i < 4; i++){
+            document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+        }
+ 
+        document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="Agree">Agree`;
+        document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="Slightly Agree">Slightly Agree`;
+        document.getElementById("option2").innerHTML = `<input type="radio" id="radio2" name="answers${questionNumber-1}" value="Disagree">Disagree`;
+        document.getElementById("option3").innerHTML = `<input type="radio" id="radio3" name="answers${questionNumber-1}" value="Slightly Disagree">Slightly Disagree`;
+
+        for(var i = 0; i < 3; i++){
+            document.getElementById(`option${i}`).outerHTML += "<br>";
+        }
+        
+        for(var i = 0; i < 4; i++){
+            options.push(document.getElementById(`radio${i}`).value);
+        }
+        
+        document.getElementById("optionList").value = options; 
+        document.getElementById(`q`).innerHTML += "<br>";
+    }
+
+    else if(document.getElementById("questionFormat").value === "agreeDisagree" && options.length >= 1){
+        var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
+        if(confirmChange){
+            options = [];
+            document.getElementById("q").innerHTML = "";
+            for(var i = 0; i < 4; i++){
+                document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+            }
+     
+            document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="Agree">Agree`;
+            document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="Slightly Agree">Slightly Agree`;
+            document.getElementById("option2").innerHTML = `<input type="radio" id="radio2" name="answers${questionNumber-1}" value="Disagree">Disagree`;
+            document.getElementById("option3").innerHTML = `<input type="radio" id="radio3" name="answers${questionNumber-1}" value="Slightly Disagree">Slightly Disagree`;
+    
+            for(var i = 0; i < 3; i++){
+                document.getElementById(`option${i}`).outerHTML += "<br>";
+            }
+            
+            for(var i = 0; i < 4; i++){
+                options.push(document.getElementById(`radio${i}`).value);
+            }
+            
+            document.getElementById("optionList").value = options; 
+            document.getElementById(`q`).innerHTML += "<br>";
+        }
+
+        else if(!confirmChange){
+            if(options[0] == "Yes"){
+                document.getElementById("questionFormat").selectedIndex = "2"; 
+            }
+            
+            else if(options[0] == "True"){
+                document.getElementById("questionFormat").selectedIndex = "1"; 
+            }
+
+            else if(options[0] == "1"){
+                document.getElementById("questionFormat").selectedIndex = "4"; 
+            }
+
+            else{
+                document.getElementById("questionFormat").selectedIndex = "0"; 
+            }
+        }
+    }
+
+    else if(document.getElementById("questionFormat").value === "scale" && options.length == 0){
+        for(var i = 0; i < 5; i++){
+            document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+        }
+ 
+        document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="1">1`;
+        document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="2">2`;
+        document.getElementById("option2").innerHTML = `<input type="radio" id="radio2" name="answers${questionNumber-1}" value="3">3`;
+        document.getElementById("option3").innerHTML = `<input type="radio" id="radio3" name="answers${questionNumber-1}" value="4">4`;
+        document.getElementById("option4").innerHTML = `<input type="radio" id="radio4" name="answers${questionNumber-1}" value="5">5`;
+
+        for(var i = 0; i < 4; i++){
+            document.getElementById(`option${i}`).outerHTML += "<br>";
+        }
+        
+        for(var i = 0; i < 5; i++){
+            options.push(document.getElementById(`radio${i}`).value);
+        }
+        
+        document.getElementById("optionList").value = options; 
+        document.getElementById(`q`).innerHTML += "<br>";
+    }
+
+    else if(document.getElementById("questionFormat").value === "scale" && options.length >= 1){
+        var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
+        if(confirmChange){
+            options = [];
+            document.getElementById("q").innerHTML = "";
+            for(var i = 0; i < 5; i++){
+                document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
+            }
+     
+            document.getElementById("option0").innerHTML = `<input type="radio" id="radio0" name="answers${questionNumber-1}" value="1">1`;
+            document.getElementById("option1").innerHTML = `<input type="radio" id="radio1" name="answers${questionNumber-1}" value="2">2`;
+            document.getElementById("option2").innerHTML = `<input type="radio" id="radio2" name="answers${questionNumber-1}" value="3">3`;
+            document.getElementById("option3").innerHTML = `<input type="radio" id="radio3" name="answers${questionNumber-1}" value="4">4`;
+            document.getElementById("option4").innerHTML = `<input type="radio" id="radio4" name="answers${questionNumber-1}" value="5">5`;
+    
+            for(var i = 0; i < 4; i++){
+                document.getElementById(`option${i}`).outerHTML += "<br>";
+            }
+            
+            for(var i = 0; i < 5; i++){
+                options.push(document.getElementById(`radio${i}`).value);
+            }
+            
+            document.getElementById("optionList").value = options; 
+            document.getElementById(`q`).innerHTML += "<br>";
+        }
+
+        else if(!confirmChange){
+            if(options[0] == "Yes"){
+                document.getElementById("questionFormat").selectedIndex = "2"; 
+            }
+            
+            else if(options[0] == "True"){
+                document.getElementById("questionFormat").selectedIndex = "1"; 
+            }
+
+            else if(options[0] == "Agree"){
+                document.getElementById("questionFormat").selectedIndex = "3"; 
+            }
+
+            else{
+                document.getElementById("questionFormat").selectedIndex = "0"; 
+            }
         }
     }
 }
@@ -252,7 +384,7 @@ function addOptions(){
     }
     
     else{
-        alert("You must add a question before adding options!")
+        alert("You must add a question before adding any more options!")
     }
 
 }
