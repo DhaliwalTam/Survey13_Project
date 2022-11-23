@@ -4,18 +4,20 @@
     <div id="survey-list-box">
         <h1>
             <% if(displayName && surveys.length==0) { %>
-                Welcome <%= displayName %>! <br>Error 404: Surveys not found. Maybe it's time to create one?
+                <h1> Welcome
+                    <%= displayName %>! <br>Error 404: Surveys not found. Maybe it's time to create one?</h1>
+                <br>
+                <a href="/surveys/create" id="addASurveyBtn" class="btn btn-default" role="button">
+                    <i class="fas fa-plus-circle"></i> Create a Survey!</a>
+                <%} else if (displayName && surveys.length> 0) { %>
+                    <h1> Welcome
+                        <%= displayName %>! Here is a list of your surveys!</h1>
                     <br>
-                    <a href="/surveys/create" class="btn btn-primary" role="button">
-                        <i class="fas fa-plus-circle"></i> Create a Survey!</a>
-                    <%} else if (displayName && surveys.length> 0) { %>
-                        Welcome <%= displayName %>! Here is a list of your surveys!
-                            <br>
-                            <a href="/surveys/create" id="addASurveyBtnListPage" class="btn btn-primary" role="button">
-                                <i class="fas fa-plus-circle"></i> Add a Survey!</a>
-                            <% } else { %>
-                                Here are some available surveys!
-                                <% } %>
+                    <a href="/surveys/create" id="addASurveyBtn" class="btn btn-default" role="button">
+                        <i class="fas fa-plus-circle"></i> Add a Survey!</a>
+                    <% } else { %>
+                        Here are some available surveys!
+                        <% } %>
         </h1>
         <div class="row">
             <div class="col">
@@ -51,73 +53,73 @@
                         </tr>
                     </thead>
                     <tbody id="surveyList">
-                         <!-- Repeatable Rows -->
-                    <% for(let count=0; count < surveys.length; count++) { %>
+                        <!-- Repeatable Rows -->
+                        <% for(let count=0; count < surveys.length; count++) { %>
 
-                        <tr>
-                            <th scope="row" class="text-center">
-                                <%= count + 1 %>
-                            </th>
-                            <% if(!displayName) { %>
-                            <td scope="row" class="text-center">
-                                <%= surveys[count].createdBy %>
-                            </td>
-                            <% } %>
-                            <td scope="row" class="text-center">
-                                <%= surveys[count].template %>
-                            </td>
-                            <td scope="row" class="text-center">
-                                <%= surveys[count].title %>
-                            </td>
-                            <td scope="row" class="text-center">
-                                <%= surveys[count].createdOn.toISOString().split('T')[0] %>
-                            </td>
-                            <td scope="row" class="text-center activeDate">
-                                <%= surveys[count].active %>
-                            </td>
-                            <td scope="row" class="text-center expiryDate">
-                                <%= surveys[count].expiry %>
-                            </td>
-                            <td scope="row" class="text-center">
-                                <%= surveys[count].questions.length %>
-                            </td>
-                            <td scope="row" class="text-center">
-                                <%= Math.ceil(1.5 * surveys[count].questions.length) %> min
-                            </td>
-                             <td scope="row" class="text-center">
-                                <%= surveys[count].attempts %>
-                            </td>
-    
-                            <% if(displayName) { %>
-                            <td class="text-center col-1">
-                                <a id="editBtn" href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-primary btn-sm ">
-                                    <i class="fas fa-pencil-alt"></i> Edit</a>
-                            </td>
-    
-                            <td class="text-center col-1">
-                                <a id="deleteBtn" href="/survey-delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i> Delete</a>
-                            </td>
-    
-                            <td class="text-center col-2">
-                                <a id="viewSurveyStatsBtn" href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-info">
-                                    <i class="fa-solid fa-database"></i> View Survey Stats</a>
-                            </td>
-    
-                            <% } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
-                            <td class="text-center col-1">
-                                <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
-                                    <i class="fas fa-pencil-alt"></i> Start Survey!</a>
-                            </td>
-                            <% } else { %>
-                            <td class="text-center col-1">
-                                <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm surveyStart">
-                                    <i class="fas fa-pencil-alt"></i> Start Survey!</a>
-                            </td>
-                            <%  }%>
-    
-                            <% } %>
-                        </tr>
+                            <tr>
+                                <th scope="row" class="text-center">
+                                    <%= count + 1 %>
+                                </th>
+                                <% if(!displayName) { %>
+                                    <td scope="row" class="text-center">
+                                        <%= surveys[count].createdBy %>
+                                    </td>
+                                    <% } %>
+                                        <td scope="row" class="text-center">
+                                            <%= surveys[count].template %>
+                                        </td>
+                                        <td scope="row" class="text-center">
+                                            <%= surveys[count].title %>
+                                        </td>
+                                        <td scope="row" class="text-center">
+                                            <%= surveys[count].createdOn.toISOString().split('T')[0] %>
+                                        </td>
+                                        <td scope="row" class="text-center activeDate">
+                                            <%= surveys[count].active %>
+                                        </td>
+                                        <td scope="row" class="text-center expiryDate">
+                                            <%= surveys[count].expiry %>
+                                        </td>
+                                        <td scope="row" class="text-center">
+                                            <%= surveys[count].questions.length %>
+                                        </td>
+                                        <td scope="row" class="text-center">
+                                            <%= Math.ceil(1.5 * surveys[count].questions.length) %> min
+                                        </td>
+                                        <td scope="row" class="text-center">
+                                            <%= surveys[count].attempts %>
+                                        </td>
+
+                                        <% if(displayName) { %>
+                                            <td class="text-center col-1">
+                                                <a id="editBtn" href="/surveys/edit/<%= surveys[count]._id %>" class="btn btn-default btn-sm ">
+                                                    <i class="fas fa-pencil-alt"></i> Edit</a>
+                                            </td>
+
+                                            <td class="text-center col-1">
+                                                <a id="deleteBtn" href="/survey-delete/<%= surveys[count]._id %>" class="btn btn-default btn-sm">
+                                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                                            </td>
+
+                                            <td class="text-center col-2">
+                                                <a id="viewSurveyStatsBtn" href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-info">
+                                                    <i class="fa-solid fa-database"></i> View Survey Stats</a>
+                                            </td>
+
+                                            <% } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
+                                                <td class="text-center col-1">
+                                                    <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
+                                                        <i class="fas fa-pencil-alt"></i> Start Survey!</a>
+                                                </td>
+                                                <% } else { %>
+                                                    <td class="text-center col-1">
+                                                        <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm surveyStart">
+                                                            <i class="fas fa-pencil-alt"></i> Start Survey!</a>
+                                                    </td>
+                                                    <%  }%>
+
+                                                        <% } %>
+                            </tr>
 
                     </tbody>
                 </table>
