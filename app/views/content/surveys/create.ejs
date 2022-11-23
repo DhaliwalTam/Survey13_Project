@@ -19,7 +19,16 @@
                 <label for="nameTextField">Date of Expiry:</label>
                 <input type="date" class="form-control" id="expire" name="expiryDate">
             </div>
-
+            <br>
+            <div class="form-group">
+                <label>Question Format:</label>
+                <select id="questionFormat">
+                <option value="multipleChoice">Multiple Choice</option>
+                <option value="trueFalse">True/False</option>
+                <option value="yesNo">Yes/No</option>
+            </select>
+            </div>
+            <br>
             <div id="questionCreate">
                 <label>Enter your new question here:</label>
                 <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1" maxlength="100">

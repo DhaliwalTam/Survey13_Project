@@ -1,31 +1,34 @@
 <!-- Main survey page -->
-<div class="" container>
-    <form id="mainSurvey" method="POST">
-        <div>
-            <input type="hidden" class="form-control" name="createdBy" value="<%= survey.createdBy %>">
-            <input type="hidden" class="form-control" name="surveyID" value="<%= survey._id %>">
-            <input type="hidden" class="form-control" name="createdOn" value="<%= survey.createdOn %>">
-            <input type="hidden" class="form-control" name="expiringOn" value="<%= survey.expiry %>">
-            <label>Survey Title:</label>
-            <input class="form-control" type="text" name="surveyTitle" value="<%= survey.title %>" readonly>
-            <label>Your name:</label>
-            <input class="form-control" type="text" name="surveyorName" required>
-            <label>Your email:</label>
-            <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
-            <span id="correctEmail">*** Please ensure your email address is correct!</span>
-            <% for(let count=0; count < survey.questions.length; count++) { %>
-                <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
-                <% for(let j=0; j < survey.options[count].length; j++) { %>
-                    <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
-                    <%= survey.options[count][j] %><br>
+<form id="mainSurvey" method="POST">
+    <div>
+        <input type="hidden" class="form-control" name="createdBy" value="<%= survey.createdBy %>">
+        <input type="hidden" class="form-control" name="surveyID" value="<%= survey._id %>">
+        <input type="hidden" class="form-control" name="createdOn" value="<%= survey.createdOn %>">
+        <input type="hidden" class="form-control" name="expiringOn" value="<%= survey.expiry %>">
+        <label>Survey Title:</label>
+        <input class="form-control" type="text" name="surveyTitle" value="<%= survey.title %>" readonly>
+        <label>Your name:</label>
+        <input class="form-control" type="text" name="surveyorName" required>
+        <label>Your email:</label>
+        <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
+        <span id="correctEmail">*** Please ensure your email address is correct!</span>
+        <% for(let count=0; count < survey.questions.length; count++) { %>
+            <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
+            <% for(let j=0; j < survey.options[count].length; j++) { %>
+                <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
+                <%= survey.options[count][j] %><br>
+                    <% } %>
                         <% } %>
-                            <% } %>
-        </div>
-        <br>
-        <button class="btn btn-default" type="submit" id="submitSurvey"><i class="fas fa-check"></i> Submit</button>
 
-        <button type="button" id="cancelButton" class="btn btn-default"><i class="fa-solid fa-x"></i>Cancel</button>
+                            <br>
+                            <p>Please provide your thoughts/comments on this survey:</p>
+                            <textarea id="commentsBox" name="comments" rows="10" cols="40"></textarea>
+    </div>
+    <br>
+    <button class="btn btn-default" type="submit" id="submitSurvey"><i class="fas fa-check"></i> Submit</button>
 
-        <button id="resetButton" class="btn btn-default" type="reset"><i class="fas fa-undo"></i> Reset survey</button>
-    </form>
+    <button type="button" id="cancelButton" class="btn btn-default"><i class="fa-solid fa-x"></i>Cancel</button>
+
+    <button id="resetButton" class="btn btn-default" type="reset"><i class="fas fa-undo"></i> Reset survey</button>
+</form>
 </div>
