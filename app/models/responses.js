@@ -12,7 +12,8 @@ const ResponseSchema = new Schema({
     expiry: Date,
     surveyAuthor: String,
     questions: [String],
-    responses: [String]
+    responses: [String],
+    comments: [String]
 }, {
     timestamps: true,
     collection: 'responses'

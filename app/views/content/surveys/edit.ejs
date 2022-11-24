@@ -1,11 +1,13 @@
 <!-- edit/update survey -->
 <div class="container">
-    <div class="row">
+    <!--<div id="survey-edit-box" class="row">
         <div class="offset-md-3 col-md-6">
-            <h1><%= title %></h1>
+            <h1>
+                <%= title %>
+            </h1>
             <form class="form" method="POST">
                 <input type="hidden" name="id" value="<%= survey._id %>" >
-               <!--<<<<<<< HEAD <div class="form-group">
+               <<<<<<< HEAD <div class="form-group">
                     <label for="nameTextField">Survey Title</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
@@ -23,27 +25,22 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="hidden" class="form-control"
-                    id="nameTextField"
-                    placeholder="Enter the Movie Title"
-                    name="createdOn" 
-                    value="<%= survey.createdOn%>">
+                    <input type="hidden" class="form-control" id="nameTextField" name="createdBy" value="<%= survey.createdBy %>">
                 </div>
 
                 <div class="form-group">
-                    <input type="hidden" class="form-control"
-                    id="nameTextField"
-                    placeholder="Enter the Movie Title"
-                    name="expiringOn" 
-                    value="<%= survey.expiry %>">
+                    <input type="hidden" class="form-control" id="nameTextField" placeholder="Enter the Movie Title" name="createdOn" value="<%= survey.createdOn%>">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="nameTextField" placeholder="Enter the Movie Title" name="expiringOn" value="<%= survey.expiry %>">
                 </div>
 
                 <div>
-                    <label for="authorTextField"></label> 
+                    <label for="authorTextField"></label>
                     <% for(let count=0; count < survey.questions.length; count++) { %>
-                    <br><label>Question <%= count + 1 %></label><input type="text" class="form-control question" placeholder="Edit question"
-                        name="ques" value="<%= survey.questions[count] %>">
-                        
+                        <br><label>Question <%= count + 1 %></label><input type="text" class="form-control question" placeholder="Edit question" name="ques" value="<%= survey.questions[count] %>">
+
                         <% } %>
                 </div>
                 <br>
@@ -108,11 +105,11 @@
                             <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
                             <% } %>
 
-                        </div>
-                        <br>
-                        <% } %>
                     </div>
-                    <button id="submitButton" class="btn btn-default" type="submit">
+                    <br>
+                    <% } %>
+
+                    <button id="editSubmitBtn" class="btn btn-default" type="submit">
                         <i class="fas fa-edit"></i> Submit</button>
 
                     <a id="cancelBtn" href="/surveys/list" class="btn btn-default">

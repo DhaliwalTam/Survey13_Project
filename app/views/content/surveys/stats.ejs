@@ -1,5 +1,5 @@
 <!-- stats.ejs -->
-<div>
+<div class="container">
 
     <div id="survey-stat-box">
         <h1>Survey Analysis for: <span id="surveyTitle"><%= survey.title %></span></h1>
@@ -53,6 +53,12 @@
 
             </tbody>
         </table>
+        <div id="commentsSection">
+            <h4>Comments/Feedback left by surveyors:</h4>
+            <% for(let j=0; j < responses.length; j++) { %>
+                <p><%=j+1%>. <%=responses[j].comments%></p>
+                <%}%>
+        </div>
         <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Results</button>
         <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
             <i class="fas fa-undo"></i> Back to survey list</a>

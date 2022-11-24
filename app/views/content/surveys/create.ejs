@@ -1,48 +1,63 @@
 <!-- create.ejs-- create survey -->
-<div id="survey-create-box">
-    <h1>Create your new survey by using the form below!</h1>
-    <!-- <button id="questionCreate">Add Question</button> -->
-    <form id="createSurvey" method="POST">
-        <input type="hidden" id="createdBy" name="displayName" value = "<%=displayName%>"> 
-        <div class="form-group">
-            <label for="nameTextField">Survey Title:</label>
-            <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title" maxlength="30">
-        </div>
+<div class="container">
+    <div id="survey-create-box">
+        <h1>Create your new survey by using the form below!</h1>
+        <!-- <button id="questionCreate">Add Question</button> -->
+        <form id="createSurvey" method="POST">
+            <input type="hidden" id="createdBy" name="displayName" value="<%=displayName%>">
+            <div class="form-group">
+                <label for="nameTextField">Survey Title:</label>
+                <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title"
+                    maxlength="30">
+            </div>
 
-        <div class="form-group">
-            <label for="nameTextField">Date of Activation:</label>
-            <input type="date" class="form-control" id="active" name="activeDate">
-        </div>
+            <div class="form-group">
+                <label for="nameTextField">Date of Survey Activation:</label>
+                <input type="date" class="form-control" id="active" name="activeDate">
+            </div>
 
-        <div class="form-group">
-            <label for="nameTextField">Date of Expiry:</label>
-            <input type="date" class="form-control" id="expire" name="expiryDate">
-        </div>
-
-        <div id="questionCreate">
-            <label>Enter your new question here:</label>
-            <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1" maxlength="100">
-            <div id="q"></div>
+            <div class="form-group">
+                <label for="nameTextField">Date of Survey Expiry:</label>
+                <input type="date" class="form-control" id="expire" name="expiryDate">
+            </div>
             <br>
-
-            <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1" maxlength="30">
-            <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
-                Option</button>
-            <br><br>
-            <button type="button" id="saveQuestionandOptions" title="Save before creating another question.
+            <div class="form-group">
+                <label>Question Format:</label>
+                <select id="questionFormat">
+                    <option value="multipleChoice">Multiple Choice</option>
+                    <option value="trueFalse">True/False</option>
+                    <option value="yesNo">Yes/No</option>
+                    <option value="agreeDisagree">Agree/Disagree</option>
+                    <option value="scale">Scale of 1-5</option>
+                </select>
+            </div>
+            <br>
+            <div id="questionCreate">
+                <label>Enter your new question here:</label>
+                <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1"
+                    maxlength="100">
+                <div id="q"></div>
+                <br>
+                <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1"
+                    maxlength="30">
+                <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
+                    Option</button>
+                <br><br>
+                <button type="button" id="saveQuestionandOptions" title="Save before creating another question.
             ">Save Question and Options</button>
-            <input type="hidden" id="questionList" name="qList">
-            <br>
-            <input type="hidden" id="optionList" name="oList">
-        </div>
-    </form>
-    <br>
+                <input type="hidden" id="questionList" name="qList">
+                <br>
+                <input type="hidden" id="optionList" name="oList">
+            </div>
+        </form>
+        <br>
 
-    <!-- submit survey -->
-    <button id="submitButton" class="btn btn-default" type="button">
-        <i class="fas fa-edit"></i> Publish Survey!</button>
-<!-- cancel survey -->
-    <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
-        <i class="fas fa-undo"></i> Cancel</a>
-
+        <!-- submit survey -->
+        <button id="submitButton" class="btn btn-default" type="button">
+            <i class="fas fa-edit"></i> Publish Survey!</button>
+        <!-- cancel survey -->
+        <a id="cancelBtn" class="btn btn-default">
+            <i class="fas fa-undo"></i> Cancel</a>
+    </div>
 </div>
+<!-- href="/surveys/list" -->
