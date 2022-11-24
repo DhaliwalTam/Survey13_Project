@@ -417,13 +417,15 @@
     /*div container for the form*/
     
     #survey-edit-box {
-        margin: 0 auto;
+        margin: auto;
         width: 620px;
         margin-top: 15px;
         margin-bottom: 40px;
         background: ghostwhite;
         border-radius: 10px;
         padding: 10px;
+        justify-content: center;
+        text-align: center;
     }
     
     #survey-edit-box:hover {
@@ -443,13 +445,13 @@
         margin-left: -50px;
     }
     
-    #survey-edit-box input {
+   /* #survey-edit-box input {
         width: 500px;
         margin-top: 5px;
         margin-left: -50px;
         border: solid black 1px;
         border-radius: 5px;
-    }
+    }*/
     
     #survey-edit-box input:hover {
         border: solid 2px black;
@@ -903,6 +905,8 @@
         height: 200px;
         object-position: absolute;
     }
+
+    
     
     .about-page-wrapper p {
         font-size: 20px;
@@ -914,7 +918,6 @@
         position: absolute;
         justify-content: center;
         left: 200px;
-
         padding: 30px;
         background: #16697A;
         border: solid rgb(185, 185, 185) 3px;
@@ -948,12 +951,14 @@
         margin-top: 150px;
         margin-right: 15px;
         margin-bottom: 100px;
-    }*/
+    }
 
     #Husna{
         margin-left: 7%;
-    }
+    }*/
     
+   
+
     .about-left {
         display:flex;
         flex-direction:column;
@@ -1042,6 +1047,7 @@
         cursor: pointer;
     }
     
+
     .icons li:hover {
         background: rgb(255, 220, 220);
         color: rgb(255, 255, 255);
@@ -1078,6 +1084,12 @@
         margin: 20px;
         float: left;
         width: 200px;
+    }
+
+    #myCarousel{
+        width: 700px;
+        justify-content: center;
+       margin: auto;
     }
     
     /*---Media Queries-------------------------------------------------*/
