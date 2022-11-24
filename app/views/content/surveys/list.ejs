@@ -111,6 +111,12 @@
                                                     <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
                                                         <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                                                 </td>
+                                            <% } else if(!displayName && (new Date(surveys[count].expiry) < new Date())) { %>
+                                                    <td class="text-center col-1">
+                                                        <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
+                                                            <i class="fas fa-pencil-alt"></i> Start Survey!</a>
+                                                    </td>
+
                                                 <% } else { %>
                                                     <td class="text-center col-1">
                                                         <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm surveyStart">

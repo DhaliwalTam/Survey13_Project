@@ -10,6 +10,7 @@ document.getElementById("submitButton").addEventListener("click", formConfirmati
 document.getElementById("saveQuestionandOptions").addEventListener("click",addQuestion);
 document.getElementById("addOptionButton").addEventListener("click",addOptions);
 document.getElementById("questionFormat").addEventListener("change",addDefaultOptions);
+document.getElementById("cancelBtn").addEventListener("click",confirmCancel);
 window.addEventListener("load",function(){
    
     if(today.getMonth()+1 < 10 && today.getDate() < 10){
@@ -69,6 +70,7 @@ function addQuestion(){
         document.getElementById("questionInput").placeholder = `Enter question ${questionNumber}`;
         document.getElementById("optionInput").placeholder = `Option for question ${questionNumber}`;
         addDefaultOptions();
+        alert("Question saved successfully!");
     }
     
     else{
@@ -405,6 +407,12 @@ function preventSubmit(e){
     e.preventDefault();
 }
 
+function confirmCancel(){
+    var confirmCancel = confirm("Are you sure you want to leave this page? All survey questions and options will be lost!");
+    if(confirmCancel){
+        window.location.href = "../surveys/list";
+    }
+}
 
 function formConfirmation() {
     var title = document.getElementById("surveyTitle").value;

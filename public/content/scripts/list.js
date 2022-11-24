@@ -1,15 +1,24 @@
 window.addEventListener("load",()=>{   
     var surveyStartButtons = document.getElementsByClassName("surveyStart");
     var activeDate = document.getElementsByClassName("activeDate");
+    var expiryDate = document.getElementsByClassName("expiryDate");
 
     
     for(var i = 0; i<activeDate.length; i++){
-        if(new Date(document.getElementsByClassName("activeDate")[i].innerText) > new Date()){
+        if(new Date(activeDate[i].innerText) > new Date()){
             surveyStartButtons[i].addEventListener("click",()=>{
                 alert("This survey is not active yet. Please try again later!");
             })
         }    
     }
+
+    for(var i = 0; i<expiryDate.length; i++){
+      if(new Date(expiryDate[i].innerText) < new Date()){
+          surveyStartButtons[i].addEventListener("click",()=>{
+            alert("This survey has expired. Please complete another survey!");
+          })
+      }    
+  }
 })
 
  //Make the sorting the table in ascending and descending Order - [w3schools]

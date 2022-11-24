@@ -7,6 +7,7 @@ import { GetUserID } from "../utils/index.js";
 import { GetUsername } from "../utils/index.js";
 
 var today = new Date();
+today.setDate(today.getDate() - 1);
 
 //display surveyLists
 export function DisplaySurveyList(req, res, next) {
