@@ -664,7 +664,8 @@ h1 {
 }
 
 #username,
-#password {
+#password,
+#confirmPassword {
     margin-left: 8px;
 }
 
