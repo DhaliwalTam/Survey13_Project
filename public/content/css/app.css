@@ -910,8 +910,8 @@ h1 {
 /* About survey13 statement */
 
 #aboutSurvey13 {
-    float: left;
-    display: block;
+   
+    display: absolute;
     background: white;
     border-radius: 10px;
     font-size: 15px;
@@ -922,15 +922,14 @@ h1 {
     clear: both;
 }
 
-#aboutCarousel {
-    margin: 0 auto;
-    border-radius: 10px;
-    border: solid 20px black;
-    display: block;
-    background-color: black;
-    width: 100%;
-    max-height: 50% !important;
-    margin-bottom: 20px;
+#myCarousel1 {
+    width: 1000px;
+    justify-content: center;
+    margin: auto;
+   align-items: center;
+   margin-left: 25%;
+   
+
 }
 
 #aboutSurvey13 p {
@@ -958,8 +957,13 @@ h1 {
 /*----------picture gallery-------------------*/
 
 #aboutATEAM-contained {
+    display: absolute;
+    border-radius: 10px;
+    font-size: 15px;
     width: 100%;
-    margin: 0 auto;
+    margin:25px;
+    margin-bottom: 15px;
+    
 }
 
 #aboutATEAM-contained h1 {
@@ -968,6 +972,7 @@ h1 {
     color: ghostwhite;
     background: black;
     clear: both;
+
 }
 
 .gallery {
@@ -979,6 +984,7 @@ h1 {
     margin-right: 15px;
     border-radius: 10px;
     box-shadow: 5px 2px 2px black;
+    align-items:center ;
 }
 
 .gallery h3 {
