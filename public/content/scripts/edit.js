@@ -8,5 +8,6 @@ function createOptions(){
     var optionInput = document.createElement("input");
     optionInput.type = "text";
     optionInput.name = `choices${this.id}`;
+    optionInput.value = "";
     document.getElementById(`optionsDiv${this.id}`).appendChild(optionInput);
 }

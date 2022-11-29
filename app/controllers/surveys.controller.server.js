@@ -161,14 +161,20 @@ export function ProcessSurveyEditPage(req,res,next){
             }
         }
 
-        if(req.body[`choices${i+1}`] !== ""){
+        if(req.body[`choices${i+1}`] == ""){
+            updatedSurvey.options.push([""]);
+        }
+
+        else if(req.body[`choices${i+1}`] !== ""){
             updatedSurvey.options.push(req.body[`choices${i+1}`]);
         }
 
-        if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
+        else if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
             updatedSurvey.options[i] = [];
         }
     }
+
+    console.log(updatedSurvey.options);
     
     surveyModel.updateOne({
         _id: id
@@ -189,6 +195,7 @@ export function ProcessSurveyEditPage(req,res,next){
 
         res.redirect('/surveys/list');
     });
+    
 }
 
 // processes deletion of a selected survey

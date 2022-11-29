@@ -17,6 +17,7 @@
 
             <tbody id="statsTable">
                 <% for(let count=0; count < survey.questions.length; count++) { %>
+                    <%number=0%>
                     <tr>
                         <td scope="row" class="questions">
                             <span class="optionHeader"><%= count + 1 %>:</span>
@@ -24,20 +25,25 @@
                         </td>
                         <td scope="row" class="text-center">
                             <% for(let j=0; j < survey.options[count].length; j++) { %>
-                                <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
+                                <%if(survey.options[count][j] == ""){%>
+                                    Free-text option<br>
+                                <%}else{%>
+                                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                    <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
+                                <%}%>
                                     <% } %>
                         </td>
                         <td scope="row" class="text-center answers">
                             <% for(let j=0; j < survey.options[count].length; j++) { %>
-                                <% if(responses.length === 0) { %>
-                                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                    <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
-                                        <% } else { %>
-                                            <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                            <%= Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
-                                                <% }%>
-                                                    <% } %>
+                                <%if(survey.options[count][j] == "" ){%>
+                                    <%}else if(responses.length===0) { %>
+                                        <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                        <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
+                                            <% } else { %>
+                                                <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                                <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
+                                                    <% }%>
+                                                        <% } %>
                         </td>
                         <% } %>
                             <tr>
@@ -51,6 +57,20 @@
 
             </tbody>
         </table>
+        <div id="questionSection">
+            <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
+            <% for(let count=0; count < responses.length; count++) { %>
+                <%number=responses[count].textResponses.length-1%>
+                    <br>
+                    <h5 id="submissionNumber">Submission # <%=count+1%></h5>
+                    <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
+                        <h5><%=responses[count].textResponses[number][j]%></h5>
+                        <%}%>
+                            <%}%>
+                                <br><br>
+        </div>
+        
+        
         <div id="commentsSection">
             <h4>Comments/Feedback left by surveyors:</h4>
             <% for(let j=0; j < responses.length; j++) { %>

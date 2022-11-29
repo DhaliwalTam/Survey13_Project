@@ -36,9 +36,17 @@
                 <label class="stepLabel">Step 2: Enter your new question below</label>
                 <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1"
                     maxlength="200">
+                    <br>
                 <div id="q"></div>
                 <br>
-                <label class="stepLabel">Step 3: Add options to your question</label>
+                <div class="form-group">
+                    <label class="stepLabel">Step 3: Select the type of option you want to add:</label>
+                    <br>
+                    <input type="radio" id="radioOption" name="optionType">Radio Button
+                    <br>
+                    <input type="radio" id="textboxOption" name="optionType">Text box
+                </div>
+                <br>
                 <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1"
                     maxlength="100">
                 <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
@@ -50,7 +58,6 @@
                 <br>
                 <input type="hidden" id="optionList" name="oList">
                 <br>
-                <input type="hidden" id="optionTypeList" name="tList">
             </div>
         </form>
         <br>

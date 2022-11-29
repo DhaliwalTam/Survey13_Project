@@ -93,17 +93,17 @@
                                         <% if(displayName) { %>
                                            
                                             <td class="text-center col-1">
-                                                <a id="<%=surveys[count]._id%>" class="btn btn-default btn-sm editBtn" onClick="confirmEdit(this.id)">
+                                                <a id="<%=surveys[count]._id%>" class="btn btn-default editBtn" onClick="confirmEdit(this.id)">
                                                     <i class="fas fa-pencil-alt"></i> Edit</a>
                                             </td>
 
                                             <td class="text-center col-1">
-                                                <a id="deleteBtn" href="/survey-delete/<%= surveys[count]._id %>" class="btn btn-default btn-sm">
+                                                <a id="<%=surveys[count]._id%>" class="btn btn-default deleteBtn" onClick="confirmDelete(this.id)">
                                                     <i class="fas fa-trash-alt"></i> Delete</a>
                                             </td>
 
                                             <td class="text-center col-2">
-                                                <a id="viewSurveyStatsBtn" href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-info">
+                                                <a id="viewSurveyStatsBtn" href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-default">
                                                     <i class="fa-solid fa-database"></i> View Survey Stats</a>
                                             </td>
 

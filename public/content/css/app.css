@@ -493,13 +493,15 @@ table {
 
 .editBtn,
 #addASurveyBtn,
-#deleteBtn {
+.deleteBtn, #viewSurveyStatsBtn {
     border: solid 1px black;
     background: gainsboro;
 }
 
+
+
 .editBtn:hover,
-#deleteBtn:hover,
+.deleteBtn:hover,
 #addASurveyBtnListPage:hover,
 #viewSurveyStatsBtn:hover,
 #startASurveyBtn:hover {
@@ -511,7 +513,11 @@ table {
     background-color: #16697A;
 }
 
-#deleteBtn:hover {
+#viewSurveyStatsBtn:hover{
+    background-color: #0DCAF0;  
+}
+
+.deleteBtn:hover {
     background-color: #BB0029;
 }
 

@@ -3,6 +3,8 @@ var today = new Date();
 var questionArray = [];
 var optionsArray = [];
 var options = [];
+var optionType = [];
+var optionTypeArray = [];
 
 document.getElementById("createSurvey").addEventListener("submit", preventSubmit);
 document.getElementById("expire").addEventListener("blur",validateDate);
@@ -11,6 +13,16 @@ document.getElementById("saveQuestionandOptions").addEventListener("click",addQu
 document.getElementById("addOptionButton").addEventListener("click",addOptions);
 document.getElementById("questionFormat").addEventListener("change",addDefaultOptions);
 document.getElementById("cancelBtn").addEventListener("click",confirmCancel);
+document.getElementById('textboxOption').addEventListener("change", () => {
+    document.getElementById(`optionInput`).style.visibility = "hidden";
+});
+
+document.getElementById('radioOption').addEventListener("change", () => {
+    document.getElementById(`optionInput`).style.visibility = "visible";
+});
+
+    
+
 window.addEventListener("load",function(){
    
     if(today.getMonth()+1 < 10 && today.getDate() < 10){
@@ -48,24 +60,33 @@ window.addEventListener("load",function(){
     }
 
     document.getElementById("questionFormat").selectedIndex = "-1";
-
+    
 })
 
 
 function addQuestion(){
+    
+
+    
     if(document.getElementById("questionFormat").selectedIndex == "-1"){
         alert("Please select a question format!");
     }
     
+    else if(document.getElementById("optionList").value ==="" && (document.getElementById('radioOption').checked )){
+        alert("Please add some options before saving!"); 
+    }
     
     else if(document.getElementById("questionInput").value !== ""){
         questionArray.push(document.getElementById("questionInput").value);
         document.getElementById("questionList").value = questionArray;
         document.getElementById("questionInput").value = "";
         optionsArray.push(options);
+        
         questionNumber++;
         document.getElementById(`q`).innerHTML = "";
         document.getElementById("optionList").value = "";
+        
+        optionType = [];
         options = [];
         document.getElementById("questionInput").placeholder = `Enter question ${questionNumber}`;
         document.getElementById("optionInput").placeholder = `Option for question ${questionNumber}`;
@@ -76,6 +97,9 @@ function addQuestion(){
     else{
         alert("Please enter a question!");
     }
+
+
+    
 }
 
 function addDefaultOptions(){
@@ -93,8 +117,10 @@ function addDefaultOptions(){
         
         for(var i = 0; i < 2; i++){
             options.push(document.getElementById(`radio${i}`).value);
+            optionType.push("radio");
         }
     
+        
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
@@ -104,8 +130,9 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
+            optionType = [];
             document.getElementById("q").innerHTML = "";
-             for(var i = 0; i < 2; i++){
+            for(var i = 0; i < 2; i++){
             document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
         }
  
@@ -118,8 +145,10 @@ function addDefaultOptions(){
         
         for(var i = 0; i < 2; i++){
             options.push(document.getElementById(`radio${i}`).value);
+            optionType.push("radio");
         }
     
+       
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
         }
@@ -158,8 +187,10 @@ function addDefaultOptions(){
         
         for(var i = 0; i < 2; i++){
             options.push(document.getElementById(`radio${i}`).value);
+            optionType.push("radio");
         }
     
+       
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
@@ -168,6 +199,7 @@ function addDefaultOptions(){
             var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
             if(confirmChange){
                 options = [];
+                optionType = [];
                 document.getElementById("q").innerHTML = "";
                 for(var i = 0; i < 2; i++){
                     document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -182,8 +214,10 @@ function addDefaultOptions(){
                 
                 for(var i = 0; i < 2; i++){
                     options.push(document.getElementById(`radio${i}`).value);
+                    optionType.push("radio");
                 }
             
+                
                 document.getElementById("optionList").value = options; 
                 document.getElementById(`q`).innerHTML += "<br>";
             }
@@ -212,7 +246,9 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
+            optionType = [];
             document.getElementById("q").innerHTML = "";
+           
             document.getElementById("optionList").value = options; 
         }
 
@@ -237,7 +273,9 @@ function addDefaultOptions(){
         
         for(var i = 0; i < 4; i++){
             options.push(document.getElementById(`radio${i}`).value);
+            optionType.push("radio");
         }
+    
         
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
@@ -247,6 +285,7 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
+            optionType = [];
             document.getElementById("q").innerHTML = "";
             for(var i = 0; i < 4; i++){
                 document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -263,7 +302,9 @@ function addDefaultOptions(){
             
             for(var i = 0; i < 4; i++){
                 options.push(document.getElementById(`radio${i}`).value);
+                optionType.push("radio");
             }
+    
             
             document.getElementById("optionList").value = options; 
             document.getElementById(`q`).innerHTML += "<br>";
@@ -305,7 +346,9 @@ function addDefaultOptions(){
         
         for(var i = 0; i < 5; i++){
             options.push(document.getElementById(`radio${i}`).value);
+            optionType.push("radio");
         }
+    
         
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
@@ -315,6 +358,7 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
+            optionType = [];
             document.getElementById("q").innerHTML = "";
             for(var i = 0; i < 5; i++){
                 document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -332,7 +376,9 @@ function addDefaultOptions(){
             
             for(var i = 0; i < 5; i++){
                 options.push(document.getElementById(`radio${i}`).value);
+                optionType.push("radio");
             }
+    
             
             document.getElementById("optionList").value = options; 
             document.getElementById(`q`).innerHTML += "<br>";
@@ -359,19 +405,20 @@ function addDefaultOptions(){
 }
 
 function addOptions(){
-    var radio = document.createElement("input");
-    var label = document.createElement("label");
 
     if(document.getElementById("questionFormat").selectedIndex == "-1"){
         alert("Please select a question format!");
         document.getElementById(`optionInput`).value = "";
     }
     
-    else if(document.getElementById(`optionInput`).value == ""){
+    else if(document.getElementById(`optionInput`).value == "" && !document.getElementById('textboxOption').checked ){
         alert("You cannot add a blank option. Please try again!");
     }
 
-    else if(document.getElementById("questionInput").value !== ""){
+    else if(document.getElementById("questionInput").value !== "" && document.getElementById('radioOption').checked){
+        var radio = document.createElement("input");
+        var label = document.createElement("label");
+
         radio.type = "radio";
         radio.name = `answers${questionNumber-1}`;
         radio.id = `question${questionNumber-1}`;
@@ -383,12 +430,29 @@ function addOptions(){
         options.push(label.innerHTML);
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
-    }
-    
-    else{
-        alert("You must add a question before adding any more options!")
+        
+        
     }
 
+    else if(document.getElementById("questionInput").value !== "" && document.getElementById('textboxOption').checked){
+        var textbox = document.createElement("textarea");
+        textbox.name = `answers${questionNumber-1}`;
+        textbox.id = `question${questionNumber-1}`;
+        textbox.className = "customTextbox";
+        document.getElementById(`q`).appendChild(textbox);
+        options.push("");
+        optionType.push("textarea");
+        document.getElementById(`optionInput`).value = "";
+        
+    }
+
+    else if(document.getElementById("questionInput").value === ""){
+        alert("Please add a question before adding options!")
+    }
+
+    else{
+        alert("Please select the type of option you want to add!")
+    }
 }
 
 

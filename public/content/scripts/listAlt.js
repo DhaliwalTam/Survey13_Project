@@ -21,3 +21,10 @@ function confirmEdit(id) {
         window.location.href = `../surveys/edit/${id}`;
     } 
 }
+
+function confirmDelete(id){
+    var confirmed = confirm("Are you sure you want to delete this survey and all associated data? This cannot be undone.");
+    if (confirmed) {
+        window.location.href = `/survey-delete/${id}`;
+    }  
+}

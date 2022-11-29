@@ -95,7 +95,12 @@
                                 class="fas fa-plus-circle"></i> Add New Option</button>
                         <div id="optionsDiv<%= count+1 %>">
                             <% for(let j=0; j < survey.options[count].length; j++) { %>
-                            <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
+                                <%if(survey.options[count][j] == "" ){%>
+                                    <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly><br>
+                                    <%}else{%>
+                                        <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
+                                    <%}%>
+                                
                             <% } %>
                     </div>
                     <br>
