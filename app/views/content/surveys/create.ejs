@@ -22,7 +22,7 @@
             </div>
             <br>
             <div class="form-group">
-                <label>Question Format:</label>
+                <label class="stepLabel">Step 1: Choose question format:</label>
                 <select id="questionFormat">
                     <option value="multipleChoice">Multiple Choice</option>
                     <option value="trueFalse">True/False</option>
@@ -33,26 +33,31 @@
             </div>
             <br>
             <div id="questionCreate">
-                <label>Enter your new question here:</label>
+                <label class="stepLabel">Step 2: Enter your new question below</label>
                 <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1"
-                    maxlength="100">
+                    maxlength="200">
                 <div id="q"></div>
                 <br>
+                <label class="stepLabel">Step 3: Add options to your question</label>
                 <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1"
-                    maxlength="30">
+                    maxlength="100">
                 <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
                     Option</button>
                 <br><br>
-                <button type="button" id="saveQuestionandOptions" title="Save before creating another question.
-            ">Save Question and Options</button>
+                <label class="stepLabel">Step 4: Save your question and options (Important!)</label>
+                <button type="button" id="saveQuestionandOptions" title="Save before creating another question.">Save Question and Options</button>
                 <input type="hidden" id="questionList" name="qList">
                 <br>
                 <input type="hidden" id="optionList" name="oList">
+                <br>
+                <input type="hidden" id="optionTypeList" name="tList">
             </div>
         </form>
         <br>
 
         <!-- submit survey -->
+        <label class="stepLabel">Step 5: Publish your survey!</label>
+        <br>
         <button id="submitButton" class="btn btn-default" type="button">
             <i class="fas fa-edit"></i> Publish Survey!</button>
         <!-- cancel survey -->

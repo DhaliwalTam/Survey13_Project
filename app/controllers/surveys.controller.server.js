@@ -94,7 +94,8 @@ export function ProcessSurveyCreatePage(req, res, next) {
                 expiry: req.body.expire,
                 attempts: 0,
                 questions: req.body.questionArray,
-                options: req.body.optionsArray
+                options: req.body.optionsArray,
+                optionType: req.body.optionTypeArray
             });
 
 
@@ -143,6 +144,7 @@ export function ProcessSurveyEditPage(req,res,next){
         title: req.body.title,
         createdOn: req.body.createdOn,
         expiry: req.body.expiringOn,
+        attempts:0,
         questions: [],
         options: []
     });
@@ -176,8 +178,17 @@ export function ProcessSurveyEditPage(req,res,next){
             res.end(err);
         };
 
+        
+    });
+    
+    responsesModel.deleteMany({surveyID:id},(err)=>{
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+
         res.redirect('/surveys/list');
-    })
+    });
 }
 
 // processes deletion of a selected survey
@@ -191,9 +202,17 @@ export function ProcessSurveyDelete(req, res, next) {
             console.error(err);
             res.end(err);
         }
-
-        res.redirect('/surveys/list');
+        
     })
+        responsesModel.deleteMany({surveyID:id},(err)=>{
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }
+    
+            res.redirect('/surveys/list');
+        });
+    
 }
 
 // displays the main survey page where anonymous users can complete a survey
@@ -219,6 +238,8 @@ export function DisplaySurveyPage(req, res, next) {
 
 // processes the main survey once a user clicks 'Submit'
 export function ProcessSurveyPage(req, res, next) {
+    var text = [];
+    
     let newSubmission = responsesModel({
         surveyID: req.body.surveyID,
         surveyor: req.body.surveyorName,
@@ -230,7 +251,8 @@ export function ProcessSurveyPage(req, res, next) {
         surveyAuthor: req.body.createdBy,
         questions: [],
         responses: [],
-        comments: []
+        comments: [],
+        textResponses: []
     })
 
     
@@ -246,20 +268,50 @@ export function ProcessSurveyPage(req, res, next) {
             }
         }
 
-        if(req.body[`choices${i+1}`] !== ""){
-            newSubmission.responses.push(req.body[`choices${i+1}`]);
-        }
-
         if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
             const index = newSubmission.responses.indexOf(req.body[`choices${i+1}`]);
             if (index > -1) {
                 newSubmission.responses.splice(index, 1);
             }
         }
+        
+        
+        else if(req.body[`choices${i+1}`] !== ""){
+            newSubmission.responses.push(req.body[`choices${i+1}`].toString());
+        }
+
+        if(req.body[`question${i+1}`] == "undefined" || req.body[`question${i+1}`] == null){
+            const index = text.indexOf(req.body[`question${i+1}`]);
+            if (index > -1) {
+                text.splice(index, 1);
+            }
+        }
+       
+        else if((req.body[`question${i+1}`] !== "undefined" || req.body[`question${i+1}`] !== null) && req.body[`question${i+1}`] !== ""){
+            var str = req.body[`question${i+1}`];
+            var newStr = `Question ${i+1}: ${str}`;
+            newSubmission.responses.push(req.body[`question${i+1}`]);
+            text.push(newStr);
+        }
+
+
+        if(req.body[`text${i+1}`] == "undefined" || req.body[`text${i+1}`] == null){
+            const index = text.indexOf(req.body[`text${i+1}`]);
+            if (index > -1) {
+                text.splice(index, 1);
+            }
+        }
+       
+        else if((req.body[`text${i+1}`] !== "undefined" || req.body[`text${i+1}`] !== null) && req.body[`text${i+1}`] !== ""){
+            var str = req.body[`text${i+1}`];
+            var newStr = `Question ${i+1}: ${str}`;
+            text.push(newStr);
+        }
     }
+    
 
+    newSubmission.textResponses.push(text);
     newSubmission.comments.push(req.body.comments);
-
     responsesModel.create(newSubmission, (err) => {
         if (err) {
             console.error(err);

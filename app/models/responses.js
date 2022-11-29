@@ -13,7 +13,8 @@ const ResponseSchema = new Schema({
     surveyAuthor: String,
     questions: [String],
     responses: [String],
-    comments: [String]
+    comments: [String],
+    textResponses: []
 }, {
     timestamps: true,
     collection: 'responses'

@@ -312,6 +312,11 @@ h2 {
     box-shadow: 10px 5px 5px grey;
 }
 
+.stepLabel{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 #survey-create-box h1 {
     font-size: 30px;
     margin-top: 30px;
@@ -486,14 +491,14 @@ table {
     font-size: 13px;
 }
 
-#editBtn,
+.editBtn,
 #addASurveyBtn,
 #deleteBtn {
     border: solid 1px black;
     background: gainsboro;
 }
 
-#editBtn:hover,
+.editBtn:hover,
 #deleteBtn:hover,
 #addASurveyBtnListPage:hover,
 #viewSurveyStatsBtn:hover,
@@ -502,7 +507,7 @@ table {
     color: ghostwhite;
 }
 
-#editBtn:hover {
+.editBtn:hover {
     background-color: #16697A;
 }
 
@@ -548,6 +553,14 @@ h1 {
     margin-left: 15px;
 }
 
+#submissionNumber, #commentsTitle, #freeTextTitle{
+    text-decoration: underline;
+}
+
+.optionChosen{
+    display: inline;
+}
+
 #emailData,
 #backToSurveyListBtn {
     background-color: gainsboro;
@@ -584,7 +597,7 @@ h1 {
     border-radius: 10px;
 }
 
-#mainSurvey input[type="radio"] {
+#mainSurvey input[type="radio"], #mainSurvey input[type="checkbox"]  {
     margin-top: 5px;
     margin-left: 5px;
     width: 25px;
@@ -627,7 +640,7 @@ h1 {
     font-size: small;
 }
 
-#commentsBox{
+#commentsBox, .customTextbox{
     resize: both;
 }
 
