@@ -16,7 +16,7 @@ window.addEventListener("load",()=>{
 
 
 function confirmEdit(id) {
-    var confirmed = confirm("Heads up! If you edit your survey, you will all previous responses for this survey. Click OK to proceed.");
+    var confirmed = confirm("Heads up! Editing this survey will reset its statistics. Click OK to proceed.");
     if (confirmed) {
         window.location.href = `../surveys/edit/${id}`;
     } 

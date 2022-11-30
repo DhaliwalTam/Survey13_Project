@@ -21,8 +21,6 @@ document.getElementById('radioOption').addEventListener("change", () => {
     document.getElementById(`optionInput`).style.visibility = "visible";
 });
 
-    
-
 window.addEventListener("load",function(){
    
     if(today.getMonth()+1 < 10 && today.getDate() < 10){
@@ -60,20 +58,30 @@ window.addEventListener("load",function(){
     }
 
     document.getElementById("questionFormat").selectedIndex = "-1";
-    
-})
+
+    //for(var i = 0; i < document.getElementsByClassName("hiddenDiv").length; i++){
+        //document.getElementsByClassName("hiddenDiv")[i].style.visibility = "hidden";
+    //}
+});
+
+function createArrow(){
+    var flashArrow = document.createElement("I");
+    flashArrow.className = "fa-solid fa-arrow-right fa-beat-fade fa-2x";
+    flashArrow.id = "missingArrow";
+    return flashArrow;
+}
 
 
 function addQuestion(){
-    
-
-    
     if(document.getElementById("questionFormat").selectedIndex == "-1"){
         alert("Please select a question format!");
+        document.getElementById("questionFormatLabel").before(createArrow(), document.getElementById("questionFormatLabel"));
+       
     }
     
     else if(document.getElementById("optionList").value ==="" && (document.getElementById('radioOption').checked )){
-        alert("Please add some options before saving!"); 
+        alert("Please add some options before saving!");
+        document.getElementById("optionInput").style.borderColor = "red"; 
     }
     
     else if(document.getElementById("questionInput").value !== ""){
@@ -89,17 +97,22 @@ function addQuestion(){
         optionType = [];
         options = [];
         document.getElementById("questionInput").placeholder = `Enter question ${questionNumber}`;
-        document.getElementById("optionInput").placeholder = `Option for question ${questionNumber}`;
+        document.getElementById("optionInput").placeholder = `Enter an option for question ${questionNumber}`;
         addDefaultOptions();
         alert("Question saved successfully!");
+        document.getElementById("optionInput").style.borderColor = "";
+        document.getElementById("questionInput").style.borderColor = "";
+        if(document.getElementById("chooseFormatDiv").contains(document.getElementById('missingArrow'))){
+            document.getElementById("chooseFormatDiv").removeChild(document.getElementById("missingArrow"));
+        }
     }
     
     else{
         alert("Please enter a question!");
+        document.getElementById("questionInput").style.borderColor = "red"; 
     }
 
 
-    
 }
 
 function addDefaultOptions(){
@@ -349,7 +362,6 @@ function addDefaultOptions(){
             optionType.push("radio");
         }
     
-        
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
@@ -379,7 +391,6 @@ function addDefaultOptions(){
                 optionType.push("radio");
             }
     
-            
             document.getElementById("optionList").value = options; 
             document.getElementById(`q`).innerHTML += "<br>";
         }
@@ -402,17 +413,23 @@ function addDefaultOptions(){
             }
         }
     }
+
+    document.getElementById("enterQuestionDiv").style.visibility = "visible";
+    if(document.getElementById("chooseFormatDiv").contains(document.getElementById('missingArrow'))){
+        document.getElementById("chooseFormatDiv").removeChild(document.getElementById("missingArrow"));
+    }
 }
 
 function addOptions(){
-
     if(document.getElementById("questionFormat").selectedIndex == "-1"){
         alert("Please select a question format!");
         document.getElementById(`optionInput`).value = "";
+        document.getElementById("questionFormatLabel").before(createArrow(), document.getElementById("questionFormatLabel"));
     }
     
     else if(document.getElementById(`optionInput`).value == "" && !document.getElementById('textboxOption').checked ){
         alert("You cannot add a blank option. Please try again!");
+        document.getElementById("optionInput").style.borderColor = "red"; 
     }
 
     else if(document.getElementById("questionInput").value !== "" && document.getElementById('radioOption').checked){
@@ -430,7 +447,16 @@ function addOptions(){
         options.push(label.innerHTML);
         document.getElementById("optionList").value = options; 
         document.getElementById(`q`).innerHTML += "<br>";
+        document.getElementById("saveDiv").style.visibility = "visible";
+        document.getElementById("optionInput").style.borderColor = "";
+        document.getElementById("questionInput").style.borderColor = "";
+        if(document.getElementById("chooseFormatDiv").contains(document.getElementById('missingArrow'))){
+            document.getElementById("chooseFormatDiv").removeChild(document.getElementById("missingArrow"));
+        }
         
+        if(document.getElementById("enterQuestionDiv").contains(document.getElementById('missingArrow'))){
+            document.getElementById("enterQuestionDiv").removeChild(document.getElementById("missingArrow"));
+        }
         
     }
 
@@ -443,16 +469,28 @@ function addOptions(){
         options.push("");
         optionType.push("textarea");
         document.getElementById(`optionInput`).value = "";
-        
+        document.getElementById("saveDiv").style.visibility = "visible";
+        document.getElementById("optionInput").style.borderColor = "";
+        document.getElementById("questionInput").style.borderColor = "";
+        if(document.getElementById("chooseFormatDiv").contains(document.getElementById('missingArrow'))){
+            document.getElementById("chooseFormatDiv").removeChild(document.getElementById("missingArrow"));
+        }
+
+        if(document.getElementById("enterQuestionDiv").contains(document.getElementById('missingArrow'))){
+            document.getElementById("enterQuestionDiv").removeChild(document.getElementById("missingArrow"));
+        }
     }
 
     else if(document.getElementById("questionInput").value === ""){
-        alert("Please add a question before adding options!")
+        alert("Please add a question before adding options!");
+        document.getElementById("questionInput").style.borderColor = "red";
     }
 
     else{
-        alert("Please select the type of option you want to add!")
+        alert("Please select the type of option you want to add!");
+        document.getElementById("optionTypeLabel").before(createArrow(), document.getElementById("optionTypeLabel"));
     }
+
 }
 
 
@@ -464,12 +502,12 @@ function validateDate(){
         alert("Invalid expiry date selected!");
         document.getElementById("expire").value = "";
     }
-
 }
 
 function preventSubmit(e){
     e.preventDefault();
 }
+
 
 function confirmCancel(){
     var confirmCancel = confirm("Are you sure you want to leave this page? All survey questions and options will be lost!");

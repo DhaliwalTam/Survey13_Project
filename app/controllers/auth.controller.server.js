@@ -70,7 +70,7 @@ export function ProcessRegisterPage(req, res, next) {
     }
 
     else if (age >= 14) {
-        let newUser = new User({
+        var newUser = new User({
             username: req.body.username,
             address: req.body.emailAddress,
             password: req.body.password,

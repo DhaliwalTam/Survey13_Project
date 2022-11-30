@@ -8,21 +8,22 @@
             <div class="form-group">
                 <label for="nameTextField">Survey Title:</label>
                 <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title"
-                    maxlength="30">
+                    maxlength="30" required>
             </div>
 
             <div class="form-group">
                 <label for="nameTextField">Date of Survey Activation:</label>
-                <input type="date" class="form-control" id="active" name="activeDate">
+                <input type="date" class="form-control" id="active" name="activeDate" required>
             </div>
 
             <div class="form-group">
                 <label for="nameTextField">Date of Survey Expiry:</label>
-                <input type="date" class="form-control" id="expire" name="expiryDate">
+                <input type="date" class="form-control" id="expire" name="expiryDate" required>
             </div>
             <br>
-            <div class="form-group">
-                <label class="stepLabel">Step 1: Choose question format:</label>
+            <div class="form-group" id="chooseFormatDiv">
+                
+                <label id="questionFormatLabel" class="stepLabel">Step 1: Choose question format:</label>
                 <select id="questionFormat">
                     <option value="multipleChoice">Multiple Choice</option>
                     <option value="trueFalse">True/False</option>
@@ -33,27 +34,28 @@
             </div>
             <br>
             <div id="questionCreate">
-                <label class="stepLabel">Step 2: Enter your new question below</label>
-                <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1"
-                    maxlength="200">
+                <div class="form-group hiddenDiv" id="enterQuestionDiv">
+                    
+                    <label class="stepLabel">Step 2: Enter your new question below</label>
+                    <input type="text" class="form-control" id="questionInput" placeholder="Enter question 1" maxlength="200">
+                    <div id="q"></div>
                     <br>
-                <div id="q"></div>
-                <br>
-                <div class="form-group">
-                    <label class="stepLabel">Step 3: Select the type of option you want to add:</label>
+                    
+                    <label id="optionTypeLabel" class="stepLabel">Step 3: Select the type of option you want to add:</label>
                     <br>
                     <input type="radio" id="radioOption" name="optionType">Radio Button
                     <br>
                     <input type="radio" id="textboxOption" name="optionType">Text box
-                </div>
-                <br>
-                <input type="text" class="form-control" id="optionInput" placeholder="Option for question 1"
-                    maxlength="100">
-                <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
+                    <br><br>
+                    <input type="text" class="form-control" id="optionInput" placeholder="Enter an option for question 1" maxlength="100">
+                    <button type="button" id="addOptionButton" class="addOptions"><i class="fas fa-plus-circle"></i> Add
                     Option</button>
+                </div>
                 <br><br>
-                <label class="stepLabel">Step 4: Save your question and options (Important!)</label>
-                <button type="button" id="saveQuestionandOptions" title="Save before creating another question.">Save Question and Options</button>
+                <div class="form-group hiddenDiv" id="saveDiv">
+                    <label class="stepLabel">Step 4: Save your question and options (Important!)</label>
+                    <button type="button" id="saveQuestionandOptions" title="Save before creating another question.">Save Question and Options</button>    
+                </div>
                 <input type="hidden" id="questionList" name="qList">
                 <br>
                 <input type="hidden" id="optionList" name="oList">
@@ -61,9 +63,7 @@
             </div>
         </form>
         <br>
-
         <!-- submit survey -->
-        <label class="stepLabel">Step 5: Publish your survey!</label>
         <br>
         <button id="submitButton" class="btn btn-default" type="button">
             <i class="fas fa-edit"></i> Publish Survey!</button>

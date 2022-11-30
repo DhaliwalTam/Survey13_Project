@@ -11,7 +11,7 @@ today.setDate(today.getDate() - 1);
 
 //display surveyLists
 export function DisplaySurveyList(req, res, next) {
-    let publisher = UserDisplayName(req);
+    var publisher = UserDisplayName(req);
 
     if (publisher !== "") {
         userModel.find({
@@ -75,7 +75,7 @@ export function DisplayCreateSurveyPage(req, res, next) {
 
 //  processes survey create page
 export function ProcessSurveyCreatePage(req, res, next) {
-    let publisher = UserDisplayName(req);
+    var publisher = UserDisplayName(req);
 
     userModel.find({ displayName: publisher }, function (err, user) {
         if (err) {
@@ -84,7 +84,7 @@ export function ProcessSurveyCreatePage(req, res, next) {
         }
 
         else {
-                let newSurvey = surveyModel({
+            var newSurvey = surveyModel({
                 createdBy: req.body.createdBy,
                 publisherID: user[0]._id,
                 template: "Multiple Choice",
@@ -114,7 +114,7 @@ export function ProcessSurveyCreatePage(req, res, next) {
 
 // Displays the page where the user can edit a survey
 export function DisplaySurveyEditPage(req, res, next) {
-    let id = req.params.id;
+    var id = req.params.id;
 
     surveyModel.findById(id, (err, survey) => {
         if (err) {
@@ -135,9 +135,9 @@ export function DisplaySurveyEditPage(req, res, next) {
 
 // processes survey edit page/survey update page
 export function ProcessSurveyEditPage(req,res,next){
-    let id = req.params.id;
+    var id = req.params.id;
 
-    let updatedSurvey = surveyModel({
+    var updatedSurvey = surveyModel({
         _id: req.body.id,
         createdBy: req.body.createdBy,
         template: "Multiple Choice",
@@ -174,8 +174,6 @@ export function ProcessSurveyEditPage(req,res,next){
         }
     }
 
-    console.log(updatedSurvey.options);
-    
     surveyModel.updateOne({
         _id: id
     }, updatedSurvey, (err) => {
@@ -183,8 +181,6 @@ export function ProcessSurveyEditPage(req,res,next){
             console.error(err);
             res.end(err);
         };
-
-        
     });
     
     responsesModel.deleteMany({surveyID:id},(err)=>{
@@ -200,7 +196,7 @@ export function ProcessSurveyEditPage(req,res,next){
 
 // processes deletion of a selected survey
 export function ProcessSurveyDelete(req, res, next) {
-    let id = req.params.id;
+    var id = req.params.id;
 
     surveyModel.remove({
         _id: id
@@ -224,7 +220,7 @@ export function ProcessSurveyDelete(req, res, next) {
 
 // displays the main survey page where anonymous users can complete a survey
 export function DisplaySurveyPage(req, res, next) {
-    let id = req.params.id;
+    var id = req.params.id;
 
     surveyModel.findById(id, (err, survey) => {
         if (err) {
@@ -247,7 +243,7 @@ export function DisplaySurveyPage(req, res, next) {
 export function ProcessSurveyPage(req, res, next) {
     var text = [];
     
-    let newSubmission = responsesModel({
+    var newSubmission = responsesModel({
         surveyID: req.body.surveyID,
         surveyor: req.body.surveyorName,
         surveyorEmail: req.body.surveyorEmail,
@@ -386,12 +382,8 @@ export function ProcessSurveyPage(req, res, next) {
 
 // Displays the survey statistics page for a given survey
 export function DisplaySurveyStatsPage(req, res, next) {
-    let id = req.params.id;
-    let respondents = 0;
-    const counts = {};
+    var id = req.params.id;
     var question1Array = {};
-    var responseArray = [];
-    var element;
     
     surveyModel.findById(id, (err, survey) => {
         if (err) {
@@ -401,42 +393,30 @@ export function DisplaySurveyStatsPage(req, res, next) {
 
 
         else {
-            
-            
-            let survID = survey._id;
+            var survID = survey._id;
             responsesModel.find({ surveyID: survID }, function (err, responseCollection) {
                 if (err) {
                     console.error(err);
                     res.end(err);
                 }
 
-                console.log(responseCollection.length);
-
                 for (var i = 0; i < survey.questions.length; i++) {
                     question1Array[`question${i + 1}`] = `${survey.questions[i]}`;
                     question1Array[`Responsesquestion${i + 1}`] = "";
-
                 }
-
 
                 for (var i = 0; i < responseCollection.length; i++) {
                     for (var j = 0; j < survey.questions.length; j++) {
                         question1Array[`Responsesquestion${j + 1}`] += `${responseCollection[i].responses[j]},`;
                     }
-
                 }
-
 
                 res.render('index', {
                     title: 'Survey Stats',
                     page: 'surveys/stats',
                     responses: responseCollection,
                     survey: survey,
-                    respondents: respondents,
-                    counts: counts,
                     question1Array: question1Array,
-                    responseArray: responseArray,
-                    element: element,
                     displayName: UserDisplayName(req),
                     id:GetUserID(req), 
                     username: GetUsername(req)
@@ -448,7 +428,7 @@ export function DisplaySurveyStatsPage(req, res, next) {
 
 // Emails the survey statistics to user's registered email address
 export function ProcessSurveyStatsPage(req, res, next) {
-    let publisher = UserDisplayName(req);
+    var publisher = UserDisplayName(req);
 
     userModel.find({
         displayName: publisher

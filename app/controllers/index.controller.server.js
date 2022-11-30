@@ -8,7 +8,7 @@ var codeArray = [];
 
 // Display main home page of website
 export function DisplayHomePage(req, res, next) {
-    let publisher = UserDisplayName(req);
+    var publisher = UserDisplayName(req);
 
     if(publisher !== ""){
         userModel.find({displayName: publisher}, function (err, user) {
@@ -38,7 +38,7 @@ export function DisplayHomePage(req, res, next) {
 
 // Display the profile update page
 export function DisplayUpdatePage(req,res,next){
-    let id = req.params.id;
+    var id = req.params.id;
 
    userModel.findById(id, (err, user) => {
         if (err) {
@@ -59,9 +59,9 @@ export function DisplayUpdatePage(req,res,next){
 
 // Processes the user's request to update profile
 export function ProcessUpdatePage(req,res,next){
-    let id = req.params.id;
+    var id = req.params.id;
    
-    let updatedUser = userModel({
+    var updatedUser = userModel({
         _id: req.body.id,
         username: req.body.userName,
         password: req.body.password,
@@ -84,7 +84,7 @@ export function ProcessUpdatePage(req,res,next){
 
 // Display password change page
 export function DisplayPasswordPage(req,res,next){
-    let id = req.params.id;
+    var id = req.params.id;
 
    userModel.findById(id, (err, user) => {
         if (err) {
@@ -105,9 +105,9 @@ export function DisplayPasswordPage(req,res,next){
 
 // Processes the user's request to change password
 export function ProcessPasswordPage(req, res, next){
-    let id = req.body.id;
+    var id = req.body.id;
     
-    let updatedUser = userModel({
+    var updatedUser = userModel({
         _id: req.body.id,
         username: req.body.userName,
         password: req.body.new,
@@ -161,8 +161,8 @@ export function ProcessForgotPassPage(req,res,next){
             return res.redirect('/forgotPass');
         }
         else {
-            let id = user._id;
-            let updatedUser = userModel({
+            var id = user._id;
+            var updatedUser = userModel({
                 _id: id,
                 password: req.body.newPassword,
             });

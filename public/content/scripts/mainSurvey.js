@@ -16,8 +16,6 @@ document.getElementById("mainSurvey").addEventListener("submit",(e)=>{
 });
 
 document.getElementById("cancelButton").addEventListener("click",()=>{
-    
-    
     var confirmLeave = confirm("Are you sure you want to leave this survey?");
     if(confirmLeave){
         window.location.href = "../list";
