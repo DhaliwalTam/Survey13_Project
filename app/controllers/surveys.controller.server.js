@@ -133,9 +133,18 @@ export function DisplaySurveyEditPage(req, res, next) {
     });
 }
 
+
+function arrayEquals(a, b) {
+    return Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index]);
+  }
+
 // processes survey edit page/survey update page
 export function ProcessSurveyEditPage(req,res,next){
     var id = req.params.id;
+    var defaultOptions = [];
 
     var updatedSurvey = surveyModel({
         _id: req.body.id,
@@ -144,7 +153,7 @@ export function ProcessSurveyEditPage(req,res,next){
         title: req.body.title,
         createdOn: req.body.createdOn,
         expiry: req.body.expiringOn,
-        attempts:0,
+        attempts: req.body.attempts,
         questions: [],
         options: []
     });
@@ -163,34 +172,70 @@ export function ProcessSurveyEditPage(req,res,next){
 
         if(req.body[`choices${i+1}`] == ""){
             updatedSurvey.options.push([""]);
+            defaultOptions.push([""]);
         }
 
         else if(req.body[`choices${i+1}`] !== ""){
             updatedSurvey.options.push(req.body[`choices${i+1}`]);
+            defaultOptions.push(req.body[`options${i+1}`]);
         }
 
         else if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
             updatedSurvey.options[i] = [];
+            defaultOptions[i] = [];
         }
     }
 
-    surveyModel.updateOne({
-        _id: id
-    }, updatedSurvey, (err) => {
+
+    if (Array.prototype.equals)
+        console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+   
+    Array.prototype.equals = function (array) {
+        if (!array)
+            return false;
+        
+        if (array === this)
+            return true;
+       
+        if (this.length != array.length)
+            return false;
+
+        for (var i = 0, l = this.length; i < l; i++) {
+            if (this[i] instanceof Array && array[i] instanceof Array) {
+                if (!this[i].equals(array[i]))
+                    return false;
+            } else if (this[i] != array[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+   
+    Object.defineProperty(Array.prototype, "equals", {
+        enumerable: false
+    });
+
+    
+    if (!defaultOptions.equals(updatedSurvey.options)) {
+        responsesModel.deleteMany({surveyID: id}, (err) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            }
+        });
+
+        updatedSurvey.attempts = 0;
+    }
+    
+    surveyModel.updateOne({_id: id}, updatedSurvey, (err) => {
         if (err) {
             console.error(err);
             res.end(err);
         };
-    });
-    
-    responsesModel.deleteMany({surveyID:id},(err)=>{
-        if (err) {
-            console.error(err);
-            res.end(err);
-        }
 
         res.redirect('/surveys/list');
     });
+
     
 }
 

@@ -69,6 +69,9 @@
                         <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Survey Title"
                             name="title" value="<%= survey.title %>">
                     </div>
+                   
+                        <input type="hidden" class="form-control" id="nameTextField" placeholder="Enter the Survey Title"
+                            name="attempts" value="<%= survey.attempts %>">
                     <br>
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="nameTextField" name="createdBy"
@@ -80,13 +83,23 @@
                             value="<%= survey.createdOn%>">
                     </div>
                     
-
-                    <div class="form-group">
-                        <% for(let count=0; count < survey.questions.length; count++) { %>
+                    <% for(let count=0; count < survey.questions.length; count++) { %>
+                            <% for(let j=0; j < survey.options[count].length; j++) { %>
+                                <%if(survey.options[count][j] == "" ){%>
+                                    <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly><br>
+                                    <%}else{%>
+                                        <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
+                                    <%}%>
+                                
+                            <% } %>
+                        <% } %>
+                    
+                    <% for(let count=0; count < survey.questions.length; count++) { %>
                         <br><label>Question <%= count + 1 %></label><input type="text" class="form-control"
                             placeholder="Edit question" name="ques" value="<%= survey.questions[count] %>">
+                            
                         <% } %>
-                    </div>
+
                     <br>
                     <div class="form-group">
                         <% for(let count=0; count < survey.questions.length; count++) { %>
