@@ -57,10 +57,11 @@
 
             </tbody>
         </table>
-        <div id="questionSection">
-            <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
-            <% for(let count=0; count < responses.length; count++) { %>
-                <%number=responses[count].textResponses.length-1%>
+        <%if(textResponsesExist){%>
+            <div id="questionSection">
+                <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
+                <% for(let count=0; count < responses.length; count++) { %>
+                    <%number=responses[count].textResponses.length-1%>
                     <br>
                     <h5 id="submissionNumber">Submission # <%=count+1%></h5>
                     <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
@@ -68,9 +69,9 @@
                         <%}%>
                             <%}%>
                                 <br><br>
-        </div>
-        
-        
+            </div>
+        <%}%>
+    
         <div id="commentsSection">
             <h4>Comments/Feedback left by surveyors:</h4>
             <% for(let j=0; j < responses.length; j++) { %>

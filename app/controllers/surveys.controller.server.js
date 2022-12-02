@@ -429,6 +429,7 @@ export function ProcessSurveyPage(req, res, next) {
 export function DisplaySurveyStatsPage(req, res, next) {
     var id = req.params.id;
     var question1Array = {};
+    var textResponsesExist = true;
     
     surveyModel.findById(id, (err, survey) => {
         if (err) {
@@ -454,6 +455,18 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     for (var j = 0; j < survey.questions.length; j++) {
                         question1Array[`Responsesquestion${j + 1}`] += `${responseCollection[i].responses[j]},`;
                     }
+
+                    for (var x = 0; x < responseCollection[i].textResponses.length; x++) {
+                        if(responseCollection[i].textResponses[x].length == 0){
+                            textResponsesExist = false;
+                        }
+                        
+                        else{
+                            textResponsesExist = true;
+                        }
+                    }
+
+                   
                 }
 
                 res.render('index', {
@@ -462,11 +475,16 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     responses: responseCollection,
                     survey: survey,
                     question1Array: question1Array,
+                    textResponsesExist: textResponsesExist,
                     displayName: UserDisplayName(req),
                     id:GetUserID(req), 
                     username: GetUsername(req)
                 });
+
+                
             })
+
+            
         }
     });
 }
