@@ -65,7 +65,7 @@
                     <br>
                     <h5 id="submissionNumber">Submission # <%=count+1%></h5>
                     <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
-                        <h5><%=responses[count].textResponses[number][j]%></h5>
+                        <h5 class="freeTextResponses"><%=responses[count].textResponses[number][j]%></h5>
                         <%}%>
                             <%}%>
                                 <br><br>
@@ -78,7 +78,7 @@
                 <p><%=j+1%>. <%=responses[j].comments%></p>
                 <%}%>
         </div>
-        <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Results</button>
+        <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Statistics</button>
         <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
             <i class="fas fa-undo"></i> Back to survey list</a>
     </div>

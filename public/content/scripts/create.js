@@ -59,9 +59,9 @@ window.addEventListener("load",function(){
 
     document.getElementById("questionFormat").selectedIndex = "-1";
 
-    //for(var i = 0; i < document.getElementsByClassName("hiddenDiv").length; i++){
-        //document.getElementsByClassName("hiddenDiv")[i].style.visibility = "hidden";
-    //}
+    for(var i = 0; i < document.getElementsByClassName("hiddenDiv").length; i++){
+        document.getElementsByClassName("hiddenDiv")[i].style.visibility = "hidden";
+    }
 });
 
 function createArrow(){

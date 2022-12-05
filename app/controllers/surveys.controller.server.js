@@ -493,6 +493,7 @@ export function DisplaySurveyStatsPage(req, res, next) {
 // Emails the survey statistics to user's registered email address
 export function ProcessSurveyStatsPage(req, res, next) {
     var publisher = UserDisplayName(req);
+    var mailOptions;
 
     userModel.find({
         displayName: publisher
@@ -515,12 +516,24 @@ export function ProcessSurveyStatsPage(req, res, next) {
                 }
             });
 
-            var mailOptions = {
-                from: 'survey13stats@gmail.com',
-                to: `${userEmail}`,
-                subject: `Data for survey titled: ${req.body.surveyTitle}`,
-                text: `Total number of respondents: ${req.body.numberOfRespondents}\n\nQuestions:\n${req.body.questions}\nAnswers with percentage of responses:\n${req.body.percentChosen}`
-            };
+            if(req.body.freeTextExist){
+                mailOptions = {
+                    from: 'survey13stats@gmail.com',
+                    to: `${userEmail}`,
+                    subject: `Data for survey titled: ${req.body.surveyTitle}`,
+                    text: `Total number of respondents:${req.body.numberOfRespondents}\nQuestions:\n${req.body.questions}\nAnswers with percentage of responses:\nN/A\n\nFree-text Responses:\n${req.body.freeTextResponses.join('\n')}`
+                };
+            }
+
+            else if(!req.body.freeTextExist){
+                mailOptions = {
+                    from: 'survey13stats@gmail.com',
+                    to: `${userEmail}`,
+                    subject: `Data for survey titled: ${req.body.surveyTitle}`,
+                    text: `Total number of respondents:${req.body.numberOfRespondents}\nQuestions:\n${req.body.questions}\nAnswers with percentage of responses:\n${req.body.percentChosen}`
+                };
+            }   
+
 
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
