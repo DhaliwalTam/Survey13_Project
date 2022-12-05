@@ -186,7 +186,7 @@ export function ProcessSurveyEditPage(req,res,next){
         }
     }
 
-
+    // Array comparison code below sourced from https://stackoverflow.com/questions/65316789/how-to-differentiate-the-array-values-in-javascript
     if (Array.prototype.equals)
         console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
    
@@ -214,6 +214,7 @@ export function ProcessSurveyEditPage(req,res,next){
     Object.defineProperty(Array.prototype, "equals", {
         enumerable: false
     });
+    //--------------------------------------------------------------------------------------------------------------------------
 
     
     if (!defaultOptions.equals(updatedSurvey.options)) {
