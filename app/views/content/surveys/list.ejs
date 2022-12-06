@@ -31,6 +31,7 @@
                                 <th scope="col" class="text-center col-1">Author</th>
                                 
                                 <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
+                                <th scope="col" class="text-center col-1">Format</th>
                                 <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on(yyyy-mm-dd)</th>
@@ -39,8 +40,8 @@
                                 <th scope="col" class="text-center col-1"># of people who completed this survey</th>
                                 <th></th>
                                 <% } else { %>
-                                    
                                     <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
+                                    <th scope="col" class="text-center col-1">Format</th>
                                     <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on (yyyy-mm-dd)</th>
@@ -56,6 +57,7 @@
                     </thead>
                     <tbody id="surveyList">
                         <!-- Repeatable Rows -->
+                        <%format = ''%>
                         <% for(let count=0; count < surveys.length; count++) { %>
 
                             <tr>
@@ -70,6 +72,20 @@
                                         
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].title %>
+                                        </td>
+                                        <% for(let i=0; i < surveys[count].questions.length; i++) { %>
+                                            <% for(let j=0; j < surveys[count].options[i].length; j++) { %>
+                                                <%if(surveys[count].options[i].includes("") && /[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
+                                                    <%format = 'Short Answer + Multiple Choice'%>
+                                                <%}else if(surveys[count].options[i].includes("") && !/[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
+                                                    <%format = 'Short Answer'%>
+                                                <%}else{%>
+                                                    <%format = 'Multiple Choice'%>
+                                                <%}%>
+                                            <% } %>
+                                        <% } %>
+                                        <td scope="row" class="text-center">
+                                            <%=format %>
                                         </td>
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].createdOn.toISOString().split('T')[0] %>

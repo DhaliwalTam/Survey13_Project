@@ -457,7 +457,6 @@ function addOptions(){
         if(document.getElementById("enterQuestionDiv").contains(document.getElementById('missingArrow'))){
             document.getElementById("enterQuestionDiv").removeChild(document.getElementById("missingArrow"));
         }
-        
     }
 
     else if(document.getElementById("questionInput").value !== "" && document.getElementById('textboxOption').checked){
@@ -466,6 +465,7 @@ function addOptions(){
         textbox.id = `question${questionNumber-1}`;
         textbox.className = "customTextbox";
         document.getElementById(`q`).appendChild(textbox);
+        document.getElementById("q").innerHTML += "<br>"
         options.push("");
         optionType.push("textarea");
         document.getElementById(`optionInput`).value = "";
