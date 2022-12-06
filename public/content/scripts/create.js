@@ -1,4 +1,5 @@
 var questionNumber = 1;
+var deleteButtonNumber = 0;
 var today = new Date();
 var questionArray = [];
 var optionsArray = [];
@@ -435,18 +436,20 @@ function addOptions(){
     else if(document.getElementById("questionInput").value !== "" && document.getElementById('radioOption').checked){
         var radio = document.createElement("input");
         var label = document.createElement("label");
-
         radio.type = "radio";
         radio.name = `answers${questionNumber-1}`;
-        radio.id = `question${questionNumber-1}`;
+        deleteButtonNumber++;
+        radio.id = `question${deleteButtonNumber-1}`;
         radio.value = document.getElementById(`optionInput`).value;
+        label.id = `labelOptions${deleteButtonNumber-1}`;
         label.innerHTML = `${document.getElementById(`optionInput`).value}`;
         document.getElementById(`q`).appendChild(radio);
         document.getElementById(`q`).appendChild(label);
         document.getElementById(`optionInput`).value = "";
         options.push(label.innerHTML);
         document.getElementById("optionList").value = options; 
-        document.getElementById(`q`).innerHTML += "<br>";
+        
+        document.getElementById(`q`).innerHTML += `<button type='button' id='${deleteButtonNumber-1}' class='btn btn-small' onclick='deleteOption(this.id)'><i class='fas fa-trash-alt'></i></button><br>`;
         document.getElementById("saveDiv").style.visibility = "visible";
         document.getElementById("optionInput").style.borderColor = "";
         document.getElementById("questionInput").style.borderColor = "";
@@ -462,10 +465,11 @@ function addOptions(){
     else if(document.getElementById("questionInput").value !== "" && document.getElementById('textboxOption').checked){
         var textbox = document.createElement("textarea");
         textbox.name = `answers${questionNumber-1}`;
-        textbox.id = `question${questionNumber-1}`;
+        deleteButtonNumber++;
+        textbox.id = `question${deleteButtonNumber-1}`;
         textbox.className = "customTextbox";
         document.getElementById(`q`).appendChild(textbox);
-        document.getElementById("q").innerHTML += "<br>"
+        document.getElementById(`q`).innerHTML += `<button type='button' id='${deleteButtonNumber-1}' class='btn btn-small' onclick='deleteOption(this.id)'><i class='fas fa-trash-alt'></i></button><br>`;
         options.push("");
         optionType.push("textarea");
         document.getElementById(`optionInput`).value = "";
@@ -493,6 +497,26 @@ function addOptions(){
 
 }
 
+function deleteOption(id){
+    const index = options.indexOf(document.getElementById(`question${id}`).value);
+    if (index > -1) {
+        options.splice(index, 1);
+    }
+
+    if(document.getElementById("q").contains(document.getElementById(`question${id}`))){
+        document.getElementById("q").removeChild(document.getElementById(`question${id}`));
+    }
+    document.getElementById("optionList").value = options; 
+    
+    if(document.getElementById("q").contains(document.getElementById(`labelOptions${id}`))){
+        document.getElementById("q").removeChild(document.getElementById(`labelOptions${id}`));
+    }
+
+    if(document.getElementById("q").contains(document.getElementById(id))){
+        document.getElementById("q").removeChild(document.getElementById(id));
+    }
+
+}
 
 function validateDate(){
     const activeDate = new Date(document.getElementById("active").value);
