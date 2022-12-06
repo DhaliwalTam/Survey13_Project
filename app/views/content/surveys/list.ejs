@@ -26,37 +26,39 @@
                 <table id="tableHeaderSurveyList" class="table table-striped table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col" class="text-center col-1" onclick="sortTable(0)">Survey #</th>
+                            <th scope="col" class="text-center" onclick="sortTable(0)">Survey #</th>
                             <% if(!displayName) { %>
                                 <th scope="col" class="text-center col-1">Author</th>
+                                
                                 <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
+                                <th scope="col" class="text-center col-1">Format</th>
                                 <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on(yyyy-mm-dd)</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(6)">Number of Questions</th>
                                 <th scope="col" class="text-center col-1" onclick="sortTable(7)">Time to complete (approx.)</th>
                                 <th scope="col" class="text-center col-1"># of people who completed this survey</th>
-                                <th scope="col" class="text-center col-2"></th>
+                                <th></th>
                                 <% } else { %>
+                                    
                                     <th scope="col" class="text-center col-1" onclick="sortTable(3)">Title</th>
+                                    <th scope="col" class="text-center col-1">Format</th>
                                     <th scope="col" class="text-center col-1">Created (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(4)">Active on (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(5)">Expiring on (yyyy-mm-dd)</th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(6)">Number of Questions </th>
                                     <th scope="col" class="text-center col-1" onclick="sortTable(7)">Time to complete (approx.)</th>
                                     <th scope="col" class="text-center col-1"># of people who completed this survey</th>
-                                    <th scope="col" class="text-center col-1"></th>
-                                    <th scope="col" class="text-center col-1"></th>
-                                    <th scope="col" class="text-center col-1"></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                     <% } %>
-
                         </tr>
                     </thead>
                     <tbody id="surveyList">
                         
-                        
+                        <%format = ''%>
                         <% for(let count=0; count < surveys.length; count++) { %>
-
                             <tr>
                                 <th scope="row" class="text-center">
                                     <%= count + 1 %>
@@ -70,8 +72,20 @@
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].title %>
                                         </td>
-                                        
-                                        
+                                        <% for(let i=0; i < surveys[count].questions.length; i++) { %>
+                                            <% for(let j=0; j < surveys[count].options[i].length; j++) { %>
+                                                <%if(surveys[count].options[i].includes("") && /[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
+                                                    <%format = 'Short Answer + Multiple Choice'%>
+                                                <%}else if(surveys[count].options[i].includes("") && !/[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
+                                                    <%format = 'Short Answer'%>
+                                                <%}else{%>
+                                                    <%format = 'Multiple Choice'%>
+                                                <%}%>
+                                            <% } %>
+                                        <% } %>
+                                        <td scope="row" class="text-center">
+                                            <%=format %>
+                                        </td>
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].createdOn.toISOString().split('T')[0] %>
                                         </td>
@@ -90,45 +104,38 @@
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].attempts %>
                                         </td>
-
                                         <% if(displayName) { %>
                                            
-                                            <td scope="row" class="text-center">
+                                            <td class="text-center col-1">
                                                 <a id="<%=surveys[count]._id%>" class="btn btn-default editBtn" onClick="confirmEdit(this.id)">
                                                     <i class="fas fa-pencil-alt"></i> Edit</a>
                                             </td>
-
-                                            <td scope="row" class="text-center" >
+                                            <td class="text-center col-1">
                                                 <a id="<%=surveys[count]._id%>" class="btn btn-default deleteBtn" onClick="confirmDelete(this.id)">
                                                     <i class="fas fa-trash-alt"></i> Delete</a>
                                             </td>
-
-                                            <td scope="row" class="text-center" >
+                                            <td class="text-center col-2">
                                                 <a id="viewSurveyStatsBtn" href="/surveys/stats/<%= surveys[count]._id %>" class="btn btn-default">
                                                     <i class="fa-solid fa-database"></i> View Survey Stats</a>
                                             </td>
-
                                             <% } else if(!displayName && (new Date(surveys[count].active) > new Date())) { %>
-                                                <td scope="row" class="text-center">
+                                                <td class="text-center col-1">
                                                     <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
                                                         <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                                                 </td>
                                             <% } else if(!displayName && (new Date(surveys[count].expiry) < new Date())) { %>
-                                                    <td scope="row" class="text-center">
+                                                    <td class="text-center col-1">
                                                         <a id="startASurveyBtn" href="javascript: void(0)" class="btn btn-success btn-sm surveyStart">
                                                             <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                                                     </td>
-
                                                 <% } else { %>
-                                                    <td scope="row" class="text-center">
+                                                    <td class="text-center col-1">
                                                         <a id="startASurveyBtn" href="/surveys/view/<%= surveys[count]._id %>" class="btn btn-success btn-sm surveyStart">
                                                             <i class="fas fa-pencil-alt"></i> Start Survey!</a>
                                                     </td>
                                                     <%  }%>
-
                                                         <% } %>
                             </tr>
-
                     </tbody>
                 </table>
             </div>
