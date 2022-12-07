@@ -82,6 +82,9 @@
                         <input type="hidden" class="form-control" id="nameTextField" placeholder="" name="createdOn"
                             value="<%= survey.createdOn%>">
                     </div>
+
+                    <input type="hidden" class="form-control" id="nameTextField" placeholder="" name="oTypeList"
+                            value="<%= survey.template%>">
                     
                     <% for(let count=0; count < survey.questions.length; count++) { %>
                             <% for(let j=0; j < survey.options[count].length; j++) { %>

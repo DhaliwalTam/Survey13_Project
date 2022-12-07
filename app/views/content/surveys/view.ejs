@@ -5,6 +5,7 @@
         <input type="hidden" class="form-control" name="surveyID" value="<%= survey._id %>">
         <input type="hidden" class="form-control" name="createdOn" value="<%= survey.createdOn %>">
         <input type="hidden" class="form-control" name="expiringOn" value="<%= survey.expiry %>">
+        <input type="hidden" class="form-control" id="nameTextField" placeholder="" name="oTypeList" value="<%= survey.template%>">
         <label>Survey Title:</label>
         <input class="form-control" type="text" name="surveyTitle" value="<%= survey.title %>" readonly>
         <label>Your name:</label>

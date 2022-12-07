@@ -1,5 +1,5 @@
 function confirmEdit(id) {
-    var confirmed = confirm("Heads up! Editing any options for this survey will reset its statistics. Click OK to proceed.");
+    var confirmed = confirm("Heads up! Editing/adding any options for this survey will reset its statistics. Click OK to proceed.");
     if (confirmed) {
         window.location.href = `../surveys/edit/${id}`;
     } 

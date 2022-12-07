@@ -95,7 +95,6 @@ function addQuestion(){
         document.getElementById(`q`).innerHTML = "";
         document.getElementById("optionList").value = "";
         
-        optionType = [];
         options = [];
         document.getElementById("questionInput").placeholder = `Enter question ${questionNumber}`;
         document.getElementById("optionInput").placeholder = `Enter an option for question ${questionNumber}`;
@@ -136,6 +135,7 @@ function addDefaultOptions(){
     
         
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType; 
         document.getElementById(`q`).innerHTML += "<br>";
     }
 
@@ -144,7 +144,7 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
-            optionType = [];
+            
             document.getElementById("q").innerHTML = "";
             for(var i = 0; i < 2; i++){
             document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -164,6 +164,7 @@ function addDefaultOptions(){
     
        
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType;
         document.getElementById(`q`).innerHTML += "<br>";
         }
 
@@ -206,6 +207,7 @@ function addDefaultOptions(){
     
        
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType;
         document.getElementById(`q`).innerHTML += "<br>";
     }
         
@@ -213,7 +215,7 @@ function addDefaultOptions(){
             var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
             if(confirmChange){
                 options = [];
-                optionType = [];
+                
                 document.getElementById("q").innerHTML = "";
                 for(var i = 0; i < 2; i++){
                     document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -233,6 +235,7 @@ function addDefaultOptions(){
             
                 
                 document.getElementById("optionList").value = options; 
+                document.getElementById("optionTypeList").value = optionType;
                 document.getElementById(`q`).innerHTML += "<br>";
             }
 
@@ -260,10 +263,11 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
-            optionType = [];
+            
             document.getElementById("q").innerHTML = "";
            
             document.getElementById("optionList").value = options; 
+            document.getElementById("optionTypeList").value = optionType;
         }
 
         else if(!confirmChange){
@@ -292,6 +296,7 @@ function addDefaultOptions(){
     
         
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType;
         document.getElementById(`q`).innerHTML += "<br>";
     }
 
@@ -299,7 +304,7 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
-            optionType = [];
+            
             document.getElementById("q").innerHTML = "";
             for(var i = 0; i < 4; i++){
                 document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -320,7 +325,8 @@ function addDefaultOptions(){
             }
     
             
-            document.getElementById("optionList").value = options; 
+            document.getElementById("optionList").value = options;
+            document.getElementById("optionTypeList").value = optionType; 
             document.getElementById(`q`).innerHTML += "<br>";
         }
 
@@ -364,6 +370,7 @@ function addDefaultOptions(){
         }
     
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType;
         document.getElementById(`q`).innerHTML += "<br>";
     }
 
@@ -371,7 +378,7 @@ function addDefaultOptions(){
         var confirmChange = confirm("If you change the question format, you will lose all your existing options for this question. OK to proceed?");
         if(confirmChange){
             options = [];
-            optionType = [];
+           
             document.getElementById("q").innerHTML = "";
             for(var i = 0; i < 5; i++){
                 document.getElementById(`q`).innerHTML += `<label id="option${i}"></label>`;
@@ -393,6 +400,7 @@ function addDefaultOptions(){
             }
     
             document.getElementById("optionList").value = options; 
+            document.getElementById("optionTypeList").value = optionType;
             document.getElementById(`q`).innerHTML += "<br>";
         }
 
@@ -447,7 +455,9 @@ function addOptions(){
         document.getElementById(`q`).appendChild(label);
         document.getElementById(`optionInput`).value = "";
         options.push(label.innerHTML);
+        optionType.push("radio");
         document.getElementById("optionList").value = options; 
+        document.getElementById("optionTypeList").value = optionType;
         
         document.getElementById(`q`).innerHTML += `<button type='button' id='${deleteButtonNumber-1}' class='btn btn-small' onclick='deleteOption(this.id)'><i class='fas fa-trash-alt'></i></button><br>`;
         document.getElementById("saveDiv").style.visibility = "visible";
@@ -473,6 +483,7 @@ function addOptions(){
         options.push("");
         optionType.push("textarea");
         document.getElementById(`optionInput`).value = "";
+        document.getElementById("optionTypeList").value = optionType;
         document.getElementById("saveDiv").style.visibility = "visible";
         document.getElementById("optionInput").style.borderColor = "";
         document.getElementById("questionInput").style.borderColor = "";
@@ -501,12 +512,14 @@ function deleteOption(id){
     const index = options.indexOf(document.getElementById(`question${id}`).value);
     if (index > -1) {
         options.splice(index, 1);
+        optionType.splice(index,1);
     }
 
     if(document.getElementById("q").contains(document.getElementById(`question${id}`))){
         document.getElementById("q").removeChild(document.getElementById(`question${id}`));
     }
     document.getElementById("optionList").value = options; 
+    document.getElementById("optionTypeList").value = optionType;
     
     if(document.getElementById("q").contains(document.getElementById(`labelOptions${id}`))){
         document.getElementById("q").removeChild(document.getElementById(`labelOptions${id}`));
@@ -545,6 +558,21 @@ function formConfirmation() {
     var active = document.getElementById("active").value;
     var expire = document.getElementById("expire").value;
     var createdBy = document.getElementById("createdBy").value;
+    var optionTypes = document.getElementById("optionTypeList").value;
+    var surveyTemplate = "";
+
+    if(optionTypes.includes("textarea") && !optionTypes.includes("radio")){
+        surveyTemplate = "Short Answer";
+    }
+
+    else if(optionTypes.includes("radio") && !optionTypes.includes("textarea")){
+        surveyTemplate = "Multiple Choice";
+    }
+
+    else if(optionTypes.includes("textarea") && optionTypes.includes("radio")){
+        surveyTemplate = "Short Answer + Multiple Choice";
+    }
+
 
     if (questionNumber > 2 && title !== "" && active !== "" && expire !== "") {
         fetch('/surveys/create', {
@@ -555,6 +583,7 @@ function formConfirmation() {
             body: JSON.stringify({
                 questionArray: questionArray,
                 optionsArray: optionsArray,
+                oTypeList: surveyTemplate,
                 title: title,
                 active: active,
                 expire: expire,

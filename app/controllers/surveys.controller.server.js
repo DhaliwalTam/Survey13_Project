@@ -87,7 +87,7 @@ export function ProcessSurveyCreatePage(req, res, next) {
             var newSurvey = surveyModel({
                 createdBy: req.body.createdBy,
                 publisherID: user[0]._id,
-                template: "Multiple Choice",
+                template: req.body.oTypeList,
                 title: req.body.title,
                 createdOn: today,
                 active: req.body.active,
@@ -149,7 +149,7 @@ export function ProcessSurveyEditPage(req,res,next){
     var updatedSurvey = surveyModel({
         _id: req.body.id,
         createdBy: req.body.createdBy,
-        template: "Multiple Choice",
+        template: req.body.oTypeList,
         title: req.body.title,
         createdOn: req.body.createdOn,
         expiry: req.body.expiringOn,
@@ -293,7 +293,7 @@ export function ProcessSurveyPage(req, res, next) {
         surveyID: req.body.surveyID,
         surveyor: req.body.surveyorName,
         surveyorEmail: req.body.surveyorEmail,
-        template: "Multiple Choice",
+        template: req.body.oTypeList,
         title: req.body.surveyTitle,
         createdOn: req.body.createdOn,
         expiry: req.body.expiringOn,

@@ -72,19 +72,8 @@
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].title %>
                                         </td>
-                                        <% for(let i=0; i < surveys[count].questions.length; i++) { %>
-                                            <% for(let j=0; j < surveys[count].options[i].length; j++) { %>
-                                                <%if(surveys[count].options[i].includes("") && /[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
-                                                    <%format = 'Short Answer + Multiple Choice'%>
-                                                <%}else if(surveys[count].options[i].includes("") && !/[a-zA-Z]/g.test(surveys[count].options[i][j])){%>
-                                                    <%format = 'Short Answer'%>
-                                                <%}else{%>
-                                                    <%format = 'Multiple Choice'%>
-                                                <%}%>
-                                            <% } %>
-                                        <% } %>
                                         <td scope="row" class="text-center">
-                                            <%=format %>
+                                            <%=surveys[count].template %>
                                         </td>
                                         <td scope="row" class="text-center">
                                             <%= surveys[count].createdOn.toISOString().split('T')[0] %>
