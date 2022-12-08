@@ -263,7 +263,6 @@ h2 {
 
 
 /*The link to the survey pages - view and list*/
-
 .home-survey-button {
     background-color: #0ccbf3;
     float: left;
@@ -272,7 +271,7 @@ h2 {
     text-align: center;
     margin-top: 25px;
     margin-bottom: 4px;
-    margin-left: 50px;
+    margin-left: 150px;
     padding: 5px;
     width: 400px;
     height: 50px;
@@ -281,13 +280,16 @@ h2 {
 }
 
 .home-survey-button a {
+    
     text-decoration: none;
     color: black;
+   
 }
 
 .home-survey-button:hover {
     background-image: linear-gradient(to right, #B25353 0%, goldenrod 100%);
     box-shadow: 6px 3px 3px black;
+  
 }
 
 .home-survey-button a:hover {
@@ -315,6 +317,7 @@ h2 {
 }
 
 
+
 /*----survey/create.ejs--------------------------------------*/
 
 #survey-create-box {
@@ -325,6 +328,7 @@ h2 {
     background: ghostwhite;
     border-radius: 10px;
     padding: 50px;
+    
 }
 
 #survey-create-box:hover {
