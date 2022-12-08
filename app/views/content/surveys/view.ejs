@@ -1,40 +1,41 @@
-<!-- Main survey page -->
-<form id="mainSurvey" method="POST">
-    <div>
-        <input type="hidden" class="form-control" name="createdBy" value="<%= survey.createdBy %>">
-        <input type="hidden" class="form-control" name="surveyID" value="<%= survey._id %>">
-        <input type="hidden" class="form-control" name="createdOn" value="<%= survey.createdOn %>">
-        <input type="hidden" class="form-control" name="expiringOn" value="<%= survey.expiry %>">
-        <input type="hidden" class="form-control" id="nameTextField" placeholder="" name="oTypeList" value="<%= survey.template%>">
-        <label>Survey Title:</label>
-        <input class="form-control" type="text" name="surveyTitle" value="<%= survey.title %>" readonly>
-        <label>Your name:</label>
-        <input class="form-control" type="text" name="surveyorName" required>
-        <label>Your email:</label>
-        <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
-        <span id="correctEmail">*** Please ensure your email address is correct!</span>
-        <% for(let count=0; count < survey.questions.length; count++) { %>
-            <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
-            <% for(let j=0; j < survey.options[count].length; j++) { %>
-                <%if(survey.options[count][j] == ""){%>
-                    <textarea name="text<%=count+1%>" id="" cols="30" rows="3" placeholder="Enter response here"></textarea><br>
-                <%}else{%>
-                    <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
-                    <%= survey.options[count][j] %><br>
-                <%}%>
-                
-                    <% } %>
-                        <% } %>
+<div class="container">
+    <!-- Main survey page -->
+    <form id="mainSurvey" method="POST">
+        <div>
+            <input type="hidden" class="form-control" name="createdBy" value="<%= survey.createdBy %>">
+            <input type="hidden" class="form-control" name="surveyID" value="<%= survey._id %>">
+            <input type="hidden" class="form-control" name="createdOn" value="<%= survey.createdOn %>">
+            <input type="hidden" class="form-control" name="expiringOn" value="<%= survey.expiry %>">
+            <input type="hidden" class="form-control" id="nameTextField" placeholder="" name="oTypeList" value="<%= survey.template%>">
+            <label>Survey Title:</label>
+            <input class="form-control" type="text" name="surveyTitle" value="<%= survey.title %>" readonly>
+            <label>Your name:</label>
+            <input class="form-control" type="text" name="surveyorName" required>
+            <label>Your email:</label>
+            <input class="form-control" id="survEmail" type="email" name="surveyorEmail" required>
+            <span id="correctEmail">*** Please ensure your email address is correct!</span>
+            <% for(let count=0; count < survey.questions.length; count++) { %>
+                <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
+                <% for(let j=0; j < survey.options[count].length; j++) { %>
+                    <%if(survey.options[count][j] == ""){%>
+                        <textarea name="text<%=count+1%>" id="" cols="30" rows="3" placeholder="Enter response here"></textarea><br>
+                        <%}else{%>
+                            <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
+                            <%= survey.options[count][j] %><br>
+                                <%}%>
 
-                            <br>
-                            <p>Please provide your thoughts/comments on this survey below:</p>
-                            <textarea id="commentsBox" name="comments" rows="3" cols="30"></textarea>
-    </div>
-    <br>
-    <button class="btn btn-default" type="submit" id="submitSurvey"><i class="fas fa-check"></i> Submit</button>
+                                    <% } %>
+                                        <% } %>
 
-    <button type="button" id="cancelButton" class="btn btn-default"><i class="fa-solid fa-x"></i>Cancel</button>
+                                            <br>
+                                            <p>Please provide your thoughts/comments on this survey below:</p>
+                                            <textarea id="commentsBox" name="comments" rows="3" cols="30"></textarea>
+        </div>
+        <br>
+        <button class="btn btn-default" type="submit" id="submitSurvey"><i class="fas fa-check"></i> Submit</button>
 
-    <button id="resetButton" class="btn btn-default" type="reset"><i class="fas fa-undo"></i> Reset survey</button>
-</form>
+        <button type="button" id="cancelButton" class="btn btn-default"><i class="fa-solid fa-x"></i>Cancel</button>
+
+        <button id="resetButton" class="btn btn-default" type="reset"><i class="fas fa-undo"></i> Reset survey</button>
+    </form>
 </div>

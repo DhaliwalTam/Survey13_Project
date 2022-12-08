@@ -34,13 +34,14 @@
                       class="fa-solid fa-user fa-lg"></i> Log out</a>
                     </li>
 
-                    <!--<li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <%=username%>
                         </a>
-                       <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
+                        <!-- <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/surveys/list">My Surveys</a>
                             <a class="dropdown-item" href="/about">About Survey13</a>
+                            <a class="dropdown-item" href="/tutorial">Tutorial</a>
                             <a class="dropdown-item" href="/update/<%=id%>">Update Profile</a>
                             <a class="dropdown-item" href="/logout">Log out</a>
                         </div>
@@ -48,20 +49,20 @@
 
 
 
-                    <% } else if(!displayName) { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/surveys/list"><i
+                        <% } else if(!displayName) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/surveys/list"><i
                           class="fa-solid fa-table-list fa-lg"></i> View available surveys</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about"><i
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about"><i
                           class="fa-solid fa-info-circle fa-lg"></i> About Survey13</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login"><i
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login"><i
                           class="fa-solid fa-user-circle fa-lg"></i> Log in</a>
-                        </li>
-                        <% } %>
+                            </li>
+                            <% } %>
             </ul>
         </div>
     </div>

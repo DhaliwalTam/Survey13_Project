@@ -613,7 +613,7 @@ h1 {
 
 #mainSurvey {
     font-family: sans-serif;
-    max-width: 60vw;
+    max-width: 60%;
     margin: 50px auto;
     background-color: gainsboro;
     padding-top: 5px;
@@ -1204,8 +1204,58 @@ h1 {
 
 @media only screen and (max-width:480px) {
     /* For mobile phones: */
+    header,
+    footer {
+        width: 100%
+    }
+    body {
+        background: hotpink;
+    }
+    #home-survey-box,
+    #aboutSurvey13-contained,
+    #home-survey-contained,
+    #homeNotLogIn,
+    #homeLogIn,
+    #forgetPass,
+    #codePage,
+    #formUpdate,
+    #survey-create-box,
+    #mainSurvey,
+    #updatePassword,
+    #forgotPass,
+    #aboutATEAM-contained {
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px;
+        margin: 10px;
+        margin-bottom: 50px;
+    }
+    #myCarousel1 {
+        width: 55%;
+    }
+    #tutorialVideo-1,
+    #tutorialVideo-2 {
+        margin: auto;
+    }
+    #aboutSurvey13 p {
+        text-align: left;
+    }
+    #home-survey-box h1 {
+        font-size: 35px;
+    }
+    .home-survey-button {
+        font-size: 25px;
+        margin: 0 auto;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    #codePage input {
+        width: 100%;
+        margin-bottom: 5px;
+    }
     .gallery {
         width: 100%;
+        margin: 0 auto;
     }
     #aboutSurvey13 {
         width: 100%;
@@ -1224,15 +1274,16 @@ h1 {
         text-align: center;
         margin: -10px;
     }
-}
-
-
-/*---Media Queries-------------------------------------------------*/
-
-@media only screen and (max-width:480px) {
-    /* For mobile phones: */
+    /*--------------------------*/
+    #navbarNavDropdown {
+        float: left;
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width:768x) {
     /* For tablets: */
+    body {
+        background: orange;
+    }
 }
