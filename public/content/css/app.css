@@ -27,7 +27,6 @@ header ul {
 }
 
 
-
 /* survey13 logo and A-Team photo */
 
 #header-logo,
@@ -159,6 +158,26 @@ h2 {
 .padding-table-columns td {
     padding: 0 5px 0 0;
     /* Only right padding*/
+}
+
+
+/*--tutorial.ejs--------------------------*/
+
+#tutorialVideo-1,
+#tutorialVideo-2 {
+    display: block;
+    margin-left: 250px;
+}
+
+#tutorialBtn {
+    background-color: gainsboro;
+    border: solid 1px black;
+}
+
+#tutorialBtn:hover {
+    background-color: goldenrod;
+    box-shadow: 3px 2px 2px black;
+    color: ghostwhite;
 }
 
 
@@ -312,7 +331,7 @@ h2 {
     box-shadow: 10px 5px 5px grey;
 }
 
-.stepLabel{
+.stepLabel {
     text-decoration: underline;
     font-weight: bold;
 }
@@ -493,12 +512,11 @@ table {
 
 .editBtn,
 #addASurveyBtn,
-.deleteBtn, #viewSurveyStatsBtn {
+.deleteBtn,
+#viewSurveyStatsBtn {
     border: solid 1px black;
     background: gainsboro;
 }
-
-
 
 .editBtn:hover,
 .deleteBtn:hover,
@@ -513,8 +531,8 @@ table {
     background-color: #16697A;
 }
 
-#viewSurveyStatsBtn:hover{
-    background-color: #0DCAF0;  
+#viewSurveyStatsBtn:hover {
+    background-color: #0DCAF0;
 }
 
 .deleteBtn:hover {
@@ -559,11 +577,13 @@ h1 {
     margin-left: 15px;
 }
 
-#submissionNumber, #commentsTitle, #freeTextTitle{
+#submissionNumber,
+#commentsTitle,
+#freeTextTitle {
     text-decoration: underline;
 }
 
-.optionChosen{
+.optionChosen {
     display: inline;
 }
 
@@ -603,7 +623,8 @@ h1 {
     border-radius: 10px;
 }
 
-#mainSurvey input[type="radio"], #mainSurvey input[type="checkbox"]  {
+#mainSurvey input[type="radio"],
+#mainSurvey input[type="checkbox"] {
     margin-top: 5px;
     margin-left: 5px;
     width: 25px;
@@ -646,7 +667,8 @@ h1 {
     font-size: small;
 }
 
-#commentsBox, .customTextbox{
+#commentsBox,
+.customTextbox {
     resize: both;
 }
 
@@ -929,7 +951,6 @@ h1 {
 /* About survey13 statement */
 
 #aboutSurvey13 {
-   
     display: absolute;
     background: white;
     border-radius: 10px;
@@ -945,10 +966,8 @@ h1 {
     width: 1000px;
     justify-content: center;
     margin: auto;
-   align-items: center;
-   margin-left: 25%;
-   
-
+    align-items: center;
+    margin-left: 25%;
 }
 
 #aboutSurvey13 p {
@@ -980,9 +999,8 @@ h1 {
     border-radius: 10px;
     font-size: 15px;
     width: 100%;
-    margin:25px;
+    margin: 25px;
     margin-bottom: 15px;
-    
 }
 
 #aboutATEAM-contained h1 {
@@ -991,7 +1009,6 @@ h1 {
     color: ghostwhite;
     background: black;
     clear: both;
-
 }
 
 .gallery {
@@ -1003,7 +1020,7 @@ h1 {
     margin-right: 15px;
     border-radius: 10px;
     box-shadow: 5px 2px 2px black;
-    align-items:center ;
+    align-items: center;
 }
 
 .gallery h3 {

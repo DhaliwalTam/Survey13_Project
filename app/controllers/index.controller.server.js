@@ -10,37 +10,34 @@ var codeArray = [];
 export function DisplayHomePage(req, res, next) {
     var publisher = UserDisplayName(req);
 
-    if(publisher !== ""){
-        userModel.find({displayName: publisher}, function (err, user) {
+    if (publisher !== "") {
+        userModel.find({ displayName: publisher }, function(err, user) {
             if (err) {
                 console.error(err);
                 res.end(err);
-            } 
-            
-            else {
+            } else {
                 var userID = user[0]._id;
-                userModel.find({ _id: userID}, function (err, user) {
+                userModel.find({ _id: userID }, function(err, user) {
                     if (err) {
                         console.error(err);
                         res.end(err);
                     }
 
-                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user:user, id:GetUserID(req), username: GetUsername(req)});
+                    res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), user: user, id: GetUserID(req), username: GetUsername(req) });
                 })
-                
+
             }
         })
-    }    
-    else{
-        res.render('index', {title: 'Home', page: 'home', displayName: UserDisplayName(req), id:GetUserID(req), username: GetUsername(req)});
+    } else {
+        res.render('index', { title: 'Home', page: 'home', displayName: UserDisplayName(req), id: GetUserID(req), username: GetUsername(req) });
     }
 }
 
 // Display the profile update page
-export function DisplayUpdatePage(req,res,next){
+export function DisplayUpdatePage(req, res, next) {
     var id = req.params.id;
 
-   userModel.findById(id, (err, user) => {
+    userModel.findById(id, (err, user) => {
         if (err) {
             console.error(err);
             res.end(err);
@@ -58,9 +55,9 @@ export function DisplayUpdatePage(req,res,next){
 }
 
 // Processes the user's request to update profile
-export function ProcessUpdatePage(req,res,next){
+export function ProcessUpdatePage(req, res, next) {
     var id = req.params.id;
-   
+
     var updatedUser = userModel({
         _id: req.body.id,
         username: req.body.userName,
@@ -69,24 +66,22 @@ export function ProcessUpdatePage(req,res,next){
         DOB: req.body.dob
     })
 
-    userModel.updateOne({_id: id }, updatedUser, (err) => {
-        if(err){
+    userModel.updateOne({ _id: id }, updatedUser, (err) => {
+        if (err) {
             console.error(err);
             res.end(err);
-        }
-
-        else {
+        } else {
             console.log('details changed')
-            res.redirect('/logout') ;         
+            res.redirect('/logout');
         }
-    } )
+    })
 }
 
 // Display password change page
-export function DisplayPasswordPage(req,res,next){
+export function DisplayPasswordPage(req, res, next) {
     var id = req.params.id;
 
-   userModel.findById(id, (err, user) => {
+    userModel.findById(id, (err, user) => {
         if (err) {
             console.error(err);
             res.end(err);
@@ -104,37 +99,33 @@ export function DisplayPasswordPage(req,res,next){
 }
 
 // Processes the user's request to change password
-export function ProcessPasswordPage(req, res, next){
+export function ProcessPasswordPage(req, res, next) {
     var id = req.body.id;
-    
+
     var updatedUser = userModel({
         _id: req.body.id,
         username: req.body.userName,
         password: req.body.new,
     })
 
-    userModel.updateOne({_id: id }, updatedUser, (err) => {
-        if(err){
+    userModel.updateOne({ _id: id }, updatedUser, (err) => {
+        if (err) {
             console.error(err);
             res.end(err);
         }
     })
-    
-    
+
+
     userModel.findByUsername(req.body.username, (err, user) => {
         if (err) {
             console.error(err);
             res.end(err);
-        } 
-        
-        else {
-            user.changePassword(req.body.old, req.body.new, function (err) {
+        } else {
+            user.changePassword(req.body.old, req.body.new, function(err) {
                 if (err) {
                     console.error(err);
                     res.end(err);
-                } 
-                
-                else {
+                } else {
                     console.log("changed");
                 }
             });
@@ -144,31 +135,28 @@ export function ProcessPasswordPage(req, res, next){
 }
 
 // Display forgot password page
-export function DisplayForgotPassPage(req,res,next){
-    res.render('index', {title: 'Forgot your password', page: 'forgotPass', displayName: UserDisplayName(req), messages:req.flash('userNotFound'), id:GetUserID(req), username: GetUsername(req)});
+export function DisplayForgotPassPage(req, res, next) {
+    res.render('index', { title: 'Forgot your password', page: 'forgotPass', displayName: UserDisplayName(req), messages: req.flash('userNotFound'), id: GetUserID(req), username: GetUsername(req) });
 }
 
 // Processes the user's request once they initiate the process of recovering their password
-export function ProcessForgotPassPage(req,res,next){
-    userModel.findOne({address: req.body.email}, function (err, user) {
+export function ProcessForgotPassPage(req, res, next) {
+    userModel.findOne({ address: req.body.email }, function(err, user) {
         if (err) {
             console.error(err);
             res.end(err);
-        } 
-        
-        else if(!user){
+        } else if (!user) {
             req.flash('userNotFound', 'Hmm.. that email does not exist in our system. Please try again!');
             return res.redirect('/forgotPass');
-        }
-        else {
+        } else {
             var id = user._id;
             var updatedUser = userModel({
                 _id: id,
                 password: req.body.newPassword,
             });
 
-            userModel.updateOne({_id:id }, updatedUser, (err) => {
-                if(err){
+            userModel.updateOne({ _id: id }, updatedUser, (err) => {
+                if (err) {
                     console.error(err);
                     res.end(err);
                 }
@@ -178,53 +166,62 @@ export function ProcessForgotPassPage(req,res,next){
                 if (err) {
                     console.error(err);
                     res.end(err);
-                } 
-                
-                else {
-                    userAlt.setPassword(req.body.newPassword, function (err) {
+                } else {
+                    userAlt.setPassword(req.body.newPassword, function(err) {
                         if (err) {
                             console.error(err);
                             res.end(err);
-                        } 
-                        
-                        else {
+                        } else {
                             console.log("changed");
                             userAlt.save();
                             res.redirect('/logout');
                         }
                     });
                 }
-        
+
             });
-    }});  
+        }
+    });
 
 }
 
 // Display the page where the user can enter their email address and receive the verification code once they click 'Forgot Password'
-export function DisplayCodePage(req,res,next){
-    res.render('index', {title: 'Get your code', page: 'code', displayName: UserDisplayName(req), userNotFound:req.flash('userNotFound'),
-    messages:req.flash('codeSent'), id:GetUserID(req), username: GetUsername(req)});
+export function DisplayCodePage(req, res, next) {
+    res.render('index', {
+        title: 'Get your code',
+        page: 'code',
+        displayName: UserDisplayName(req),
+        userNotFound: req.flash('userNotFound'),
+        messages: req.flash('codeSent'),
+        id: GetUserID(req),
+        username: GetUsername(req)
+    });
 }
 
 // Displays the page where the user can enter the verification code that they received via email
-export function DisplayEnterCodePage(req,res,next){
-    res.render('index', {title: 'Enter your code', page: 'enterCode',id:GetUserID(req), username: GetUsername(req), 
-    displayName: UserDisplayName(req), code:req.flash('code'), messages:req.flash('invalidCode'), codeSent:req.flash('codeSent')});
+export function DisplayEnterCodePage(req, res, next) {
+    res.render('index', {
+        title: 'Enter your code',
+        page: 'enterCode',
+        id: GetUserID(req),
+        username: GetUsername(req),
+        displayName: UserDisplayName(req),
+        code: req.flash('code'),
+        messages: req.flash('invalidCode'),
+        codeSent: req.flash('codeSent')
+    });
 }
 
 // Sends the email containing the verification code to the user's registered email address
-export function SendCodeEmail(req,res,next){
-    userModel.findOne({address: req.body.email}, function (err, user) {
+export function SendCodeEmail(req, res, next) {
+    userModel.findOne({ address: req.body.email }, function(err, user) {
         if (err) {
             console.error(err);
             res.end(err);
-        } 
-        
-        else if(!user){
+        } else if (!user) {
             req.flash('userNotFound', 'Hmm.. that email does not exist in our system. Please try again!');
             return res.redirect('/generateCode');
-        }
-        else {
+        } else {
             var randomNumber = Math.floor(1000 + Math.random() * 9000);
             var transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
@@ -246,7 +243,7 @@ export function SendCodeEmail(req,res,next){
                 text: `Your unique 4-digit code is ${randomNumber}`
             };
 
-            transporter.sendMail(mailOptions, function (error, info) {
+            transporter.sendMail(mailOptions, function(error, info) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -260,26 +257,46 @@ export function SendCodeEmail(req,res,next){
             return res.redirect('/enterCode');
 
         }
-    });    
+    });
 }
 
 // Processes and validates the verification code that the user enters
-export function ProcessCodePage(req,res,next){
-    if(req.body.code !== req.body.val) {
+export function ProcessCodePage(req, res, next) {
+    if (req.body.code !== req.body.val) {
         req.flash('invalidCode', 'Invalid code. Please try again!');
-        return res.render('index', {title: 'Enter your code', page: 'enterCode', displayName: UserDisplayName(req), 
-        id:GetUserID(req), username: GetUsername(req),
-        code:codeArray[0], messages:req.flash('invalidCode')});
-    } 
-    
-    else{
+        return res.render('index', {
+            title: 'Enter your code',
+            page: 'enterCode',
+            displayName: UserDisplayName(req),
+            id: GetUserID(req),
+            username: GetUsername(req),
+            code: codeArray[0],
+            messages: req.flash('invalidCode')
+        });
+    } else {
         res.redirect('/forgotPass');
     }
 
 }
 
 // Display the about us page
-export function DisplayAboutPage(req,res,next){
-    res.render('index', {title: 'About Survey13', page: 'about', 
-    displayName: UserDisplayName(req), id:GetUserID(req), username: GetUsername(req)});
+export function DisplayAboutPage(req, res, next) {
+    res.render('index', {
+        title: 'About Survey13',
+        page: 'about',
+        displayName: UserDisplayName(req),
+        id: GetUserID(req),
+        username: GetUsername(req)
+    });
+}
+
+// Display the tutorial page
+export function DisplayTutorialPage(req, res, next) {
+    res.render('index', {
+        title: 'Survey13 Tutorial',
+        page: 'tutorial',
+        displayName: UserDisplayName(req),
+        id: GetUserID(req),
+        username: GetUsername(req)
+    });
 }

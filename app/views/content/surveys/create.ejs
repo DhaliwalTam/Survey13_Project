@@ -7,8 +7,7 @@
             <input type="hidden" id="createdBy" name="displayName" value="<%=displayName%>">
             <div class="form-group">
                 <label for="nameTextField">Survey Title:</label>
-                <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title"
-                    maxlength="30" required>
+                <input type="text" class="form-control" id="surveyTitle" placeholder="Enter survey title" name="title" maxlength="30" required>
             </div>
 
             <div class="form-group">
@@ -40,7 +39,7 @@
                     <br>
                     <div id="q"></div>
                     <br>
-                    
+
                     <label id="optionTypeLabel" class="stepLabel">Step 3: Select the type of option you want to add:</label>
                     <br>
                     <input type="radio" id="radioOption" name="optionType">Radio Button
@@ -54,7 +53,7 @@
                 <br><br>
                 <div class="form-group hiddenDiv" id="saveDiv">
                     <label class="stepLabel">Step 4: Save your question and options (Important!)</label>
-                    <button type="button" id="saveQuestionandOptions" title="Save before creating another question.">Save Question and Options</button>    
+                    <button type="button" id="saveQuestionandOptions" title="Save before creating another question.">Save Question and Options</button>
                 </div>
                 <input type="hidden" id="questionList" name="qList">
                 <br>
@@ -71,6 +70,8 @@
         <!-- cancel survey -->
         <a id="cancelBtn" class="btn btn-default">
             <i class="fas fa-undo"></i> Cancel</a>
+        <a id="tutorialBtn" href="/tutorial" class="btn btn-default">
+            <i class="fas fa-question-circle"></i> Need Help</a>
     </div>
 </div>
 <!-- href="/surveys/list" -->
