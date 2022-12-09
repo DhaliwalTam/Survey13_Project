@@ -28,7 +28,7 @@ header ul {
 
 /* survey13 logo and A-Team photo */
 
-#header-logo,
+#Survey13-logo,
 #mainLogo {
     width: 25%;
     margin-top: -15px;
@@ -105,14 +105,39 @@ h2 {
 }
 
 
-/*--tutorial.ejs--------------------------*/
+/*---Buttons and Anchors assemble!-------*/
 
-#tutorialVideo-1,
-#tutorialVideo-2 {
-    display: block;
-    margin-left: 250px;
-    width: 560px;
-    height: 315px;
+
+/*home buttons in home.ejs*/
+
+.home-survey-button {
+    background-color: #0ccbf3;
+    float: left;
+    background-image: linear-gradient(to right, gainsboro 0%, skyblue 100%);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 4px;
+    margin-left: 150px;
+    padding: 5px;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+.home-survey-button a {
+    text-decoration: none;
+    color: black;
+}
+
+.home-survey-button:hover {
+    background-image: linear-gradient(to right, #B25353 0%, goldenrod 100%);
+    box-shadow: 6px 3px 3px black;
+}
+
+.home-survey-button a:hover {
+    color: gainsboro;
 }
 
 
@@ -130,12 +155,155 @@ h2 {
 }
 
 
+/*-Button in create.ejs ---*/
+
+#addOptionButton,
+#saveQuestionandOptions,
+.addNewOptionButton {
+    margin-top: 5px;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+#saveQuestionandOptions,
+#addOptionButton,
+.addNewOptionButton {
+    padding: 3px;
+    background-color: gainsboro;
+}
+
+#saveQuestionandOptions:hover,
+#addOptionButton:hover {
+    background-color: #95CD41;
+    box-shadow: 3px 2px 2px black;
+    color: ghostwhite;
+}
+
+#submitButton,
+#cancelBtn {
+    background-color: gainsboro;
+    color: black;
+    border: solid 1px black;
+}
+
+
+/*Buttons in edit.ejs*/
+
+#submitButton:hover {
+    background-color: #16697A;
+    color: ghostwhite;
+    box-shadow: 3px 2px 2px black;
+}
+
+#cancelBtn:hover {
+    background-color: #BB0029;
+    color: ghostwhite;
+    box-shadow: 3px 2px 2px black;
+}
+
+#editSubmitBtn,
+#editCancelBtn {
+    border: solid 1px black;
+    background: gainsboro;
+}
+
+#editSubmitBtn:hover,
+#editCancelBtn:hover {
+    box-shadow: 3px 2px 2px grey;
+    color: white
+}
+
+#editSubmitBtn:hover {
+    background-color: #16697A;
+}
+
+#editCancelBtn:hover {
+    background-color: #BB0029;
+}
+
+
+/*-buttons for list.ejs----*/
+
+#addASurveyBtn {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#addASurveyBtn:hover {
+    background-color: #95CD41;
+    box-shadow: 4px 2px 2px grey;
+}
+
+#tableHeaderSurveyList {
+    font-size: 13px;
+}
+
+.editBtn,
+#addASurveyBtn,
+.deleteBtn,
+#viewSurveyStatsBtn {
+    border: solid 1px black;
+    background: gainsboro;
+}
+
+.editBtn:hover,
+.deleteBtn:hover,
+#addASurveyBtnListPage:hover,
+#viewSurveyStatsBtn:hover,
+#startASurveyBtn:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: ghostwhite;
+}
+
+.editBtn:hover {
+    background-color: #16697A;
+}
+
+#viewSurveyStatsBtn:hover {
+    background-color: #0DCAF0;
+}
+
+.deleteBtn:hover {
+    background-color: #BB0029;
+}
+
+#viewSurveyStatsBtn {
+    font-size: 13px;
+}
+
+#startASurveyBtn {
+    font-size: 13px;
+}
+
+
+/*-buttons for stat.ejs----*/
+
+#emailData,
+#backToSurveyListBtn {
+    background-color: gainsboro;
+    border: solid 1px black;
+}
+
+#emailData:hover,
+#backToSurveyListBtn:hover {
+    box-shadow: 4px 2px 2px grey;
+    color: white;
+    border: solid 1px black;
+}
+
+#emailData:hover {
+    background-color: #0CCBF3;
+}
+
+#backToSurveyListBtn:hover {
+    background-color: goldenrod;
+}
+
+
+/*--tutorial.ejs--------------------------------------------------------*/
+
+
 /*-- home.ejs------------------------------------*/
-
-
-/*#homeBackground {
-    
-}*/
 
 
 /*slideshow part of the home page*/
@@ -174,9 +342,6 @@ h2 {
     background-image: url("/content/images/lightweb.png");
 }
 
-
-/*button part of the landing page*/
-
 #home-survey-box {
     display: block;
     float: right;
@@ -210,36 +375,6 @@ h2 {
 
 
 /*The link to the survey pages - view and list*/
-
-.home-survey-button {
-    background-color: #0ccbf3;
-    float: left;
-    background-image: linear-gradient(to right, gainsboro 0%, skyblue 100%);
-    font-size: 30px;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 4px;
-    margin-left: 150px;
-    padding: 5px;
-    width: 400px;
-    height: 50px;
-    border-radius: 10px;
-    border: solid 1px black;
-}
-
-.home-survey-button a {
-    text-decoration: none;
-    color: black;
-}
-
-.home-survey-button:hover {
-    background-image: linear-gradient(to right, #B25353 0%, goldenrod 100%);
-    box-shadow: 6px 3px 3px black;
-}
-
-.home-survey-button a:hover {
-    color: gainsboro;
-}
 
 
 /*Home - Login - */
@@ -290,46 +425,6 @@ h2 {
 
 #survey-create-box input:hover {
     border: solid 2px black;
-}
-
-#addOptionButton,
-#saveQuestionandOptions,
-.addNewOptionButton {
-    margin-top: 5px;
-    border-radius: 5px;
-    border: solid 1px black;
-}
-
-#saveQuestionandOptions,
-#addOptionButton,
-.addNewOptionButton {
-    padding: 3px;
-    background-color: gainsboro;
-}
-
-#saveQuestionandOptions:hover,
-#addOptionButton:hover {
-    background-color: #95CD41;
-    box-shadow: 3px 2px 2px black;
-    color: ghostwhite;
-}
-
-#submitButton,
-#cancelBtn {
-    background-color: gainsboro;
-    border: solid 1px black;
-}
-
-#submitButton:hover {
-    background-color: #16697A;
-    color: ghostwhite;
-    box-shadow: 3px 2px 2px black;
-}
-
-#cancelBtn:hover {
-    background-color: #BB0029;
-    color: ghostwhite;
-    box-shadow: 3px 2px 2px black;
 }
 
 
@@ -395,26 +490,6 @@ h2 {
     color: white;
 }
 
-#editSubmitBtn,
-#editCancelBtn {
-    border: solid 1px black;
-    background: gainsboro;
-}
-
-#editSubmitBtn:hover,
-#editCancelBtn:hover {
-    box-shadow: 3px 2px 2px grey;
-    color: white
-}
-
-#editSubmitBtn:hover {
-    background-color: #16697A;
-}
-
-#editCancelBtn:hover {
-    background-color: #BB0029;
-}
-
 
 /*-survey/list.ejs-----------------------------------------------*/
 
@@ -441,57 +516,6 @@ h2 {
 
 table {
     table-layout: fixed;
-}
-
-#addASurveyBtn {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-#addASurveyBtn:hover {
-    background-color: #95CD41;
-    box-shadow: 4px 2px 2px grey;
-}
-
-#tableHeaderSurveyList {
-    font-size: 13px;
-}
-
-.editBtn,
-#addASurveyBtn,
-.deleteBtn,
-#viewSurveyStatsBtn {
-    border: solid 1px black;
-    background: gainsboro;
-}
-
-.editBtn:hover,
-.deleteBtn:hover,
-#addASurveyBtnListPage:hover,
-#viewSurveyStatsBtn:hover,
-#startASurveyBtn:hover {
-    box-shadow: 4px 2px 2px grey;
-    color: ghostwhite;
-}
-
-.editBtn:hover {
-    background-color: #16697A;
-}
-
-#viewSurveyStatsBtn:hover {
-    background-color: #0DCAF0;
-}
-
-.deleteBtn:hover {
-    background-color: #BB0029;
-}
-
-#viewSurveyStatsBtn {
-    font-size: 13px;
-}
-
-#startASurveyBtn {
-    font-size: 13px;
 }
 
 
@@ -532,27 +556,6 @@ h1 {
 
 .optionChosen {
     display: inline;
-}
-
-#emailData,
-#backToSurveyListBtn {
-    background-color: gainsboro;
-    border: solid 1px black;
-}
-
-#emailData:hover,
-#backToSurveyListBtn:hover {
-    box-shadow: 4px 2px 2px grey;
-    color: white;
-    border: solid 1px black;
-}
-
-#emailData:hover {
-    background-color: #0CCBF3;
-}
-
-#backToSurveyListBtn:hover {
-    background-color: goldenrod;
 }
 
 
@@ -1021,15 +1024,6 @@ h1 {
     ;
 }
 
-
-/*.about-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-}*/
-
 .about-left-content {
     margin-top: 20px;
     background: #dfdfdf;
@@ -1057,10 +1051,6 @@ h1 {
     border-radius: 50%;
     transition: all 0.5s ease-in-out;
 }
-
-
-/*margin-left: auto;
-    margin-right: auto;*/
 
 .shadow {
     margin: 0 auto;
@@ -1191,35 +1181,40 @@ th {
     #aboutATEAM-contained {
         width: 100%;
         margin: 0 auto;
-        padding: 10px;
-        margin: 10px;
+        margin-right: 10px;
         margin-bottom: 50px;
     }
-    #aboutSurvey13-contained,
+    #aboutATEAM-contained,
     #gallery {
         margin-left: 30px;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         padding: 10px;
         margin: 10px;
         margin-bottom: 50px;
     }
     #tutorialVideo-1 iframe {
-        width: 80%;
+        width: 90%;
         margin: auto;
     }
-    #header-logo {
+    #Survey13-logo,
+    #Survey13-text {
         width: 10%;
     }
-    header,
-    footer {
-        margin: 0;
-        width: 100%;
+    #Survey13-logo {
+        margin-top: 10px;
+        margin-left: 2px;
+    }
+    #Survey13-text {
+        margin-left: 5px;
+    }
+    .navbar button {
+        margin-left: 2px;
     }
     a,
     button {
         width: 90%;
-        margin-bottom: 5px;
+        clear: both;
     }
     #survey-edit-box input {
         margin-left: 50px;
@@ -1246,8 +1241,7 @@ th {
     #myCarousel1 {
         width: 55%;
     }
-    #tutorialVideo-1,
-    #tutorialVideo-2 {
+    #tutorialVideo-1 {
         margin: auto;
     }
     #aboutSurvey13 p {
@@ -1283,6 +1277,22 @@ th {
         width: 50%;
         max-height: 50% !important;
         margin-left: 25%;
+    }
+    .addChoice {
+        width: 70%;
+    }
+    #editSubmitBtn,
+    #cancelBtn {
+        width: 70%;
+    }
+    #cancelBtn {
+        margin-left: 50px;
+        background: gainsboro;
+        color: black;
+        width: 90%;
+    }
+    #backToSurveyListBtn {
+        margin-left: 15px;
     }
     /*table for list----------------------------------------------------------------------------*/
     /* Force table to not be like tables anymore */
@@ -1428,8 +1438,22 @@ th {
     #tutorialBtn {
         margin-bottom: 30px;
     }
+    #saveDetails,
+    #changePasswordBtn {
+        width: 80%;
+    }
+    #cancelUpdateBtn {
+        width: 80%;
+        margin-top: -20px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
 }
 
 @media only screen and (max-width:768x) {
     /* For tablets: */
+    /*for test - using color to test screen size*/
+    body {
+        background: yellow;
+    }
 }
