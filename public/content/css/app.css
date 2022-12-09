@@ -4,12 +4,13 @@
 }
 
 body {
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif, Verdana, Geneva, Tahoma, sans-serif;
     background-image: linear-gradient(to right, #95cd41 0%, skyblue 100%);
 }
 
 .container {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 
@@ -18,8 +19,6 @@ body {
 header {
     color: white;
     background-color: #000;
-    padding: 18px 30px;
-    height: 90px;
 }
 
 header ul {
@@ -36,28 +35,12 @@ header ul {
     margin-left: -15px;
 }
 
-#header-left-link,
-.nav-link {
-    font-size: 25px;
-}
-
 #ateam {
     margin-left: 20%;
 }
 
 
 /*header- home link*/
-
-.nav-link {
-    margin-top: -20px;
-}
-
-#header-home-effect:hover {
-    color: goldenrod;
-}
-
-
-/*--------------------------------*/
 
 tr:nth-child(even) {
     background-color: white;
@@ -70,45 +53,6 @@ tr:nth-child(even) {
     margin: 10px;
     font-size: 28px;
     color: #DAA520;
-}
-
-img {
-    float: left;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: grey;
-}
-
-.topnav a {
-    float: left;
-    color: grey;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.topnav a:hover {
-    background-color: grey;
-    color: black;
-}
-
-.topnav a.active {
-    background-color: #06038D;
-    color: white;
-}
-
-#ul {
-    list-style-type: none;
-    margin: 10;
-    padding: 10;
-    width: 25%;
-    background-color: #f1f1f1;
-    height: 200%;
-    overflow: auto;
-    float: left;
 }
 
 h2 {
@@ -167,7 +111,12 @@ h2 {
 #tutorialVideo-2 {
     display: block;
     margin-left: 250px;
+    width: 560px;
+    height: 315px;
 }
+
+
+/*-Button in create.ejs fot tutorial page link---*/
 
 #tutorialBtn {
     background-color: gainsboro;
@@ -195,7 +144,6 @@ h2 {
     display: block;
     float: left;
     border-radius: 10px;
-    margin-top: 30px;
     margin-bottom: 50px;
     width: 49%;
     background-color: ghostwhite;
@@ -221,7 +169,6 @@ h2 {
     border: solid black 3px;
     border-radius: 15px;
     width: 100%;
-    margin-top: 30px;
     margin-bottom: 50px;
     box-shadow: 10px 5px 5px grey;
     background-image: url("/content/images/lightweb.png");
@@ -1075,15 +1022,6 @@ h1 {
 }
 
 
-/*#about-Iris,
-#about-Siddharth,
-#about-AJ {
-    margin-top: 150px;
-    margin-right: 15px;
-    margin-bottom: 100px;
-}*/
-
-
 /*.about-left {
     display: flex;
     flex-direction: column;
@@ -1200,16 +1138,40 @@ h1 {
 }
 
 
+/*-Table---*/
+
+table {
+    font-size: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    background: ghostwhite;
+}
+
+
+/* Zebra striping */
+
+tr:nth-of-type(odd) {
+    background: ghostwhite;
+}
+
+th {
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+
 /*---Media Queries-------------------------------------------------*/
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:850px) {
     /* For mobile phones: */
-    header,
-    footer {
-        width: 100%
-    }
     body {
-        background: hotpink;
+        background: teal;
     }
     #home-survey-box,
     #aboutSurvey13-contained,
@@ -1220,7 +1182,7 @@ h1 {
     #codePage,
     #formUpdate,
     #survey-create-box,
-    #mainSurvey,
+    #survey-edit-box,
     #updatePassword,
     #forgotPass,
     #aboutATEAM-contained {
@@ -1229,6 +1191,42 @@ h1 {
         padding: 10px;
         margin: 10px;
         margin-bottom: 50px;
+    }
+    #tutorialVideo-1 iframe {
+        width: 60%;
+        margin: auto;
+    }
+    header,
+    footer {
+        margin: 0;
+        width: 100%;
+    }
+    a,
+    button {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+    #survey-edit-box input {
+        margin-left: 50px;
+        width: 65%;
+    }
+    #survey-edit-box label,
+    button {
+        margin-left: 50px;
+    }
+    #survey-view-box {
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+    #homeLogIn h1 {
+        font-size: 35px;
+    }
+    #boxIt {
+        width: 100%;
+    }
+    #aboutATEAM-contained {
+        margin-right: 30px;
     }
     #myCarousel1 {
         width: 55%;
@@ -1270,20 +1268,106 @@ h1 {
         max-height: 50% !important;
         margin-left: 25%;
     }
-    #aboutSurvey13 p {
-        text-align: center;
-        margin: -10px;
+    /*table for list if logIn----------------------------------------------------------------------------*/
+    /* Force table to not be like tables anymore */
+    #survey-list-box table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        border-bottom: solid 3px black;
     }
-    /*--------------------------*/
-    #navbarNavDropdown {
-        float: left;
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #survey-list-box thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    #survey-list-box tr {
+        border: 1px solid white;
+        margin-bottom: 30px;
+    }
+    #survey-list-box td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 15px;
+        margin-left: 180px;
+        width: 57%;
+    }
+    #survey-list-box td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 85%;
+        white-space: nowrap;
+        margin-left: -180px;
+        text-align: left;
+    }
+    /*
+	Label the data
+	*/
+    #survey-list-box td:nth-of-type(1):before {
+        content: "Author ";
+    }
+    #survey-list-box td:nth-of-type(2):before {
+        content: "Title ";
+    }
+    #survey-list-box td:nth-of-type(3):before {
+        display: block;
+        content: "Format";
+    }
+    #survey-list-box td:nth-of-type(4):before {
+        content: "Created (yyyy-mm-dd)";
+    }
+    #survey-list-box td:nth-of-type(5):before {
+        content: "Active on (yyyy-mm-dd)";
+    }
+    #survey-list-box td:nth-of-type(6):before {
+        content: "Expiring on (yyyy-mm-dd)";
+    }
+    #survey-list-box td:nth-of-type(7):before {
+        content: "Number of Questions";
+    }
+    #survey-list-box td:nth-of-type(8):before {
+        content: "Time to Complete (approx.)";
+    }
+    #survey-list-box td:nth-of-type(9):before {
+        content: "# of people who completed this survey";
+    }
+    #survey-list-box td:nth-of-type(10):before {
+        content: "";
+    }
+    #survey-list-box td:nth-of-type(11):before {
+        content: "";
+    }
+    #survey-list-box td:nth-of-type(12):before {
+        content: "";
+    }
+    #survey-list-box #startASurveyBtn,
+    #viewSurveyStatsBtn,
+    .deleteBtn,
+    .editBtn {
+        font-size: 15px;
         width: 100%;
+        margin-top: 5px;
+        margin-bottom: -15px;
+        border: solid black 1px;
+    }
+    #viewSurveyStatsBtn {
+        margin-bottom: 10px;
+    }
+    #startASurveyBtn {
+        margin-bottom: 15px;
+        padding: 5px;
     }
 }
 
 @media only screen and (max-width:768x) {
     /* For tablets: */
-    body {
-        background: orange;
-    }
 }
