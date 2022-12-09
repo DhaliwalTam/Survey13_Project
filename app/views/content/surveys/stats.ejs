@@ -5,7 +5,7 @@
         <h1>Survey Analysis for: <span id="surveyTitle"><%= survey.title %></span></h1>
         <br><br>
         <table class="table table-striped table-bordered table-hover">
-            <thead class="table-dark">
+            <thead class="table-dark" id="headerStats">
                 <tr>
                     <th scope="col" class="text-center col-2">Question</th>
                     <th scope="col" class="text-center col-2">Options (number of times chosen)</th>
@@ -18,42 +18,42 @@
             <tbody id="statsTable">
                 <% for(let count=0; count < survey.questions.length; count++) { %>
                     <%number=0%>
-                    <tr>
-                        <td scope="row" class="questions">
-                            <span class="optionHeader"><%= count + 1 %>:</span>
-                            <%= survey.questions[count]%>
-                        </td>
-                        <td scope="row" class="text-center">
-                            <% for(let j=0; j < survey.options[count].length; j++) { %>
-                                <%if(survey.options[count][j] == ""){%>
-                                    Free-text option<br>
-                                <%}else{%>
-                                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                    <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
-                                <%}%>
-                                    <% } %>
-                        </td>
-                        <td scope="row" class="text-center answers">
-                            <% for(let j=0; j < survey.options[count].length; j++) { %>
-                                <%if(survey.options[count][j] == "" ){%>
-                                    <%}else if(responses.length===0) { %>
-                                        <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                        <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
-                                            <% } else { %>
-                                                <span class="optionHeader"><%= survey.options[count][j]%>:</span>
-                                                <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
-                                                    <% }%>
-                                                        <% } %>
-                        </td>
-                        <% } %>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td scope="row" class="text-center" id="numberRespondents">
-                                    <%= responses.length %>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td scope="row" class="questions">
+                                <span class="optionHeader"><%= count + 1 %>:</span>
+                                <%= survey.questions[count]%>
+                            </td>
+                            <td scope="row" class="text-center">
+                                <% for(let j=0; j < survey.options[count].length; j++) { %>
+                                    <%if(survey.options[count][j] == ""){%>
+                                        Free-text option<br>
+                                        <%}else{%>
+                                            <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                            <%= question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1%><br>
+                                                <%}%>
+                                                    <% } %>
+                            </td>
+                            <td scope="row" class="text-center answers">
+                                <% for(let j=0; j < survey.options[count].length; j++) { %>
+                                    <%if(survey.options[count][j] == "" ){%>
+                                        <%}else if(responses.length===0) { %>
+                                            <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                            <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(1)*100)%>%<br>
+                                                <% } else { %>
+                                                    <span class="optionHeader"><%= survey.options[count][j]%>:</span>
+                                                    <%=Math.round((question1Array[`Responsesquestion${count+1}`].split(survey.options[count][j]).length-1)/(responses.length)*100)%>%<br>
+                                                        <% }%>
+                                                            <% } %>
+                            </td>
+                            <% } %>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td scope="row" class="text-center" id="numberRespondents">
+                                        <%= responses.length %>
+                                    </td>
+                                </tr>
 
             </tbody>
         </table>
@@ -62,24 +62,31 @@
                 <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
                 <% for(let count=0; count < responses.length; count++) { %>
                     <%number=responses[count].textResponses.length-1%>
-                    <br>
-                    <h5 id="submissionNumber">Submission # <%=count+1%></h5>
-                    <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
-                        <h5 class="freeTextResponses"><%=responses[count].textResponses[number][j]%></h5>
-                        <%}%>
+                        <br>
+                        <h5 id="submissionNumber">Submission #
+                            <%=count+1%>
+                        </h5>
+                        <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
+                            <h5 class="freeTextResponses">
+                                <%=responses[count].textResponses[number][j]%>
+                            </h5>
                             <%}%>
-                                <br><br>
+                                <%}%>
+                                    <br><br>
             </div>
-        <%}%>
-    
-        <div id="commentsSection">
-            <h4>Comments/Feedback left by surveyors:</h4>
-            <% for(let j=0; j < responses.length; j++) { %>
-                <p><%=j+1%>. <%=responses[j].comments%></p>
-                <%}%>
-        </div>
-        <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Statistics</button>
-        <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
-            <i class="fas fa-undo"></i> Back to survey list</a>
+            <%}%>
+
+                <div id="commentsSection">
+                    <h4>Comments/Feedback left by surveyors:</h4>
+                    <% for(let j=0; j < responses.length; j++) { %>
+                        <p>
+                            <%=j+1%>.
+                                <%=responses[j].comments%>
+                        </p>
+                        <%}%>
+                </div>
+                <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Statistics</button>
+                <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
+                    <i class="fas fa-undo"></i> Back to survey list</a>
     </div>
 </div>

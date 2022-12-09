@@ -1165,16 +1165,19 @@ th {
     text-align: left;
 }
 
+#tutorialVideo-1 {
+    margin-bottom: 350px;
+}
+
 
 /*---Media Queries-------------------------------------------------*/
 
 @media only screen and (max-width:850px) {
     /* For mobile phones: */
     body {
-        background: teal;
+        background: #B25353;
     }
     #home-survey-box,
-    #aboutSurvey13-contained,
     #home-survey-contained,
     #homeNotLogIn,
     #homeLogIn,
@@ -1192,9 +1195,21 @@ th {
         margin: 10px;
         margin-bottom: 50px;
     }
+    #aboutSurvey13-contained,
+    #gallery {
+        margin-left: 30px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        margin: 10px;
+        margin-bottom: 50px;
+    }
     #tutorialVideo-1 iframe {
-        width: 60%;
+        width: 80%;
         margin: auto;
+    }
+    #header-logo {
+        width: 10%;
     }
     header,
     footer {
@@ -1254,6 +1269,7 @@ th {
     .gallery {
         width: 100%;
         margin: 0 auto;
+        padding: 5px;
     }
     #aboutSurvey13 {
         width: 100%;
@@ -1268,7 +1284,7 @@ th {
         max-height: 50% !important;
         margin-left: 25%;
     }
-    /*table for list if logIn----------------------------------------------------------------------------*/
+    /*table for list----------------------------------------------------------------------------*/
     /* Force table to not be like tables anymore */
     #survey-list-box table,
     thead,
@@ -1365,6 +1381,52 @@ th {
     #startASurveyBtn {
         margin-bottom: 15px;
         padding: 5px;
+    }
+    #survey-stat-box td:nth-of-type(1):before {
+        content: "Question ";
+    }
+    #survey-stat-box td:nth-of-type(2):before {
+        content: "Options (# of times chosen) ";
+    }
+    #survey-stat-box td:nth-of-type(3):before {
+        display: block;
+        content: "% of respondents";
+    }
+    #survey-stat-box td:nth-of-type(4):before {
+        content: "Total number of respondent";
+    }
+    #survey-stat-box td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 15px;
+        margin-left: 180px;
+        width: 57%;
+    }
+    #survey-stat-box td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 85%;
+        white-space: nowrap;
+        margin-left: -180px;
+        text-align: left;
+    }
+    #headerStats {
+        display: none;
+    }
+    #survey-create-box button,
+    #survey-create-box a {
+        margin-left: 10px;
+        margin-bottom: 10px;
+        margin: 0 auto;
+        padding: 5px;
+    }
+    #tutorialBtn {
+        margin-bottom: 30px;
     }
 }
 
