@@ -51,7 +51,7 @@ export function DisplaySurveyList(req, res, next) {
             }
     
             res.render('index', {
-                title: 'My Surveys',
+                title: 'Survey List',
                 page: 'surveys/list',
                 surveys: surveyCollection,
                 displayName: UserDisplayName(req),
@@ -65,7 +65,7 @@ export function DisplaySurveyList(req, res, next) {
 //loads create a survey page
 export function DisplayCreateSurveyPage(req, res, next) {
     res.render('index', {
-        title: 'Create Survey',
+        title: 'Create a Survey',
         page: 'surveys/create',
         displayName: UserDisplayName(req),
         id:GetUserID(req),
@@ -121,7 +121,7 @@ export function DisplaySurveyEditPage(req, res, next) {
         }
 
         res.render('index', {
-            title: 'Edit Survey',
+            title: `Edit: ${survey.title}`,
             page: 'surveys/edit',
             survey: survey,
             displayName: UserDisplayName(req),
@@ -168,6 +168,7 @@ export function ProcessSurveyEditPage(req,res,next){
         else if(req.body[`choices${i+1}`] !== ""){
             updatedSurvey.options.push(req.body[`choices${i+1}`]);
             defaultOptions.push(req.body[`options${i+1}`]);
+            console.log(req.body[`choices${i+1}`])
         }
 
         else if(req.body[`choices${i+1}`] == "undefined" || req.body[`choices${i+1}`] == null){
@@ -176,38 +177,11 @@ export function ProcessSurveyEditPage(req,res,next){
         }
     }
 
-    // Array comparison code below sourced from https://stackoverflow.com/questions/65316789/how-to-differentiate-the-array-values-in-javascript
-    if (Array.prototype.equals)
-        console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
-   
-    Array.prototype.equals = function (array) {
-        if (!array)
-            return false;
-        
-        if (array === this)
-            return true;
-       
-        if (this.length != array.length)
-            return false;
 
-        for (var i = 0, l = this.length; i < l; i++) {
-            if (this[i] instanceof Array && array[i] instanceof Array) {
-                if (!this[i].equals(array[i]))
-                    return false;
-            } else if (this[i] != array[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-   
-    Object.defineProperty(Array.prototype, "equals", {
-        enumerable: false
-    });
-    //--------------------------------------------------------------------------------------------------------------------------
-
+    var a = defaultOptions.toString();
+    var b = updatedSurvey.options.toString();
     
-    if (!defaultOptions.equals(updatedSurvey.options)) {
+    if (a !== b) {
         responsesModel.deleteMany({surveyID: id}, (err) => {
             if (err) {
                 console.error(err);
@@ -226,8 +200,6 @@ export function ProcessSurveyEditPage(req,res,next){
 
         res.redirect('/surveys/list');
     });
-
-    
 }
 
 // processes deletion of a selected survey
@@ -265,7 +237,7 @@ export function DisplaySurveyPage(req, res, next) {
         }
 
         res.render('index', {
-            title: 'Complete Survey',
+            title: survey.title,
             page: 'surveys/view',
             survey: survey,
             displayName: UserDisplayName(req),

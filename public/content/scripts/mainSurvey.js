@@ -22,6 +22,13 @@ document.getElementById("cancelButton").addEventListener("click",()=>{
     }
 });
 
+document.getElementById("resetButton").addEventListener("click",()=>{
+    var confirmReset = confirm("Are you sure you want to reset this survey? This cannot be undone.");
+    if(confirmReset){
+        document.getElementById("mainSurvey").reset();
+    }
+});
+
 
 document.getElementById("submitSurvey").addEventListener("click",()=>{
     var mainSurvey = document.getElementById("mainSurvey");
