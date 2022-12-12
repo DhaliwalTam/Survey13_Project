@@ -60,7 +60,7 @@
         <%textResponsesExist = false%>
         <% for(let count=0; count < survey.questions.length; count++) { %>
             <% for(let j=0; j < survey.options[count].length; j++) { %>
-                <%if(survey.options[count].includes("")){%>
+                <%if(survey.options[count][j].includes("")){%>
                     <%textResponsesExist = true%>
                     <%}else{%>
                         <%textResponsesExist = false%>
@@ -81,9 +81,6 @@
                     <br><br>
                 </div>
             <%}%>           
-            
-            
-
                 <div id="commentsSection">
                     <h4>Comments/Feedback left by surveyors:</h4>
                     <% for(let j=0; j < responses.length; j++) { %>
