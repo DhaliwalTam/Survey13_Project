@@ -781,8 +781,14 @@ h1 {
     width: 50%;
 }
 
+#sendCodeForm{
+    margin-left: 25%;
+    width: 50%;
+}
+
 #sendCode {
     border-radius: 5px;
+    margin-left: 35%;
 }
 
 #sendCode:hover {
@@ -826,6 +832,11 @@ h1 {
     background: gainsboro;
     padding: 25px;
     font-size: 20px;
+}
+
+#forgotPassForm{
+    width: 50%;
+    margin-left: 37%;
 }
 
 #forgotPass button {
