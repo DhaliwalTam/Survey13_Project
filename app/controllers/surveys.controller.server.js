@@ -7,7 +7,7 @@ import { GetUserID } from "../utils/index.js";
 import { GetUsername } from "../utils/index.js";
 
 var today = new Date();
-today.setDate(today.getDate() - 1);
+
 
 //display surveyLists
 export function DisplaySurveyList(req, res, next) {
@@ -98,7 +98,6 @@ export function ProcessSurveyCreatePage(req, res, next) {
                 optionType: req.body.optionTypeArray
             });
 
-
             surveyModel.create(newSurvey, (err) => {
                 if (err) {
                     console.error(err);
@@ -107,7 +106,6 @@ export function ProcessSurveyCreatePage(req, res, next) {
 
             })
             res.redirect('/surveys/list');
-
         }
     })
 }
@@ -335,7 +333,6 @@ export function ProcessSurveyPage(req, res, next) {
             text.push(newStr);
         }
 
-
         if(req.body[`text${i+1}`] == "undefined" || req.body[`text${i+1}`] == null){
             const index = text.indexOf(req.body[`text${i+1}`]);
             if (index > -1) {
@@ -350,7 +347,6 @@ export function ProcessSurveyPage(req, res, next) {
         }
     }
     
-
     newSubmission.textResponses.push(text);
     newSubmission.comments.push(req.body.comments);
     responsesModel.create(newSubmission, (err) => {
@@ -422,14 +418,12 @@ export function ProcessSurveyPage(req, res, next) {
 export function DisplaySurveyStatsPage(req, res, next) {
     var id = req.params.id;
     var question1Array = {};
-    var textResponsesExist = true;
     
     surveyModel.findById(id, (err, survey) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
-
 
         else {
             var survID = survey._id;
@@ -448,18 +442,6 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     for (var j = 0; j < survey.questions.length; j++) {
                         question1Array[`Responsesquestion${j + 1}`] += `${responseCollection[i].responses[j]},`;
                     }
-
-                    for (var x = 0; x < responseCollection[i].textResponses.length; x++) {
-                        if(responseCollection[i].textResponses[x].length == 0){
-                            textResponsesExist = false;
-                        }
-                        
-                        else{
-                            textResponsesExist = true;
-                        }
-                    }
-
-                   
                 }
 
                 res.render('index', {
@@ -468,16 +450,12 @@ export function DisplaySurveyStatsPage(req, res, next) {
                     responses: responseCollection,
                     survey: survey,
                     question1Array: question1Array,
-                    textResponsesExist: textResponsesExist,
+                    
                     displayName: UserDisplayName(req),
                     id:GetUserID(req), 
                     username: GetUsername(req)
                 });
-
-                
             })
-
-            
         }
     });
 }

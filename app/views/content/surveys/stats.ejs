@@ -57,24 +57,32 @@
 
             </tbody>
         </table>
-        <%if(textResponsesExist){%>
-            <div id="questionSection">
-                <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
-                <% for(let count=0; count < responses.length; count++) { %>
-                    <%number=responses[count].textResponses.length-1%>
+        <%textResponsesExist = false%>
+        <% for(let count=0; count < survey.questions.length; count++) { %>
+            <% for(let j=0; j < survey.options[count].length; j++) { %>
+                <%if(survey.options[count].includes("")){%>
+                    <%textResponsesExist = true%>
+                    <%}else{%>
+                        <%textResponsesExist = false%>
+                    <%}%>
+                <% } %>
+        <% } %>
+            <%if(textResponsesExist){%>
+                <div id="questionSection">
+                    <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
+                    <% for(let count=0; count < responses.length; count++) { %>
+                        <%number=responses[count].textResponses.length-1%>
                         <br>
-                        <h5 id="submissionNumber">Submission #
-                            <%=count+1%>
-                        </h5>
-                        <% for(let j=0; j < responses[count].textResponses[number].length; j++) { %>
-                            <h5 class="freeTextResponses">
-                                <%=responses[count].textResponses[number][j]%>
-                            </h5>
-                            <%}%>
-                                <%}%>
-                                    <br><br>
-            </div>
-            <%}%>
+                        <h5 id="submissionNumber">Submission # <%=count+1%></h5>
+                        <% for(let j=0; j < responses[count].textResponses[number].length; j++) {%>
+                            <h5 class="freeTextResponses"><%=responses[count].textResponses[number][j]%></h5>
+                        <%}%>
+                    <%}%>
+                    <br><br>
+                </div>
+            <%}%>           
+            
+            
 
                 <div id="commentsSection">
                     <h4>Comments/Feedback left by surveyors:</h4>

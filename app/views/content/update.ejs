@@ -5,7 +5,6 @@
         <h1>Now editing details for
             <%= user.displayName %>
         </h1>
-        <br>
         <form id="updateForm" method="POST">
             <input type="hidden" name="id" value="<%= user._id %>">
             <label>Username:</label>
@@ -14,7 +13,7 @@
             <br>
             <label>Email:</label>
             <input type="email" class="form-control" id="emailAddress" name="email" required value="<%= user.address %>" placeholder="Email">
-            <br><br>
+            <br>
             <label>Date of Birth:</label>
             <input type="date" class="form-control" id="dateOfBirth" value="<%= user.DOB %>" name="dob">
             <br>

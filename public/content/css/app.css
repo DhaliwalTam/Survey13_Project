@@ -715,7 +715,7 @@ h1 {
 }
 
 #saveDetails {
-    margin-left: 30px;
+    margin-left: 35%;
 }
 
 #cancelUpdateBtn {
@@ -757,6 +757,11 @@ h1 {
     box-shadow: 5px 2px 2px grey;
     color: white;
     background: black;
+}
+
+#mainPassForm{
+    width:50%;
+    margin-left: 35%;
 }
 
 
