@@ -1465,6 +1465,11 @@ th {
     #changePasswordBtn {
         width: 80%;
     }
+
+    #saveDetails{
+        margin-left: 7%;
+    }
+
     #cancelUpdateBtn {
         width: 80%;
         margin-top: -20px;
