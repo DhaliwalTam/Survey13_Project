@@ -60,7 +60,7 @@
         <%textResponsesExist = false%>
         <% for(let count=0; count < survey.questions.length; count++) { %>
             <% for(let j=0; j < survey.options[count].length; j++) { %>
-                <%if(survey.options[count][j].includes("")){%>
+                <%if(survey.options[count][j] == ""){%>
                     <%textResponsesExist = true%>
                     <%}else{%>
                         <%textResponsesExist = false%>
@@ -69,7 +69,7 @@
         <% } %>
             <%if(textResponsesExist){%>
                 <div id="questionSection">
-                    <h4 id="freeTextTitle">Responses for free-text questions/options</h4>
+                    <h4 id="freeTextTitle">Free-Text Responses</h4>
                     <% for(let count=0; count < responses.length; count++) { %>
                         <%number=responses[count].textResponses.length-1%>
                         <br>
@@ -82,7 +82,7 @@
                 </div>
             <%}%>           
                 <div id="commentsSection">
-                    <h4>Comments/Feedback left by surveyors:</h4>
+                    <h4>Comments/Feedback:</h4>
                     <% for(let j=0; j < responses.length; j++) { %>
                         <p>
                             <%=j+1%>.
@@ -91,7 +91,6 @@
                         <%}%>
                 </div>
                 <button class="btn btn-default" id="emailData"><i class="fa-solid fa-envelope"></i> Email Statistics</button>
-                <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default">
-                    <i class="fas fa-undo"></i> Back to survey list</a>
+                <a id="backToSurveyListBtn" href="/surveys/list" class="btn btn-default"><i class="fas fa-undo"></i> Back to survey list</a>
     </div>
 </div>

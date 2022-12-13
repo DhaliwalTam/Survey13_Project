@@ -177,7 +177,6 @@ export function ProcessSurveyEditPage(req,res,next){
         }
     }
 
-
     var a = defaultOptions.toString();
     var b = updatedSurvey.options.toString();
     

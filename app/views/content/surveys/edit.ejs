@@ -60,7 +60,7 @@
         <div class="row">
             <div class="offset-md-3 col-md-6">
                 <h1>
-                    <%= title %>
+                    Edit Survey: <%= survey.title %>
                 </h1>
                 <form class="form" method="POST">
                     <input type="hidden" name="id" value="<%= survey._id %>">
@@ -84,14 +84,12 @@
                     <% for(let count=0; count < survey.questions.length; count++) { %>
                         <% for(let j=0; j < survey.options[count].length; j++) { %>
                             <%if(survey.options[count][j] == "" ){%>
-                                <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly><br>
+                                <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly>
                                 <%}else{%>
-                                    <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
+                                    <input type="hidden" name="options<%= count+1 %>" value="<%= survey.options[count][j] %>">
                                     <%}%>
-
                                         <% } %>
                                             <% } %>
-
                                                 <% for(let count=0; count < survey.questions.length; count++) { %>
                                                     <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" placeholder="Edit question" name="ques" value="<%= survey.questions[count] %>">
 
@@ -101,12 +99,11 @@
                                                         <div class="form-group">
                                                             <% for(let count=0; count < survey.questions.length; count++) { %>
                                                                 <label>Options for Question <%= count + 1 %></label>
-                                                                <button type="button" id="<%= count + 1 %>" class="addChoice addNewOptionButton"><i
-                                class="fas fa-plus-circle"></i> Add New Option</button>
+                                                                <button type="button" id="<%= count + 1 %>" class="addChoice addNewOptionButton"><i class="fas fa-plus-circle"></i> Add New Option</button>
                                                                 <div id="optionsDiv<%= count+1 %>">
                                                                     <% for(let j=0; j < survey.options[count].length; j++) { %>
                                                                         <%if(survey.options[count][j] == "" ){%>
-                                                                            <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly><br>
+                                                                            <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" readonly placeholder="Free-text option; cannot be edited"><br>
                                                                             <%}else{%>
                                                                                 <input type="text" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>"><br>
                                                                                 <%}%>
@@ -116,9 +113,7 @@
                                                                 <br>
                                                                 <% } %>
 
-                                                                    <button id="editSubmitBtn" class="btn btn-default" type="submit">
-                        <i class="fas fa-edit"></i> Submit</button>
-
+                                                                    <button id="editSubmitBtn" class="btn btn-default" type="submit"> <i class="fas fa-edit"></i> Submit</button>
                                                                     <a id="cancelBtn" href="/surveys/list" class="btn btn-default">
                                                                         <i class="fas fa-undo"></i> Cancel</a>
                 </form>
