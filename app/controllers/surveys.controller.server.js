@@ -214,14 +214,15 @@ export function ProcessSurveyDelete(req, res, next) {
         }
         
     })
-        responsesModel.deleteMany({surveyID:id},(err)=>{
-            if (err) {
-                console.error(err);
-                res.end(err);
-            }
+        
+    responsesModel.deleteMany({surveyID:id},(err)=>{
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
     
-            res.redirect('/surveys/list');
-        });
+        res.redirect('/surveys/list');
+    });
     
 }
 

@@ -18,6 +18,7 @@
                 <br><label>Question <%= count + 1 %></label><input type="text" class="form-control" readonly name="ques" value="<%= survey.questions[count] %>">
                 <% for(let j=0; j < survey.options[count].length; j++) { %>
                     <%if(survey.options[count][j] == ""){%>
+                        <br>
                         <textarea name="text<%=count+1%>" id="" cols="30" rows="3" placeholder="Enter response here"></textarea><br>
                         <%}else{%>
                             <input type="radio" name="choices<%= count+1 %>" value="<%= survey.options[count][j] %>" required>
